@@ -1,0 +1,901 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vue.js," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="什么是Vue.jsVue.js 是一套构建用户界面的 渐进式框架。与其他重量级框架不同的是Vue 的核心库只关注视图层。 Vue.js的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件。 Vue.js是一种MVVM框架(Model-View-ViewModel),其中html是view层，js是model层，通过vue.js（使用v-model这个指令）完成中间的底层逻辑，实现绑">
+<meta name="keywords" content="Vue.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js入门基础知识">
+<meta property="og:url" content="http://yoursite.com/2017/06/27/Vue.js入门基础知识/index.html">
+<meta property="og:site_name" content="我的大学,我的生活">
+<meta property="og:description" content="什么是Vue.jsVue.js 是一套构建用户界面的 渐进式框架。与其他重量级框架不同的是Vue 的核心库只关注视图层。 Vue.js的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件。 Vue.js是一种MVVM框架(Model-View-ViewModel),其中html是view层，js是model层，通过vue.js（使用v-model这个指令）完成中间的底层逻辑，实现绑">
+<meta property="og:image" content="http://img.blog.csdn.net/20170616094327849?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-06-27T01:08:32.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue.js入门基础知识">
+<meta name="twitter:description" content="什么是Vue.jsVue.js 是一套构建用户界面的 渐进式框架。与其他重量级框架不同的是Vue 的核心库只关注视图层。 Vue.js的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件。 Vue.js是一种MVVM框架(Model-View-ViewModel),其中html是view层，js是model层，通过vue.js（使用v-model这个指令）完成中间的底层逻辑，实现绑">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170616094327849?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '20152154',
+      author: 'Wongzeqi'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/27/Vue.js入门基础知识/"/>
+
+
+
+
+
+  <title>Vue.js入门基础知识 | 我的大学,我的生活</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我的大学,我的生活</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地，奋斗不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/27/Vue.js入门基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wongzeqi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的大学,我的生活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue.js入门基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T00:00:00+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="markdown_views">
+
+<h3 id="什么是Vue-js"><a href="#什么是Vue-js" class="headerlink" title="什么是Vue.js"></a>什么是Vue.js</h3><p>Vue.js 是一套构建用户界面的 渐进式框架。与其他重量级框架不同的是Vue 的核心库只关注视图层。<br> Vue.js的目标是通过尽可能简单的API实现响应的数据绑定和组合的视图组件。<br> Vue.js是一种MVVM框架(Model-View-ViewModel),其中html是view层，js是model层，通过vue.js（使用v-model这个指令）完成中间的底层逻辑，实现绑定的效果。改变其中的任何一层，另外一层都会改变；</p>
+<p><img src="http://img.blog.csdn.net/20170616094327849?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h3 id="Vue-js基本语法"><a href="#Vue-js基本语法" class="headerlink" title="Vue.js基本语法"></a>Vue.js基本语法</h3><p>首先建立一个.html文件<br> 然后引入Vue.js文件：</p>
+<pre><code>&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;https://unpkg.com/vue/dist/vue.js&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+然后创建一个vue的根实例
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{<span class="hljs-variable">message</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;Hello Vue&apos;&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+使用Vue构造函数创建一个Vue实例，然后通过Vue实例的el接口实现与HTML元素的挂载，el指element，内容指向页面元素的id
+
+#### 指令
+
+**1、v-text** 
+ v-text的作用与**{{ }}**的作用其实是一样的
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-text&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;Hello Vue&apos;&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+同样的页面会显示Hello Vue 
+ 2、v-html 
+ v-html与操作DOM时所用的.innerHTML方法时类似的，
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-html&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;Hello Vuejs&amp;lt;i&amp;gt;(I am learning)&amp;lt;/i&amp;gt;&apos;&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+页面输出：说明 i 标签起作用 
+ ![这里写图片描述](http://img.blog.csdn.net/20170616101349572?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+如果把v-html换成v-text，则会得到： 
+ ![这里写图片描述](http://img.blog.csdn.net/20170616101935158?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast) 
+ 由此可以知道v-text和v-html的区别： 
+ v-text：会将文本全部输出 
+ v-html：会将文本编译后输出 
+ 3、v-show
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- &amp;lt;h1&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{<span class="hljs-variable">message</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;/h1&amp;gt; --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-html&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-show&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;viewed&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;you have see this sentence&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;Hello Vuejs&amp;lt;i&amp;gt;(I am learning)&amp;lt;/i&amp;gt;&apos;&lt;/span&gt;, viewed:&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt; } })&lt;/span&gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+v-show会判断值是true还是false，如果是true的话，显示内容 
+ 如果是false的话，隐藏，但元素还是存在在页面中只是display：none了而已 
+ 如上面的例子，viewed:true的话，打开控制台， 
+ ![这里写图片描述](http://img.blog.csdn.net/20170616103812340?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast) 
+ 现在将viewed改为false，刷新页面 
+ ![这里写图片描述](http://img.blog.csdn.net/20170616103944655?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast) 
+ 4、v-if 
+ 先来看看v-if和v-show的区别 
+ 把上面例子的v-show改为v-if
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- &amp;lt;h1&amp;gt;{{message}}&amp;lt;/h1&amp;gt; --&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-html&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;h1&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-if&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;viewed&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;you have see this sentence&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;Hello Vuejs&amp;lt;i&amp;gt;(I am learning)&amp;lt;/i&amp;gt;&apos;&lt;/span&gt;, viewed:&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+当viewed：true时结果和v-show的一样 
+ 当viewed设置为false时，刷新页面，查看控制台 
+ ![这里写图片描述](http://img.blog.csdn.net/20170616104537928?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvR3hpYW9xaW4=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast) 
+ 你会发现元素不存在！ 
+ 这就是v-if和v-show的区别。 
+ v-if 是“真正的”条件渲染，如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。 
+ 相比之下， v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。 
+ 一般来说， v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件不太可能改变，则使用 v-if 较好。
+
+v-if可以与v-else结合使用，跟我们平时用的if-else语句块是一样的 
+ 5、v-once 
+ 顾名思义，拥有这个指令的元素只会被渲染一次，若给它重新赋值也不会有效果。 
+ 6、v-bind 
+ 绑定属性，如v-bind:title,v-bind:href
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;app&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;img&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-bind:src&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;url&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-bind:title&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; app=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#app&apos;&lt;/span&gt;, data:{ url:&lt;span class=&quot;hljs-string&quot;&gt;&apos;http://cn.vuejs.org/images/logo.png&apos;&lt;/span&gt;, message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;vue logo&apos;&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;`&lt;/pre&gt; 
+
+这样就绑定了img的src属性，鼠标悬浮在照片在时有提示信息 
+ 绑定的好处就是在Model层做修改后会实时的更新到View层，你会发现，v-bind是单向的绑定数据，从View层就不能改变Model层的数据，所以，v-model就出现了。 
+ 7、v-model 
+ 通过v-model指令可以实现数据的双向绑定，即View层的数据变化可以直接改变Model层的数据，而Model层的数据改变也可以直接反映在View层。 
+ 下面是几个例子：
+
+ &lt;pre class=&quot;prettyprint&quot;&gt;`&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-1&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;placeholder&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;edit me&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;Message is: &lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{ <span class="hljs-variable">message</span> }}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 多行文本 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-2&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;Mutiline message is:&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{ <span class="hljs-variable">message</span> }}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;br&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;textarea&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;message&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;placeholder&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;add multiple lines&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;textarea&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 复选框 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-3&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checked&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{ <span class="hljs-variable">checked</span> }}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 多个勾选框，绑定同一按钮 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-4&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;jack&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;Jack&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkedname&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;jack&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Jack&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;john&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;John&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkedname&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;john&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;John&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;mike&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;Mike&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;checkedname&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;mike&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Mike&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;Checked names:&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{ <span class="hljs-variable">checkedname</span> }}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 单选按钮 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-5&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;one&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;One&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;picked&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;one&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;One&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;radio&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;two&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;Two&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;picked&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;two&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;Two&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;label&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;picked:&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{<span class="hljs-variable">picked</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 单选列表 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-6&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;selected&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt;A&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt;B&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt;C&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;select&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;Selected：&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{<span class="hljs-variable">selected</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-comment&quot;&gt;&amp;lt;!-- 选项动态生成，用v-for渲染 --&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;example-7&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-model&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;selected&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-for&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;option in options&quot;&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;v-bind:value&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;option.value&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{ <span class="hljs-variable">option.text</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;option&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;select&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt;Selected：&lt;/span&gt;&lt;span class=&quot;hljs-expression&quot;&gt;{{<span class="hljs-variable">selected</span>}}&lt;/span&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;span&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;hljs-attribute&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;hljs-value&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;javascript&quot;&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example7=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-7&apos;&lt;/span&gt;, data:{ selected:&lt;span class=&quot;hljs-string&quot;&gt;&apos;A&apos;&lt;/span&gt;, options:[ {text:&lt;span class=&quot;hljs-string&quot;&gt;&apos;one&apos;&lt;/span&gt;,value:&lt;span class=&quot;hljs-string&quot;&gt;&apos;A&apos;&lt;/span&gt;}, {text:&lt;span class=&quot;hljs-string&quot;&gt;&apos;two&apos;&lt;/span&gt;,value:&lt;span class=&quot;hljs-string&quot;&gt;&apos;B&apos;&lt;/span&gt;}, {text:&lt;span class=&quot;hljs-string&quot;&gt;&apos;three&apos;&lt;/span&gt;,value:&lt;span class=&quot;hljs-string&quot;&gt;&apos;C&apos;&lt;/span&gt;} ] } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example1=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-1&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;&apos;&lt;/span&gt; } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example2=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-2&apos;&lt;/span&gt;, data:{ message:&lt;span class=&quot;hljs-string&quot;&gt;&apos;&apos;&lt;/span&gt; } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example3=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-3&apos;&lt;/span&gt;, data:{ checked:&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt; } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example4=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-4&apos;&lt;/span&gt;, data:{ checkedname:[] } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example5=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-5&apos;&lt;/span&gt;, data:{ picked:&lt;span class=&quot;hljs-string&quot;&gt;&apos;&apos;&lt;/span&gt; } }) &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; example6=&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Vue({ el:&lt;span class=&quot;hljs-string&quot;&gt;&apos;#example-6&apos;&lt;/span&gt;, data:{ selected:&lt;span class=&quot;hljs-literal&quot;&gt;null&lt;/span&gt; } }) &lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-title&quot;&gt;script&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+</code></pre><p>从前面的例子可以知道，只要有数据变动，就会立即更新。但是有时候，比如说搜索的时候，我们希望在输入整个搜索条目的时候再进行搜索，这时候就需要到watch了。<br> 7、watch<br> watch不是指令，watch有观察的意思再里面，观察数据的变化，做出反应</p>
+<p></p></div> <p></p>
+<script type="text/javascript">
+            $(function () {
+                $('pre.prettyprint code').each(function () {
+                    var lines = $(this).text().split('\n').length;
+                    var $numbering = $('<ul/>').addClass('pre-numbering').hide();
+                    $(this).addClass('has-numbering').parent().append($numbering);
+                    for (i = 1; i <= lines; i++) {
+                        $numbering.append($('<li/>').text(i));
+                    };
+                    $numbering.fadeIn(1700);
+                });
+            });
+        </script>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/09/浅谈反射/" rel="next" title="浅谈反射">
+                <i class="fa fa-chevron-left"></i> 浅谈反射
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/upload/head.jpg"
+               alt="wongzeqi" />
+          <p class="site-author-name" itemprop="name">wongzeqi</p>
+           
+              <p class="site-description motion-element" itemprop="description">我是一个勤奋的毛毛虫</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/your-user-name" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/your-user-name" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/your-user-name" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Vue-js"><span class="nav-number">1.</span> <span class="nav-text">什么是Vue.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-js基本语法"><span class="nav-number">2.</span> <span class="nav-text">Vue.js基本语法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wongzeqi</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
