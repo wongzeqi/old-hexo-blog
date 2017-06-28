@@ -1,3 +1,3 @@
-http://www.wongzeqi.wang/2017/06/27/Test/
-http://www.wongzeqi.wang/2017/06/27/欢迎使用CSDN-markdown编辑器/
+http://www.wongzeqi.wang/2017/06/28/Hexo配置心得体会/
 http://www.wongzeqi.wang/2016/11/09/浅谈反射/
+http://www.wongzeqi.wang/2016/11/09/自定义MVC2之优化/
