@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>http://www.wongzeqi.wang/2017/06/29/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2017-06-29T12:59:19.649Z</lastmod>
+    <data>
+        <display>
+        <title>java23种设计模式</title>
+        <pubTime>2017-06-28T16:00:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="Java" url="http://www.wongzeqi.wang/categories/Java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.wongzeqi.wang/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-06-29T10:05:50.582Z</lastmod>
+    <lastmod>2017-06-29T12:58:44.594Z</lastmod>
     <data>
         <display>
         <title>Git常用命令</title>
