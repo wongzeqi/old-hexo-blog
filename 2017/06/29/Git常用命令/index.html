@@ -9,6 +9,7 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="s8Pe1TBqyy" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
@@ -91,7 +92,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=微软雅黑:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -122,17 +123,17 @@
 
 
 
-<meta name="description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令检出仓库：1$ git clone git://github.com/jquery/jquery.git 查看远程仓库：1$ git remote -v 添加远程仓库：1$ git remote add [name] [url] 删除远程仓库：1">
+<meta name="description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git常用命令">
 <meta property="og:url" content="http://wangzeqi.website/2017/06/29/Git常用命令/index.html">
 <meta property="og:site_name" content="王泽奇，个人博客">
-<meta property="og:description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令检出仓库：1$ git clone git://github.com/jquery/jquery.git 查看远程仓库：1$ git remote -v 添加远程仓库：1$ git remote add [name] [url] 删除远程仓库：1">
-<meta property="og:updated_time" content="2017-06-29T12:58:44.594Z">
+<meta property="og:description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令">
+<meta property="og:updated_time" content="2017-07-01T15:02:27.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令">
-<meta name="twitter:description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令检出仓库：1$ git clone git://github.com/jquery/jquery.git 查看远程仓库：1$ git remote -v 添加远程仓库：1$ git remote add [name] [url] 删除远程仓库：1">
+<meta name="twitter:description" content="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。Git常用操作命令： 远程仓库相关命令">
 
 
 
@@ -141,7 +142,7 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -191,7 +192,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <a href="https://github.com/wongzeqi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
@@ -278,6 +279,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
 
       
     </ul>
@@ -311,7 +322,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/head.jpg">
+      <meta itemprop="image" content="/upload/head.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -405,11 +416,13 @@
 
       
         <h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
-<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
+<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><a id="more"></a>
+<p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
 <p>查看远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote -v</div></pre></td></tr></table></figure></p>
 <p>添加远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add [name] [url]</div></pre></td></tr></table></figure></p>
 <p>删除远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm [name]</div></pre></td></tr></table></figure></p>
-<p>修改远程仓库：<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure></p>
+<p>修改远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure>
 <p>拉取远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
 <p>推送远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
 <p><strong>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:master // 提交本地<span class="built_in">test</span>分支作为远程的master分支</div><div class="line"></div><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:<span class="built_in">test</span>  // 提交本地<span class="built_in">test</span>分支作为远程的<span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
@@ -460,7 +473,7 @@
   <p><span>本文标题:</span><a href="/2017/06/29/Git常用命令/">Git常用命令</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王泽奇 的个人博客">王泽奇</a></p>
   <p><span>发布时间:</span>2017年06月29日 - 00:06</p>
-  <p><span>最后更新:</span>2017年06月29日 - 20:06</p>
+  <p><span>最后更新:</span>2017年07月01日 - 23:07</p>
   <p><span>原始链接:</span><a href="/2017/06/29/Git常用命令/" title="Git常用命令">http://wangzeqi.website/2017/06/29/Git常用命令/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/06/29/Git常用命令/"  aria-label="复制成功！"></i></span>
   </p>
@@ -652,7 +665,7 @@
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/upload/head.jpg"
+               src="/upload/head.png"
                alt="王泽奇" />
           <p class="site-author-name" itemprop="name">王泽奇</p>
            
@@ -750,6 +763,18 @@
                   <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
                 </li>
               
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qiniu.com/" title="七牛" target="_blank">七牛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http:aileen.top" title="张琳学姐" target="_blank">张琳学姐</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zybuluo.com/mdeditor" title="作业部落" target="_blank">作业部落</a>
+                </li>
+              
             </ul>
           </div>
         
@@ -792,7 +817,7 @@
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright" >
   
-  &copy;  2016 - 
+  &copy; 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
@@ -854,8 +879,6 @@
   
 
 
-  
-
 
 
 
@@ -883,9 +906,6 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -1008,10 +1028,6 @@
   
 
 
-  
-  <script type="text/javascript" 
-color="0,0,255" opacity='0.7' zIndex="-2" count="100"
-  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
   
   <!-- 页面点击小红心 -->
   <script type="text/javascript" src="/js/src/love.js"></script>

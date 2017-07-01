@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangzeqi.website/2017/06/30/Git%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2017-07-01T15:03:41.709Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangzeqi.website/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    
+    <lastmod>2017-07-01T15:02:27.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangzeqi.website/photos/index.html</loc>
+    
+    <lastmod>2017-07-01T13:53:28.068Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wangzeqi.website/about/index.html</loc>
+    
+    <lastmod>2017-07-01T13:45:21.730Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wangzeqi.website/2017/07/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/</loc>
     
     <lastmod>2017-07-01T13:08:52.363Z</lastmod>
@@ -16,20 +44,6 @@
   </url>
   
   <url>
-    <loc>http://wangzeqi.website/2017/06/30/Git%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2017-06-30T10:38:18.144Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangzeqi.website/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    
-    <lastmod>2017-06-29T12:58:44.594Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wangzeqi.website/2017/06/28/hexo-nexT%E9%85%8D%E7%BD%AE%E8%AF%A6%E6%83%85/</loc>
     
     <lastmod>2017-06-28T16:05:21.872Z</lastmod>
@@ -40,13 +54,6 @@
     <loc>http://wangzeqi.website/baidu_verify_zBYi1Aga90.html</loc>
     
     <lastmod>2017-06-27T14:30:16.320Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wangzeqi.website/about/index.html</loc>
-    
-    <lastmod>2017-06-27T03:31:02.337Z</lastmod>
     
   </url>
   
