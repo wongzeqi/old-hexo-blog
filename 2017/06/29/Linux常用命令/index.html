@@ -1,0 +1,1208 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="s8Pe1TBqyy" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux，命令," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王泽奇，个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Linux常用命令列出目录内容ls -a：显示所有文件（包括隐藏文件）； ls -l：显示详细信息； ls -R：递归显示子目录结构； ls -ld：显示目录和链接信息； ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）； Linux中以.开头的文件是隐藏文件； pwd:显示当前目录">
+<meta name="keywords" content="Linux，命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git常用命令">
+<meta property="og:url" content="http://wangzeqi.website/2017/06/29/Linux常用命令/index.html">
+<meta property="og:site_name" content="王泽奇，个人博客">
+<meta property="og:description" content="Linux常用命令列出目录内容ls -a：显示所有文件（包括隐藏文件）； ls -l：显示详细信息； ls -R：递归显示子目录结构； ls -ld：显示目录和链接信息； ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）； Linux中以.开头的文件是隐藏文件； pwd:显示当前目录">
+<meta property="og:updated_time" content="2017-07-02T07:06:23.816Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git常用命令">
+<meta name="twitter:description" content="Linux常用命令列出目录内容ls -a：显示所有文件（包括隐藏文件）； ls -l：显示详细信息； ls -R：递归显示子目录结构； ls -ld：显示目录和链接信息； ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）； Linux中以.开头的文件是隐藏文件； pwd:显示当前目录">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '20152154',
+      author: 'Wongzeqi'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangzeqi.website/2017/06/29/Linux常用命令/"/>
+
+
+
+
+
+  <title>Git常用命令 | 王泽奇，个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <a href="https://github.com/wongzeqi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王泽奇，个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地，奋斗不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/Linux常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:00:00+08:00">
+                2017-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/06/29/Linux常用命令/#SOHUCS" itemprop="discussionUrl">
+					  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/06/29/Linux常用命令/" itemprop="commentsCount"></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,249
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a><center><a href="http://wangzeqi.website"><strong>Linux常用命令</strong></a></center></h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a><strong>列出目录内容</strong></h2><p>ls -a：显示所有文件（包括隐藏文件）；</p>
+<p>ls -l：显示详细信息；</p>
+<p>ls -R：递归显示子目录结构；</p>
+<p>ls -ld：显示目录和链接信息；</p>
+<p>ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）；</p>
+<p><a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">Linux</a>中以.开头的文件是隐藏文件；</p>
+<p>pwd:显示当前目录<br><a id="more"></a></p>
+<h2 id="查看文件的类型"><a href="#查看文件的类型" class="headerlink" title="查看文件的类型"></a><strong>查看文件的类型</strong></h2><p>file:查看文件的类型</p>
+<h2 id="复制文件目录"><a href="#复制文件目录" class="headerlink" title="复制文件目录"></a><strong>复制文件目录</strong></h2><h3 id="cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）"><a href="#cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）" class="headerlink" title="cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）"></a>cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）</h3><p>常用参数：-r:递归复制整个目录树；-v：显示详细信息；</p>
+<p>复制文件夹时要在cp命令后面加一个-r参数：</p>
+<p>如：cp -r 源文件夹 目标文件夹</p>
+<h3 id="touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"><a href="#touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。" class="headerlink" title="touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"></a>touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。</h3><p>功能：生成一个空文件或修改文件的存取/修改的时间记录值。</p>
+<p>touch * ：将当前下的文件时间修改为系统的当前时间</p>
+<p>touch -d 20040210 test：将test文件的日期改为20040210</p>
+<p>touch abc　：若abc文件存在，则修改为系统的当前时间；若不存在，则生成一个为当前时间的空文件</p>
+<h3 id="mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"><a href="#mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。" class="headerlink" title="mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"></a>mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。</h3><p>格式为：mv [参数]&lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
+<p>mva.txt ../：将a.txt文件移动上层目录</p>
+<p>mva.txtb.txt：将a.txt改名为b.txt</p>
+<p>mvdir2 ../：将dir2目录上移一层</p>
+<h3 id="rm：删除文件；"><a href="#rm：删除文件；" class="headerlink" title="rm：删除文件；"></a>rm：删除文件；</h3><p>常用参数：-i：交互式 -r：递归的删除包括目录中的所有内容</p>
+<h3 id="mkdir-文件夹名称：创建文件夹；"><a href="#mkdir-文件夹名称：创建文件夹；" class="headerlink" title="mkdir +文件夹名称：创建文件夹；"></a>mkdir +文件夹名称：创建文件夹；</h3><h3 id="rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"><a href="#rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）" class="headerlink" title="rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"></a>rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）</h3><p>rmdir 文件夹名称：删除文件夹（只能删除空文件夹）</p>
+<h3 id="mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）"><a href="#mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）" class="headerlink" title="mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）"></a>mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）</h3><h3 id="rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"><a href="#rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它" class="headerlink" title="rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"></a>rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它</h3><h3 id="rm-：删除当前目录下的所有文件"><a href="#rm-：删除当前目录下的所有文件" class="headerlink" title="rm * ：删除当前目录下的所有文件"></a>rm * ：删除当前目录下的所有文件</h3><h3 id="f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件"><a href="#f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件" class="headerlink" title="-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件"></a>-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件</h3><p>1### -i参数：删除文件时询问</p>
+<p>rm　-i * ：删除当前目录下的所有文件会有如下提示：</p>
+<p>rm:backup:is a directory　　　 遇到目录会略过</p>
+<p>rm: remove ‘myfiles.txt’ ? Y</p>
+<p>删除文件时会询问,可按Y或N键表示允许或拒绝删除文件　</p>
+<p>1### -r参数：递归删除（连子目录一同删除，这是一个相当常用的参数）</p>
+<p>rm -rtest ：删除test目录（含test目录下所有文件和子目录）</p>
+<p>rm -r *：删除所有文件（含当前目录所有文件、所有子目录和子目录下的文件） 一般在删除目录时r和f一起用，避免麻烦</p>
+<p>rm -rftest ：强行删除、不加询问</p>
+<p>1### grep：功能：在文件中搜索匹配的字符并进行输出</p>
+<p>格式：grep[参数] &lt;要找的字串&gt; &lt;要寻找字 串的源文件&gt;</p>
+<p>greplinux test.txt：搜索test.txt文件中字符串<a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">linux</a>并输出</p>
+<p>1### ln命令</p>
+<p>功能：在文件和目录之间建立链接</p>
+<p>格式：ln [参数] &lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
+<p>链接分“软链接”和“硬链接”</p>
+<h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接:"></a>软链接:</h4><p>ln-s /usr/share/do doc ：创建一个链接文件doc,并指向目录/usr/share/do</p>
+<h4 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接:"></a>硬链接:</h4><p>ln /usr/share/test hard：创建一个硬链接文件hard，这时对于test文件对应 的存储区域来说，又多了一个文件指向它</p>
+<h2 id="系统常用命令"><a href="#系统常用命令" class="headerlink" title="系统常用命令"></a><strong>系统常用命令</strong></h2><h3 id="显示命令"><a href="#显示命令" class="headerlink" title="显示命令"></a>显示命令</h3><p>date:查看或设置当前系统的时间：格式化显示时间：+%Y–%m–%d；</p>
+<p>date -s:设置当前系统的时间</p>
+<p>hwclock(clock)：显示硬件时钟时间(需要管理员权限)；</p>
+<p>cal：查看日历</p>
+<p>格式cal [参数] 月年</p>
+<p>cal：显示当月的日历 cal4 2004 ：显示2004年4月的日历</p>
+<p>cal- y 2003： 显示2003年的日历</p>
+<p>uptime：查看系统运行时间</p>
+<h3 id="输出查看命令"><a href="#输出查看命令" class="headerlink" title="输出查看命令"></a>输出查看命令</h3><p>echo：显示输入的内容 追加文件echo “liuyazhuang” &gt;&gt; liuyazhuang.txt</p>
+<p>cat：显示文件内容,也可以将数个文件合并成一个文件。</p>
+<p>格式：格式：cat[参数]&lt;文件名&gt;</p>
+<p>cat test.txt：显示test.txt文件内容</p>
+<p>cat test.txt| more ：逐页显示test.txt文件中的内容</p>
+<p>cat test.txt&gt;&gt; test####  txt ：将test.txt的内容附加到test####  txt文件之后</p>
+<p>cat test.txttest####  txt &gt;readme.txt　: 将test.txt和test####  txt文件合并成readme.txt 文件</p>
+<p>head:显示文件的头几行（默认10行） -n:指定显示的行数格式：head -n 文件名</p>
+<p>tail：显示文件的末尾几行（默认10行）-n：指定显示的行数 -f：追踪显示文件更新 （一般用于查看日志，命令不会退出，而是持续显示新加入的内容）</p>
+<p>格式：格式：tail[参数]&lt;文件名&gt;</p>
+<p>tail-10 /etc/passwd ：显示/etc/passwd/文件的倒数10行内容</p>
+<p>tail+10 /etc/passwd ：显示/etc/passwd/文件从第10行开始到末尾的内容</p>
+<p>more：用于翻页显示文件内容（只能向下翻页）</p>
+<p>more命令是一般用于要显示的内容会超过一个画面长度的情况。为了避免画 面显示时瞬间就闪过去，用户可以使用more命令，让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。</p>
+<p>ls -al |more：以长格形式显示etc目录下的文件列表，显示满一个画面便暂停，可 按空格键继续显示下一画面，或按Q键跳离</p>
+<p>less：翻页显示文件内容（带上下翻页）按下上键分页，按q退出、‘</p>
+<p>less命令的用法与more命令类似，也可以用来浏览超过一页的文件。所不同 的是less 命令除了可以按空格键向下显示文件外，还可以利用上下键来卷动文件。 当要结束浏览时，只要在less命令的提示符“：”下按Q键即可。</p>
+<p>ls -al | less：以长格形式列出/etc目录中所有的内容。用户可按上下键浏览或按Q键跳离</p>
+<h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><p>Ispci：查看PCI设备 -v：查看详细信息</p>
+<p>Isusb：查看USB设备 -v：查看详细信息</p>
+<p>Ismod：查看加载的模块(驱动)</p>
+<h3 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a>关机、重启</h3><p>shutdown关闭、重启计算机</p>
+<p>shutdown[关机、重启]时间 -h关闭计算机 -r：重启计算机</p>
+<p>如：立即关机： shutdown -h now</p>
+<p>10分钟后关机：shutdown -h +10</p>
+<p>23:30分关机：shutdown -h 23:30</p>
+<p>立即重启： shutdown -r now</p>
+<p>poweroff：立即关闭计算机</p>
+<p>reboot：立即重启计算机</p>
+<h3 id="归档、压缩"><a href="#归档、压缩" class="headerlink" title="归档、压缩"></a>归档、压缩</h3><p>zip:压缩文件 zip liuyazhuang.zip myfile 格式为：“zip 压缩后的zip文件文件名”</p>
+<p>unzip：解压文件 unzip liuyazhuang.zip</p>
+<p>gzip：压缩文件 gzip 文件名</p>
+<p>tar：归档文件</p>
+<p>tar -cvf out.tar liuyazhuang 打包一个归档（将文件”liuyazhuang”打包成一个归档）</p>
+<p>tar -xvf liuyazhuang.tar 释放一个归档（释放liuyazhuang.tar归档）</p>
+<p>tar -cvzf backup.tar.gz/etc</p>
+<p>-z参数将归档后的归档文件进行gzip压缩以减少大小。</p>
+<p>-c：创建一个新tar文件</p>
+<p>-v：显示运行过程的信息</p>
+<p>-f：指定文件名</p>
+<p>-z：调用gzip压缩命令进行压缩</p>
+<p>-t：查看压缩文件的内容</p>
+<p>-x：解开tar文件</p>
+<p>tar -cvftest.tar *：将所有文件打包成test.tar,扩展名.tar需自行加上</p>
+<p>tar -zcvftest.tar.gz *：将所有文件打包成test.tar,再用gzip命令压缩</p>
+<p>tar-tf test.tar ：查看test.tar文件中包括了哪些文件</p>
+<p>tar-xvf test.tar 将test.tar解开</p>
+<p>tar-zxvf foo.tar.gz 解压缩</p>
+<p>gzip各gunzip命令</p>
+<p>gziptest.txt ：压缩文件时，不需要任何参数</p>
+<p>gizp-l test.txt.gz：显示压缩率</p>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>locate：快速查找文件、文件夹： locate keyword</p>
+<p>此命令需要预先建立<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="external">数据库</a>，数据库默认每天更新一次，可用updatedb命令手工建立、更新数据库。</p>
+<p>find查找位置查找参数</p>
+<p>如：</p>
+<p>find . -name <em>liuyazhuang</em> 查找当前目录下名称中含有”liuyazhuang”的文件</p>
+<p>find / -name *.conf 查找根目录下（整个硬盘）下后缀为.conf的文件</p>
+<p>find / -perm 777 查找所有权限是777的文件</p>
+<p>find / -type d 返回根目录下所有的目录</p>
+<p>find . -name “a*”-exec ls -l {} \;</p>
+<p>find功能：用来寻找文件或目录。</p>
+<p>格式：find [&lt;路径&gt;] [匹配条件]</p>
+<p>find / -name httpd.conf 搜索系统根目录下名为httpd.conf的文件</p>
+<h3 id="ctrl-c-终止当前的命令"><a href="#ctrl-c-终止当前的命令" class="headerlink" title="ctrl+c :终止当前的命令"></a>ctrl+c :终止当前的命令</h3><h3 id="who或w命令"><a href="#who或w命令" class="headerlink" title="who或w命令"></a>who或w命令</h3><p>功能：查看当前系统中有哪些用户登录</p>
+<p>格式：who/w[参数]</p>
+<h3 id="dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"><a href="#dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息" class="headerlink" title="dmesg命令 功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"></a>dmesg命令 功能：显示系统诊断信息、<a href="http://lib.csdn.net/base/operatingsystem" title="操作系统知识库" target="_blank" rel="external">操作系统</a>版本号、物理内存的大小以及其它信息</h3><h3 id="df命令-功能：用于查看文件系统的各个分区的占用情况"><a href="#df命令-功能：用于查看文件系统的各个分区的占用情况" class="headerlink" title="df命令 功能：用于查看文件系统的各个分区的占用情况"></a>df命令 功能：用于查看文件系统的各个分区的占用情况</h3><p>1### du命令</p>
+<p>功能：查看某个目录中各级子目录所使用的硬盘空间数</p>
+<p>格式：du [参数] &lt;目录名&gt;</p>
+<p>1### free命令</p>
+<p>功能：用于查看系统内存，虚拟内存（交换空间）的大小占用情况</p>
+<h2 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a><strong>VIM</strong></h2><p>VIM是一款功能强大的命令行文本编辑器，在Linux中通过vim命令可以启动vim编辑器。</p>
+<p>一般使用vim + 目标文件路径 的形式使用vim</p>
+<p>如果目标文件存在，则vim打开目标文件，如果目标文件不存在，则vim新建并打开该文件</p>
+<p>:q：退出vim编辑器</p>
+<p>VIM模式</p>
+<p>vim拥有三种模式</p>
+<p>（1）命令模式（常规模式）</p>
+<p>vim启动后，默认进入命令模式，任何模式都可以通过esc键回到命令模式（可以多按几次），命令模式下可以键入不同的命令完成选择、复制、粘贴、撤销等操作。</p>
+<p>命名模式常用命令如下：</p>
+<p>i : 在光标前插入文本；</p>
+<p>o:在当前行的下面插入新行；</p>
+<p>dd:删除整行；</p>
+<p>yy：将当前行的内容放入缓冲区（复制当前行）</p>
+<p>n+yy :将n行的内容放入缓冲区（复制n行）</p>
+<p>p:将缓冲区中的文本放入光标后（粘贴）</p>
+<p>u：撤销上一个操作</p>
+<p>r:替换当前字符</p>
+<p>/ 查找关键字</p>
+<p>（2）插入模式</p>
+<p>在命令模式下按 “ i “键，即可进入插入模式，在插入模式可以输入编辑文本内容，使用esc键可以返回命令模式。</p>
+<p>（3）ex模式</p>
+<p>在命令模式中按” : “键可以进入ex模式，光标会移动到底部，在这里可以保存修改或退出vim.</p>
+<p>ext模式常用命令如下：</p>
+<p>:w ：保存当前的修改</p>
+<p>:q ：退出</p>
+<p>:q! ：强制退出，保存修改</p>
+<p>:x :保存并退出，相当于:wq</p>
+<p>:set number 显示行号</p>
+<p>:! 系统命令 执行一个系统命令并显示结果</p>
+<p>:sh ：切换到命令行，使用ctrl+d切换回vim</p>
+<h2 id="软件包管理命令-RPM"><a href="#软件包管理命令-RPM" class="headerlink" title="软件包管理命令(RPM)"></a><strong>软件包管理命令(RPM)</strong></h2><h3 id="软件包的安装"><a href="#软件包的安装" class="headerlink" title="软件包的安装"></a>软件包的安装</h3><p>使用RPM命令的安装模式可以将软件包内所有的组件放到系统中的正确路径，安装软件包的命令是:rpm-ivhwu-ftpd-####  6.2-8.i386.rpm</p>
+<p>i：作用rpm的安装模式 v: 校验文件信息h: 以＃号显示安装进度</p>
+<h3 id="软件包的删除"><a href="#软件包的删除" class="headerlink" title="软件包的删除"></a>软件包的删除</h3><p>删除模式会将指定软件包的内容全部删除，但并不包括已更改过的配置文件，删除RPM软件包的命令如下：rpm -e wu-ftpd</p>
+<p>注意：这里必须使用软件名“wu-ftpd”或”wu-ftpd-####  6.2-8而不是使用当初安装时的软件包名.wu-ftpd-####  6.2-8.i386.rpm</p>
+<h3 id="软件包升级"><a href="#软件包升级" class="headerlink" title="软件包升级"></a>软件包升级</h3><p>升级模式会安装用户所指定的更新版本，并删除已安装在系统中的相同软件包，升级软件包命令如下：rpm-Uvhwu-ftpd-####  6.2-8.i386.rpm -Uvh：升级参数</p>
+<h3 id="软件包更新"><a href="#软件包更新" class="headerlink" title="软件包更新"></a>软件包更新</h3><p>更新模式下，rpm命令会检查在命令行中所指定的软件包是否比系统中原有的软件 包更新。如果情况属实，rpm命令会自动更新指定的软件包；反之，若系统中并没有指定软件包的较旧版本，rpm命令并不会安装此软件包。而在升级模式下，不管系统中是否有较旧的版本，rpm命令都会安装指定的软件包。</p>
+<p>rpm-Fvhwu-ftpd-####  6.2-8.i386.rpm -Fvh：更新参数</p>
+<h3 id="软件包查询"><a href="#软件包查询" class="headerlink" title="软件包查询"></a>软件包查询</h3><p>若要获取RPM软件包的相关信息，可以使用查询模式。使用-q参数可查询一个已 安装的软件包的内容</p>
+<p>rpm -qwu-ftpd</p>
+<p>查询软件包所安装的位置：rpm -ql package-name</p>
+<p>rpm -ql xv (l参数：显示文件列表)</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/06/29/Linux常用命令/">Git常用命令</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王泽奇 的个人博客">王泽奇</a></p>
+  <p><span>发布时间:</span>2017年06月29日 - 00:06</p>
+  <p><span>最后更新:</span>2017年07月02日 - 15:07</p>
+  <p><span>原始链接:</span><a href="/2017/06/29/Linux常用命令/" title="Git常用命令">http://wangzeqi.website/2017/06/29/Linux常用命令/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/06/29/Linux常用命令/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢给位朋友们支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/pay/wechat-qcode.jpg" alt="王泽奇 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/pay/ali.jpg" alt="王泽奇 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux，命令/" rel="tag"><i class="fa fa-tag"></i> Linux，命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/29/Git常用命令/" rel="next" title="Git常用命令">
+                <i class="fa fa-chevron-left"></i> Git常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/29/java设计模式/" rel="prev" title="java23种设计模式">
+                java23种设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS" ></div>
+    
+  </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/upload/head.png"
+               alt="王泽奇" />
+          <p class="site-author-name" itemprop="name">王泽奇</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个程序员的个人博客，不定期更新一些文章，以及分享生活中的快乐。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wongzeqi" rel="external nofollow" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/nonono" rel="external nofollow" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/18795207136" rel="external nofollow" target="_blank" title="Weibo">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qiniu.com/" title="七牛" target="_blank">七牛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://aileen.top" title="张琳学姐" target="_blank">张琳学姐</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zybuluo.com/mdeditor" title="作业部落" target="_blank">作业部落</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=120 src="//music.163.com/outchain/player?type=2&id=487190408&auto=0&height=66"></iframe>
+
+
+<div>我是一个大傻逼</div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux常用命令"><span class="nav-number">1.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列出目录内容"><span class="nav-number">1.1.</span> <span class="nav-text">列出目录内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件的类型"><span class="nav-number">1.2.</span> <span class="nav-text">查看文件的类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制文件目录"><span class="nav-number">1.3.</span> <span class="nav-text">复制文件目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）"><span class="nav-number">1.3.1.</span> <span class="nav-text">cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"><span class="nav-number">1.3.2.</span> <span class="nav-text">touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"><span class="nav-number">1.3.3.</span> <span class="nav-text">mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm：删除文件；"><span class="nav-number">1.3.4.</span> <span class="nav-text">rm：删除文件；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir-文件夹名称：创建文件夹；"><span class="nav-number">1.3.5.</span> <span class="nav-text">mkdir +文件夹名称：创建文件夹；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"><span class="nav-number">1.3.6.</span> <span class="nav-text">rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）"><span class="nav-number">1.3.7.</span> <span class="nav-text">mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"><span class="nav-number">1.3.8.</span> <span class="nav-text">rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm-：删除当前目录下的所有文件"><span class="nav-number">1.3.9.</span> <span class="nav-text">rm * ：删除当前目录下的所有文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件"><span class="nav-number">1.3.10.</span> <span class="nav-text">-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#软链接"><span class="nav-number">1.3.10.1.</span> <span class="nav-text">软链接:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬链接"><span class="nav-number">1.3.10.2.</span> <span class="nav-text">硬链接:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统常用命令"><span class="nav-number">1.4.</span> <span class="nav-text">系统常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示命令"><span class="nav-number">1.4.1.</span> <span class="nav-text">显示命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出查看命令"><span class="nav-number">1.4.2.</span> <span class="nav-text">输出查看命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看硬件信息"><span class="nav-number">1.4.3.</span> <span class="nav-text">查看硬件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关机、重启"><span class="nav-number">1.4.4.</span> <span class="nav-text">关机、重启</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归档、压缩"><span class="nav-number">1.4.5.</span> <span class="nav-text">归档、压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">1.4.6.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ctrl-c-终止当前的命令"><span class="nav-number">1.4.7.</span> <span class="nav-text">ctrl+c :终止当前的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#who或w命令"><span class="nav-number">1.4.8.</span> <span class="nav-text">who或w命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"><span class="nav-number">1.4.9.</span> <span class="nav-text">dmesg命令 功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#df命令-功能：用于查看文件系统的各个分区的占用情况"><span class="nav-number">1.4.10.</span> <span class="nav-text">df命令 功能：用于查看文件系统的各个分区的占用情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VIM"><span class="nav-number">1.5.</span> <span class="nav-text">VIM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件包管理命令-RPM"><span class="nav-number">1.6.</span> <span class="nav-text">软件包管理命令(RPM)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件包的安装"><span class="nav-number">1.6.1.</span> <span class="nav-text">软件包的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件包的删除"><span class="nav-number">1.6.2.</span> <span class="nav-text">软件包的删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件包升级"><span class="nav-number">1.6.3.</span> <span class="nav-text">软件包升级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件包更新"><span class="nav-number">1.6.4.</span> <span class="nav-text">软件包更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件包查询"><span class="nav-number">1.6.5.</span> <span class="nav-text">软件包查询</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王泽奇</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a rel="external nofollow" class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+<div class="powered-by">
+|&nbsp;&nbsp;
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  <!--
+  
+  -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+
+</html>
