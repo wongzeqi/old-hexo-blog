@@ -3,11 +3,102 @@
   
     
     <entry>
+      <title><![CDATA[常用正则表达式大全]]></title>
+      <url>/2017/07/02/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%A4%A7%E5%85%A8/</url>
+      <content type="html"><![CDATA[<h1 id="全面的常用正则表达式大全"><a href="#全面的常用正则表达式大全" class="headerlink" title="全面的常用正则表达式大全"></a><center><strong>全面的常用正则表达式大全</strong></center></h1><blockquote>
+<p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，在这里分享一下。给自己留个底，也给朋友们做个参考。</p>
+</blockquote>
+<p><img src="http://p1.pstatp.com/large/10944/6821280613" alt="最全面的常用正则表达式大全"></p>
+<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a><strong>一、校验数字的表达式</strong></h2><a id="more"></a>
+<p>1 数字：<code>^[0-9]*$</code></p>
+<p>2 n位的数字：<code>^\d{n}$</code></p>
+<p>3 至少n位的数字：<code>^\d{n,}$</code></p>
+<p>4 m-n位的数字：<code>^\d{m,n}$</code></p>
+<p>5 零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code></p>
+<p>6 非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(.[0-9]{1,2})?$</code></p>
+<p>7 带1-2位小数的正数或负数：<code>^(\-)?\d+(\.\d{1,2})?$</code></p>
+<p>8 正数、负数、和小数：<code>^(\-|\+)?\d+(\.\d+)?$</code></p>
+<p>9 有两位小数的正实数：<code>^[0-9]+(.[0-9]{2})?$</code></p>
+<p>10 有1~3位小数的正实数：<code>^[0-9]+(.[0-9]{1,3})?$</code></p>
+<p>11 非零的正整数：<code>^[1-9]\d*$</code> 或 <code>^([1-9][0-9]*){1,3}$</code> 或 <code>^\+?[1-9][0-9]*$</code></p>
+<p>12 非零的负整数：<code>^\-[1-9][]0-9&quot;*$</code> 或 <code>^-[1-9]\d*$</code></p>
+<p>13 非负整数：<code>^\d+$</code> 或 <code>^[1-9]\d*|0$</code></p>
+<p>14 非正整数：<code>^-[1-9]\d*|0$</code> 或 <code>^((-\d+)|(0+))$</code></p>
+<p>15 非负浮点数：<code>^\d+(\.\d+)?$</code> 或 <code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</code></p>
+<p>16 非正浮点数：<code>^((-\d+(\.\d+)?)|(0+(\.0+)?))$</code> 或 <code>^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</code></p>
+<p>17 正浮点数：<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</code> 或 <code>^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</code></p>
+<p>18 负浮点数：<code>^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</code> 或 <code>^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code></p>
+<p>19 浮点数：<code>^(-?\d+)(\.\d+)?$</code> 或 <code>^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</code></p>
+<h2 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a><strong>二、校验字符的表达式</strong></h2><p>1 汉字：<code>^[\u4e00-\u9fa5]{0,}$</code></p>
+<p>2 英文和数字：<code>^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</code></p>
+<p>3 长度为3-20的所有字符：<code>^.{3,20}$</code></p>
+<p>4 由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code></p>
+<p>5 由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code></p>
+<p>6 由26个小写英文字母组成的字符串：<code>^[a-z]+$</code></p>
+<p>7 由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code></p>
+<p>8 由数字、26个英文字母或者下划线组成的字符串：<code>^\w+$ 或 ^\w{3,20}$</code></p>
+<p>9 中文、英文、数字包括下划线：<code>^[\u4E00-\u9FA5A-Za-z0-9_]+$</code></p>
+<p>10 中文、英文、数字但不包括下划线等符号：<code>^[\u4E00-\u9FA5A-Za-z0-9]+$</code> 或 <code>^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</code></p>
+<p>11 可以输入含有<code>^%&amp;&#39;,;=?$\&quot;</code>等字符：<code>[^%&amp;&#39;,;=?$\x22]+</code></p>
+<p>12 禁止输入含有~的字符：<code>[^~\x22]+</code></p>
+<h2 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a><strong>三、特殊需求表达式</strong></h2><p>1 Email地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code></p>
+<p>2 域名：<code>[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</code></p>
+<p>3 InternetURL：<code>[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code></p>
+<p>4 手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</code></p>
+<p>5 电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code></p>
+<p>6 国内电话号码(0511-4405222、021-87888822)：<code>\d{3}-\d{8}|\d{4}-\d{7}</code></p>
+<p>7 身份证号(15位、18位数字)：<code>^\d{15}|\d{18}$</code></p>
+<p>8 短身份证号码(数字、字母x结尾)：<code>^([0-9]){7,18}(x|X)?$</code> 或 <code>^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</code></p>
+<p>9 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code></p>
+<p>10 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]\w{5,17}$</code></p>
+<p>11 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></p>
+<p>12 日期格式：<code>^\d{4}-\d{1,2}-\d{1,2}</code></p>
+<p>13 一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></p>
+<p>14 一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code></p>
+<p>15 钱的输入格式：</p>
+<p>16 1.有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：<code>^[1-9][0-9]*$</code></p>
+<p>17 2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：<code>^(0|[1-9][0-9]*)$</code></p>
+<p>18 3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<code>^(0|-?[1-9][0-9]*)$</code></p>
+<p>19 4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：<code>^[0-9]+(.[0-9]+)?$</code></p>
+<p>20 5.必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：<code>^[0-9]+(.[0-9]{2})?$</code></p>
+<p>21 6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<code>^[0-9]+(.[0-9]{1,2})?$</code></p>
+<p>22 7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<code>^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</code></p>
+<p>23 8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：<code>^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</code></p>
+<p>24 备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
+<p>25 xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</code></p>
+<p>26 中文字符的正则表达式：<code>[\u4e00-\u9fa5]</code></p>
+<p>27 双字节字符：<code>[^\x00-\xff]</code> (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</p>
+<p>28 空白行的正则表达式：<code>\n\s*\r</code> (可以用来删除空白行)</p>
+<p>29 HTML标记的正则表达式：<code>&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt;</code> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</p>
+<p>30 首尾空白字符的正则表达式：<code>^\s*|\s*$或(^\s*)|(\s*$)</code> (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</p>
+<p>31 腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)</p>
+<p>32 中国邮政编码：<code>[1-9]\d{5}(?!\d)</code> (中国邮政编码为6位数字)</p>
+<p>33 IP地址：<code>\d+\.\d+\.\d+\.\d+</code>(提取IP地址时有用)</p>
+<p>34 IP地址：<code>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</code></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习整理 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 正则表达式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java正则表达式]]></title>
       <url>/2017/07/02/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="Java正则表达式"><a href="#Java正则表达式" class="headerlink" title="Java正则表达式"></a><center><strong>Java正则表达式</strong></center></h1><blockquote>
-<p><code>java.util.regex</code>是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：<code>Pattern</code>和<code>Matcher</code>。Pattern是一个正则表达式经编译后的表现模式。Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 首先一个Pattern实例订制了一个所用语法与PERL的类似的正则表达式经编译后的模式，然后一个Matcher实例在这个给定的Pattern实例的模式控制下进行字符串的匹配工作。</p>
+<p><code>java.util.regex</code>是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：<code>Pattern</code>和<code>Matcher</code>。Pattern是一个正则表达式经编译后的表现模式。<br><img src="http://os94ofsac.bkt.clouddn.com/note/zhengze.png" alt="正则"><br>Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 首先一个Pattern实例订制了一个所用语法与PERL的类似的正则表达式经编译后的模式，然后一个Matcher实例在这个给定的Pattern实例的模式控制下进行字符串的匹配工作。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="正则表达式的构造摘要"><a href="#正则表达式的构造摘要" class="headerlink" title="正则表达式的构造摘要"></a>正则表达式的构造摘要</h2><blockquote>
 <p>详细摘要请看<a href="http://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Pattern.html" target="_blank" rel="external">jdk中文文档</a>,下面我只是列出一些经常使用的</p>
 </blockquote>
@@ -205,96 +296,6 @@
             <tag> 正则表达式 </tag>
             
             <tag> java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[常用正则表达式大全]]></title>
-      <url>/2017/07/02/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%A4%A7%E5%85%A8/</url>
-      <content type="html"><![CDATA[<h1 id="全面的常用正则表达式大全"><a href="#全面的常用正则表达式大全" class="headerlink" title="全面的常用正则表达式大全"></a><center><strong>全面的常用正则表达式大全</strong></center></h1><blockquote>
-<p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，在这里分享一下。给自己留个底，也给朋友们做个参考。</p>
-</blockquote>
-<p><img src="http://p1.pstatp.com/large/10944/6821280613" alt="最全面的常用正则表达式大全"></p>
-<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a><strong>一、校验数字的表达式</strong></h2><a id="more"></a>
-<p>1 数字：<code>^[0-9]*$</code></p>
-<p>2 n位的数字：<code>^\d{n}$</code></p>
-<p>3 至少n位的数字：<code>^\d{n,}$</code></p>
-<p>4 m-n位的数字：<code>^\d{m,n}$</code></p>
-<p>5 零和非零开头的数字：<code>^(0|[1-9][0-9]*)$</code></p>
-<p>6 非零开头的最多带两位小数的数字：<code>^([1-9][0-9]*)+(.[0-9]{1,2})?$</code></p>
-<p>7 带1-2位小数的正数或负数：<code>^(\-)?\d+(\.\d{1,2})?$</code></p>
-<p>8 正数、负数、和小数：<code>^(\-|\+)?\d+(\.\d+)?$</code></p>
-<p>9 有两位小数的正实数：<code>^[0-9]+(.[0-9]{2})?$</code></p>
-<p>10 有1~3位小数的正实数：<code>^[0-9]+(.[0-9]{1,3})?$</code></p>
-<p>11 非零的正整数：<code>^[1-9]\d*$</code> 或 <code>^([1-9][0-9]*){1,3}$</code> 或 <code>^\+?[1-9][0-9]*$</code></p>
-<p>12 非零的负整数：<code>^\-[1-9][]0-9&quot;*$</code> 或 <code>^-[1-9]\d*$</code></p>
-<p>13 非负整数：<code>^\d+$</code> 或 <code>^[1-9]\d*|0$</code></p>
-<p>14 非正整数：<code>^-[1-9]\d*|0$</code> 或 <code>^((-\d+)|(0+))$</code></p>
-<p>15 非负浮点数：<code>^\d+(\.\d+)?$</code> 或 <code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$</code></p>
-<p>16 非正浮点数：<code>^((-\d+(\.\d+)?)|(0+(\.0+)?))$</code> 或 <code>^(-([1-9]\d*\.\d*|0\.\d*[1-9]\d*))|0?\.0+|0$</code></p>
-<p>17 正浮点数：<code>^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$</code> 或 <code>^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$</code></p>
-<p>18 负浮点数：<code>^-([1-9]\d*\.\d*|0\.\d*[1-9]\d*)$</code> 或 <code>^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$</code></p>
-<p>19 浮点数：<code>^(-?\d+)(\.\d+)?$</code> 或 <code>^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$</code></p>
-<h2 id="二、校验字符的表达式"><a href="#二、校验字符的表达式" class="headerlink" title="二、校验字符的表达式"></a><strong>二、校验字符的表达式</strong></h2><p>1 汉字：<code>^[\u4e00-\u9fa5]{0,}$</code></p>
-<p>2 英文和数字：<code>^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</code></p>
-<p>3 长度为3-20的所有字符：<code>^.{3,20}$</code></p>
-<p>4 由26个英文字母组成的字符串：<code>^[A-Za-z]+$</code></p>
-<p>5 由26个大写英文字母组成的字符串：<code>^[A-Z]+$</code></p>
-<p>6 由26个小写英文字母组成的字符串：<code>^[a-z]+$</code></p>
-<p>7 由数字和26个英文字母组成的字符串：<code>^[A-Za-z0-9]+$</code></p>
-<p>8 由数字、26个英文字母或者下划线组成的字符串：<code>^\w+$ 或 ^\w{3,20}$</code></p>
-<p>9 中文、英文、数字包括下划线：<code>^[\u4E00-\u9FA5A-Za-z0-9_]+$</code></p>
-<p>10 中文、英文、数字但不包括下划线等符号：<code>^[\u4E00-\u9FA5A-Za-z0-9]+$</code> 或 <code>^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</code></p>
-<p>11 可以输入含有<code>^%&amp;&#39;,;=?$\&quot;</code>等字符：<code>[^%&amp;&#39;,;=?$\x22]+</code></p>
-<p>12 禁止输入含有~的字符：<code>[^~\x22]+</code></p>
-<h2 id="三、特殊需求表达式"><a href="#三、特殊需求表达式" class="headerlink" title="三、特殊需求表达式"></a><strong>三、特殊需求表达式</strong></h2><p>1 Email地址：<code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$</code></p>
-<p>2 域名：<code>[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</code></p>
-<p>3 InternetURL：<code>[a-zA-z]+://[^\s]* 或 ^http://([\w-]+\.)+[\w-]+(/[\w-./?%&amp;=]*)?$</code></p>
-<p>4 手机号码：<code>^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$</code></p>
-<p>5 电话号码(“XXX-XXXXXXX”、”XXXX-XXXXXXXX”、”XXX-XXXXXXX”、”XXX-XXXXXXXX”、”XXXXXXX”和”XXXXXXXX)：<code>^(\(\d{3,4}-)|\d{3.4}-)?\d{7,8}$</code></p>
-<p>6 国内电话号码(0511-4405222、021-87888822)：<code>\d{3}-\d{8}|\d{4}-\d{7}</code></p>
-<p>7 身份证号(15位、18位数字)：<code>^\d{15}|\d{18}$</code></p>
-<p>8 短身份证号码(数字、字母x结尾)：<code>^([0-9]){7,18}(x|X)?$</code> 或 <code>^\d{8,18}|[0-9x]{8,18}|[0-9X]{8,18}?$</code></p>
-<p>9 帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：<code>^[a-zA-Z][a-zA-Z0-9_]{4,15}$</code></p>
-<p>10 密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)：<code>^[a-zA-Z]\w{5,17}$</code></p>
-<p>11 强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)：<code>^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$</code></p>
-<p>12 日期格式：<code>^\d{4}-\d{1,2}-\d{1,2}</code></p>
-<p>13 一年的12个月(01～09和1～12)：<code>^(0?[1-9]|1[0-2])$</code></p>
-<p>14 一个月的31天(01～09和1～31)：<code>^((0?[1-9])|((1|2)[0-9])|30|31)$</code></p>
-<p>15 钱的输入格式：</p>
-<p>16 1.有四种钱的表示形式我们可以接受:”10000.00” 和 “10,000.00”, 和没有 “分” 的 “10000” 和 “10,000”：<code>^[1-9][0-9]*$</code></p>
-<p>17 2.这表示任意一个不以0开头的数字,但是,这也意味着一个字符”0”不通过,所以我们采用下面的形式：<code>^(0|[1-9][0-9]*)$</code></p>
-<p>18 3.一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号：<code>^(0|-?[1-9][0-9]*)$</code></p>
-<p>19 4.这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分：<code>^[0-9]+(.[0-9]+)?$</code></p>
-<p>20 5.必须说明的是,小数点后面至少应该有1位数,所以”10.”是不通过的,但是 “10” 和 “10.2” 是通过的：<code>^[0-9]+(.[0-9]{2})?$</code></p>
-<p>21 6.这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样：<code>^[0-9]+(.[0-9]{1,2})?$</code></p>
-<p>22 7.这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样：<code>^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$</code></p>
-<p>23 8.1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须：<code>^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$</code></p>
-<p>24 备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
-<p>25 xml文件：<code>^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[x|X][m|M][l|L]$</code></p>
-<p>26 中文字符的正则表达式：<code>[\u4e00-\u9fa5]</code></p>
-<p>27 双字节字符：<code>[^\x00-\xff]</code> (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</p>
-<p>28 空白行的正则表达式：<code>\n\s*\r</code> (可以用来删除空白行)</p>
-<p>29 HTML标记的正则表达式：<code>&lt;(\S*?)[^&gt;]*&gt;.*?&lt;/\1&gt;|&lt;.*? /&gt;</code> (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</p>
-<p>30 首尾空白字符的正则表达式：<code>^\s*|\s*$或(^\s*)|(\s*$)</code> (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</p>
-<p>31 腾讯QQ号：<code>[1-9][0-9]{4,}</code> (腾讯QQ号从10000开始)</p>
-<p>32 中国邮政编码：<code>[1-9]\d{5}(?!\d)</code> (中国邮政编码为6位数字)</p>
-<p>33 IP地址：<code>\d+\.\d+\.\d+\.\d+</code>(提取IP地址时有用)</p>
-<p>34 IP地址：<code>((?:(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d)\\.){3}(?:25[0-5]|2[0-4]\\d|[01]?\\d?\\d))</code></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习整理 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 正则表达式 </tag>
             
         </tags>
         
@@ -689,67 +690,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[Git常用命令]]></title>
-      <url>/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
-<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><a id="more"></a>
-<p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
-<p>查看远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote -v</div></pre></td></tr></table></figure></p>
-<p>添加远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add [name] [url]</div></pre></td></tr></table></figure></p>
-<p>删除远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm [name]</div></pre></td></tr></table></figure></p>
-<p>修改远程仓库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure>
-<p>拉取远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
-<p>推送远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
-<p><strong>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:master // 提交本地<span class="built_in">test</span>分支作为远程的master分支</div><div class="line"></div><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:<span class="built_in">test</span>  // 提交本地<span class="built_in">test</span>分支作为远程的<span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
-<h3 id="分支-branch-操作相关命令"><a href="#分支-branch-操作相关命令" class="headerlink" title="分支(branch)操作相关命令"></a><strong>分支(branch)操作相关命令</strong></h3><p>查看本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure></p>
-<p>查看远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure></p>
-<p>创建本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [name] //----注意新分支创建后不会自动切换为当前分支</div></pre></td></tr></table></figure></p>
-<p>切换分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [name]</div></pre></td></tr></table></figure></p>
-<p>创建新分支并立即切换到新分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b [name]</div></pre></td></tr></table></figure></p>
-<p>删除分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git branch -d [name] </div><div class="line"></div><div class="line">// -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</div><div class="line"> </div><div class="line">$ git merge [name] //----将名称为[name]的分支与当前分支合并</div></pre></td></tr></table></figure></p>
-<p>创建远程分支(本地分支push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
-<p>删除远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :heads/[name] 或 $ gitpush origin :[name]</div></pre></td></tr></table></figure></p>
-<p><strong>创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> symbolic-ref HEAD refs/heads/[name]</div><div class="line"><span class="variable">$rm</span> .git/index</div><div class="line"><span class="variable">$git</span> clean -fdx</div></pre></td></tr></table></figure>
-<h2 id="版本-tag-操作相关命令"><a href="#版本-tag-操作相关命令" class="headerlink" title="版本(tag)操作相关命令"></a><strong>版本(tag)操作相关命令</strong></h2><p>查看版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag</div></pre></td></tr></table></figure></p>
-<p>创建版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag [name]</div></pre></td></tr></table></figure></p>
-<p>删除版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -d [name]</div></pre></td></tr></table></figure></p>
-<p>查看远程版本：$ git tag -r<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -r</div></pre></td></tr></table></figure></p>
-<p>创建远程版本(本地版本push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
-<p>删除远程版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :refs/tags/[name]</div></pre></td></tr></table></figure></p>
-<p>合并远程仓库的tag到本地：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin --tags</div></pre></td></tr></table></figure></p>
-<p>上传本地tag到远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin --tags</div></pre></td></tr></table></figure></p>
-<p>创建带注释的tag：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -a [name] -m <span class="string">'yourMessage'</span></div></pre></td></tr></table></figure></p>
-<h2 id="子模块-submodule-相关操作命令"><a href="#子模块-submodule-相关操作命令" class="headerlink" title="子模块(submodule)相关操作命令"></a><strong>子模块(submodule)相关操作命令</strong></h2><p>添加子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule add [url] [path]</div></pre></td></tr></table></figure></p>
-<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs</div></pre></td></tr></table></figure></p>
-<p>初始化子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule init  //----只在首次检出仓库时运行一次就行</div></pre></td></tr></table></figure></p>
-<p>更新子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule update //----每次更新或切换分支后都需要运行一下</div></pre></td></tr></table></figure></p>
-<p>删除子模块：（分4步走哦）</p>
-<blockquote>
-<p>$ git rm –cached [path]<br>  编辑“.gitmodules”文件，将子模块的相关配置节点删除掉<br>  编辑“ .git/config”文件，将子模块的相关配置节点删除掉<br>  手动删除子模块残留的目录</p>
-</blockquote>
-<h2 id="忽略一些文件、文件夹不提交"><a href="#忽略一些文件、文件夹不提交" class="headerlink" title="忽略一些文件、文件夹不提交"></a><strong>忽略一些文件、文件夹不提交</strong></h2><p>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target<br>bin<br>*.db</p>
-<hr>
-<p><strong>Git 常用命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">git branch 查看本地所有分支</div><div class="line">git status 查看当前状态 </div><div class="line">git commit 提交 </div><div class="line">git branch -a 查看所有的分支</div><div class="line">git branch -r 查看本地所有分支</div><div class="line">git commit -am <span class="string">"init"</span> 提交并且加注释 </div><div class="line">git remote add origin git@192.168.1.119:ndshow</div><div class="line">git push origin master 将文件给推到服务器上 </div><div class="line">git remote show origin 显示远程库origin里的资源 </div><div class="line">git push origin master:develop</div><div class="line">git push origin master:hb-dev 将本地库与服务器上的库进行关联 </div><div class="line">git checkout --track origin/dev 切换到远程dev分支</div><div class="line">git branch -D master develop 删除本地库develop</div><div class="line">git checkout -b dev 建立一个新的本地分支dev</div><div class="line">git merge origin/dev 将分支dev与当前分支进行合并</div><div class="line">git checkout dev 切换到本地dev分支</div><div class="line">git remote show 查看远程库</div><div class="line">git add .</div><div class="line">git rm 文件名(包括路径) 从git中删除指定文件</div><div class="line">git <span class="built_in">clone</span> git://github.com/schacon/grit.git 从服务器上将代码给拉下来</div><div class="line">git config --list 看所有用户</div><div class="line">git ls-files 看已经被提交的</div><div class="line">git rm [file name] 删除一个文件</div><div class="line">git commit -a 提交当前repos的所有的改变</div><div class="line">git add [file name] 添加一个文件到git index</div><div class="line">git commit -v 当你用－v参数的时候可以看commit的差异</div><div class="line">git commit -m <span class="string">"This is the message describing the commit"</span> 添加commit信息</div><div class="line">git commit -a -a是代表add，把所有的change加到git index里然后再commit</div><div class="line">git commit -a -v 一般提交命令</div><div class="line">git <span class="built_in">log</span> 看你commit的日志</div><div class="line">git diff 查看尚未暂存的更新</div><div class="line">git rm a.a 移除文件(从暂存区和工作区中删除)</div><div class="line">git rm --cached a.a 移除文件(只从暂存区中删除)</div><div class="line">git commit -m <span class="string">"remove"</span> 移除文件(从Git中删除)</div><div class="line">git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)</div><div class="line">git diff --cached 或 $ git diff --staged 查看尚未提交的更新</div><div class="line">git stash push 将文件给push到一个临时空间中</div><div class="line">git stash pop 将文件从临时空间pop下来</div><div class="line"></div><div class="line">git remote add origin git@github.com:username/Hello-World.git</div><div class="line">git push origin master 将本地项目给提交到服务器中</div><div class="line"></div><div class="line">git pull 本地与服务器端同步</div><div class="line"></div><div class="line">git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。</div><div class="line">git push origin serverfix:awesomebranch</div><div class="line"></div><div class="line">git fetch 相当于是从远程获取最新版本到本地，不会自动merge</div><div class="line">git commit -a -m <span class="string">"log_message"</span> (-a是提交所有改动，-m是加入<span class="built_in">log</span>信息) 本地修改同步至服务器端 ：</div><div class="line">git branch branch_0.1 master 从主分支master创建branch_0.1分支</div><div class="line">git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0</div><div class="line">git checkout branch_1.0/master 切换到branch_1.0/master分支</div><div class="line">du -hs</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> GIT </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Git </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[java23种设计模式]]></title>
       <url>/2017/06/29/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="java23种设计模式（Design-Patterns）"><a href="#java23种设计模式（Design-Patterns）" class="headerlink" title="java23种设计模式（Design Patterns）"></a><strong><center>java23种设计模式（Design Patterns）</center></strong></h1><blockquote>
@@ -978,6 +918,67 @@
             <tag> Java </tag>
             
             <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Git常用命令]]></title>
+      <url>/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
+<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><a id="more"></a>
+<p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
+<p>查看远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote -v</div></pre></td></tr></table></figure></p>
+<p>添加远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add [name] [url]</div></pre></td></tr></table></figure></p>
+<p>删除远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm [name]</div></pre></td></tr></table></figure></p>
+<p>修改远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure>
+<p>拉取远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
+<p>推送远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
+<p><strong>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:master // 提交本地<span class="built_in">test</span>分支作为远程的master分支</div><div class="line"></div><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:<span class="built_in">test</span>  // 提交本地<span class="built_in">test</span>分支作为远程的<span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
+<h3 id="分支-branch-操作相关命令"><a href="#分支-branch-操作相关命令" class="headerlink" title="分支(branch)操作相关命令"></a><strong>分支(branch)操作相关命令</strong></h3><p>查看本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure></p>
+<p>查看远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure></p>
+<p>创建本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [name] //----注意新分支创建后不会自动切换为当前分支</div></pre></td></tr></table></figure></p>
+<p>切换分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [name]</div></pre></td></tr></table></figure></p>
+<p>创建新分支并立即切换到新分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b [name]</div></pre></td></tr></table></figure></p>
+<p>删除分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git branch -d [name] </div><div class="line"></div><div class="line">// -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</div><div class="line"> </div><div class="line">$ git merge [name] //----将名称为[name]的分支与当前分支合并</div></pre></td></tr></table></figure></p>
+<p>创建远程分支(本地分支push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
+<p>删除远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :heads/[name] 或 $ gitpush origin :[name]</div></pre></td></tr></table></figure></p>
+<p><strong>创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> symbolic-ref HEAD refs/heads/[name]</div><div class="line"><span class="variable">$rm</span> .git/index</div><div class="line"><span class="variable">$git</span> clean -fdx</div></pre></td></tr></table></figure>
+<h2 id="版本-tag-操作相关命令"><a href="#版本-tag-操作相关命令" class="headerlink" title="版本(tag)操作相关命令"></a><strong>版本(tag)操作相关命令</strong></h2><p>查看版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag</div></pre></td></tr></table></figure></p>
+<p>创建版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag [name]</div></pre></td></tr></table></figure></p>
+<p>删除版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -d [name]</div></pre></td></tr></table></figure></p>
+<p>查看远程版本：$ git tag -r<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -r</div></pre></td></tr></table></figure></p>
+<p>创建远程版本(本地版本push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
+<p>删除远程版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :refs/tags/[name]</div></pre></td></tr></table></figure></p>
+<p>合并远程仓库的tag到本地：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin --tags</div></pre></td></tr></table></figure></p>
+<p>上传本地tag到远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin --tags</div></pre></td></tr></table></figure></p>
+<p>创建带注释的tag：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -a [name] -m <span class="string">'yourMessage'</span></div></pre></td></tr></table></figure></p>
+<h2 id="子模块-submodule-相关操作命令"><a href="#子模块-submodule-相关操作命令" class="headerlink" title="子模块(submodule)相关操作命令"></a><strong>子模块(submodule)相关操作命令</strong></h2><p>添加子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule add [url] [path]</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs</div></pre></td></tr></table></figure></p>
+<p>初始化子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule init  //----只在首次检出仓库时运行一次就行</div></pre></td></tr></table></figure></p>
+<p>更新子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule update //----每次更新或切换分支后都需要运行一下</div></pre></td></tr></table></figure></p>
+<p>删除子模块：（分4步走哦）</p>
+<blockquote>
+<p>$ git rm –cached [path]<br>  编辑“.gitmodules”文件，将子模块的相关配置节点删除掉<br>  编辑“ .git/config”文件，将子模块的相关配置节点删除掉<br>  手动删除子模块残留的目录</p>
+</blockquote>
+<h2 id="忽略一些文件、文件夹不提交"><a href="#忽略一些文件、文件夹不提交" class="headerlink" title="忽略一些文件、文件夹不提交"></a><strong>忽略一些文件、文件夹不提交</strong></h2><p>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target<br>bin<br>*.db</p>
+<hr>
+<p><strong>Git 常用命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">git branch 查看本地所有分支</div><div class="line">git status 查看当前状态 </div><div class="line">git commit 提交 </div><div class="line">git branch -a 查看所有的分支</div><div class="line">git branch -r 查看本地所有分支</div><div class="line">git commit -am <span class="string">"init"</span> 提交并且加注释 </div><div class="line">git remote add origin git@192.168.1.119:ndshow</div><div class="line">git push origin master 将文件给推到服务器上 </div><div class="line">git remote show origin 显示远程库origin里的资源 </div><div class="line">git push origin master:develop</div><div class="line">git push origin master:hb-dev 将本地库与服务器上的库进行关联 </div><div class="line">git checkout --track origin/dev 切换到远程dev分支</div><div class="line">git branch -D master develop 删除本地库develop</div><div class="line">git checkout -b dev 建立一个新的本地分支dev</div><div class="line">git merge origin/dev 将分支dev与当前分支进行合并</div><div class="line">git checkout dev 切换到本地dev分支</div><div class="line">git remote show 查看远程库</div><div class="line">git add .</div><div class="line">git rm 文件名(包括路径) 从git中删除指定文件</div><div class="line">git <span class="built_in">clone</span> git://github.com/schacon/grit.git 从服务器上将代码给拉下来</div><div class="line">git config --list 看所有用户</div><div class="line">git ls-files 看已经被提交的</div><div class="line">git rm [file name] 删除一个文件</div><div class="line">git commit -a 提交当前repos的所有的改变</div><div class="line">git add [file name] 添加一个文件到git index</div><div class="line">git commit -v 当你用－v参数的时候可以看commit的差异</div><div class="line">git commit -m <span class="string">"This is the message describing the commit"</span> 添加commit信息</div><div class="line">git commit -a -a是代表add，把所有的change加到git index里然后再commit</div><div class="line">git commit -a -v 一般提交命令</div><div class="line">git <span class="built_in">log</span> 看你commit的日志</div><div class="line">git diff 查看尚未暂存的更新</div><div class="line">git rm a.a 移除文件(从暂存区和工作区中删除)</div><div class="line">git rm --cached a.a 移除文件(只从暂存区中删除)</div><div class="line">git commit -m <span class="string">"remove"</span> 移除文件(从Git中删除)</div><div class="line">git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)</div><div class="line">git diff --cached 或 $ git diff --staged 查看尚未提交的更新</div><div class="line">git stash push 将文件给push到一个临时空间中</div><div class="line">git stash pop 将文件从临时空间pop下来</div><div class="line"></div><div class="line">git remote add origin git@github.com:username/Hello-World.git</div><div class="line">git push origin master 将本地项目给提交到服务器中</div><div class="line"></div><div class="line">git pull 本地与服务器端同步</div><div class="line"></div><div class="line">git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。</div><div class="line">git push origin serverfix:awesomebranch</div><div class="line"></div><div class="line">git fetch 相当于是从远程获取最新版本到本地，不会自动merge</div><div class="line">git commit -a -m <span class="string">"log_message"</span> (-a是提交所有改动，-m是加入<span class="built_in">log</span>信息) 本地修改同步至服务器端 ：</div><div class="line">git branch branch_0.1 master 从主分支master创建branch_0.1分支</div><div class="line">git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0</div><div class="line">git checkout branch_1.0/master 切换到branch_1.0/master分支</div><div class="line">du -hs</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> GIT </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Git </tag>
             
         </tags>
         

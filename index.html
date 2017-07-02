@@ -528,376 +528,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/Java正则表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王泽奇">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王泽奇，个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/Java正则表达式/" itemprop="url">Java正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
-                2017-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习整理/" itemprop="url" rel="index">
-                    <span itemprop="name">学习整理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-				<!--noindex-->
-				<span class="post-comments-count">
-				<span class="post-meta-divider">|</span>
-				<span class="post-meta-item-icon">
-				  <i class="fa fa-comment-o"></i>
-				</span>
-				
-					<a href="/2017/07/02/Java正则表达式/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/Java正则表达式/" class = "cy_cmt_count" data-xid="2017/07/02/Java正则表达式/" itemprop="commentsCount" ></span>
-					</a>
-				
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  2,702
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  11
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Java正则表达式"><a href="#Java正则表达式" class="headerlink" title="Java正则表达式"></a><center><strong>Java正则表达式</strong></center></h1><blockquote>
-<p><code>java.util.regex</code>是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：<code>Pattern</code>和<code>Matcher</code>。Pattern是一个正则表达式经编译后的表现模式。Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 首先一个Pattern实例订制了一个所用语法与PERL的类似的正则表达式经编译后的模式，然后一个Matcher实例在这个给定的Pattern实例的模式控制下进行字符串的匹配工作。</p>
-</blockquote>
-<h2 id="正则表达式的构造摘要"><a href="#正则表达式的构造摘要" class="headerlink" title="正则表达式的构造摘要"></a>正则表达式的构造摘要</h2><blockquote>
-<p>详细摘要请看<a href="http://tool.oschina.net/uploads/apidocs/jdk-zh/java/util/regex/Pattern.html" target="_blank" rel="external">jdk中文文档</a>,下面我只是列出一些经常使用的</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>构造</th>
-<th>匹配</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td>任何字符（与行结束符可能匹配也可能不匹配）</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>数字：[0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>非数字： [^0-9]</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>空白字符：[ \t\n\x0B\f\r]</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>非空白字符：[^\s]</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>单词字符：[a-zA-Z_0-9]</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>非单词字符：[^\w]</td>
-</tr>
-<tr>
-<td>[abc]</td>
-<td>a、b 或 c（简单类）</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>任何字符，除了 a、b 或 c（否定）</td>
-</tr>
-<tr>
-<td>[a-zA-Z]</td>
-<td>a 到 z 或 A 到 Z，两头的字母包括在内（范围）</td>
-</tr>
-<tr>
-<td>^</td>
-<td>行的开头</td>
-</tr>
-<tr>
-<td>$</td>
-<td>行的结尾</td>
-</tr>
-<tr>
-<td>X?</td>
-<td>X，一次或一次也没有</td>
-</tr>
-<tr>
-<td>X*</td>
-<td>X，零次或多次</td>
-</tr>
-<tr>
-<td>X+</td>
-<td>X，一次或多次</td>
-</tr>
-<tr>
-<td>X{n}</td>
-<td>X，恰好 n 次</td>
-</tr>
-<tr>
-<td>X{n,}</td>
-<td>X，至少 n 次</td>
-</tr>
-<tr>
-<td>X{n,m}</td>
-<td>X，至少 n 次，但是不超过 m 次</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h2><blockquote>
-<p>正则表达式的编译表示形式,学过<code>python</code>的都知道这个和python的正则表达式有异曲同工之妙。 但是它的构造方法是私有的，因此不能直接创建对象，但是可以调用它的静态方法返回一个对象，下面会详细介绍</p>
-</blockquote>
-<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><blockquote>
-<ul>
-<li><code>Pattern</code>类用于创建一个正则表达式,也可以说创建一个匹配模式,它的构造方法是私有的,不可以直接创建,但可以通过<code>Pattern.complie(String regex)</code>简单工厂方法创建一个正则表达式，代码如下：</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//采用的complie(String regex)</span></div><div class="line">Pattern pattern = Pattern.compile(<span class="string">"\\d+"</span>);</div><div class="line"></div><div class="line"><span class="comment">//采用的是complie(String regex,int flag)其中flag表示标志，下面的标志表示忽略字母大小写，详细的字段请看文档</span></div><div class="line">Pattern pattern=Pattern.compile(<span class="string">"(CHEN)(\\D*)(\\d*)"</span>,Pattern.CASE_INSENSITIVE);</div></pre></td></tr></table></figure>
-<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><blockquote>
-<ul>
-<li><code>Pattern compile(String regex)</code> 用于创建Pattern对象</li>
-<li><code>Pattern compile(String regex,int flags)</code> 用于创建Pattern对象，并且指定了标志(比如忽略字母大小写)</li>
-<li><code>int flags()</code> 返回此模式的匹配标志</li>
-<li><code>String pattern()</code> 返回在其中编译过此模式的正则表达式。</li>
-</ul>
-<ul>
-<li><code>String[] split(CharSequence input)</code> 根据此模式的正则表达式将输入的字符串拆分成String数组,默认的都是全部拆分开</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//给出正则表达式用于匹配数字(0-9)</span></div><div class="line">Pattern pattern = Pattern.compile(<span class="string">"\\d+"</span>);</div><div class="line">String str = <span class="string">"我是陈加兵456郑元梅34擦市场的逻辑啊"</span>;</div><div class="line">String[] splits = pattern.split(str, <span class="number">2</span>);   <span class="comment">//结果:[我是陈加兵,郑元梅34擦市场的逻辑啊]</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>String[] split(CharSequence input,int limit)</code> 将字符串按照正则表达式表示的内容进行分组，如果limit&gt;0那么就分成limit个组，如果limit&lt;0就按照默认全部分开</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//给出正则表达式用于匹配数字(0-9)</span></div><div class="line">Pattern pattern = Pattern.compile(<span class="string">"\\d+"</span>);</div><div class="line">String str = <span class="string">"我是陈加兵456郑元梅34擦市场的逻辑啊"</span>;</div><div class="line">String[] splits = pattern.split(str, <span class="number">2</span>);   <span class="comment">//结果:[我是陈加兵,郑元梅34擦市场的逻辑啊]</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>Pattern.matches(String regex,CharSequence input)</code>是一个静态方法,用于快速匹配字符串,该方法适合用于只匹配一次,且匹配全部字符串</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Pattern.matches(<span class="string">"\\d+"</span>,<span class="string">"2223"</span>);<span class="comment">//返回true </span></div><div class="line">Pattern.matches(<span class="string">"\\d+"</span>,<span class="string">"2223aa"</span>);<span class="comment">//返回false,需要匹配到所有字符串才能返回true,这里aa不能匹配到 </span></div><div class="line">Pattern.matches(<span class="string">"\\d+"</span>,<span class="string">"22bb23"</span>);<span class="comment">//返回false,需要匹配到所有字符串才能返回true,这里bb不能匹配到</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>Matcher matcher(CharSequence input)</code> 创建匹配给定输入与此模式的匹配器,现在只是先了解以下，下面会详细解释Matcher这个类</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Pattern p=Pattern.compile(&quot;\\d+&quot;); </div><div class="line">Matcher m=p.matcher(&quot;22bb23&quot;);</div></pre></td></tr></table></figure>
-<h2 id="Matcher"><a href="#Matcher" class="headerlink" title="Matcher"></a>Matcher</h2><blockquote>
-<p><code>Pattern</code>类只能做一些简单的匹配操作,要想得到更强更便捷的正则匹配操作,那就需要将Pattern与Matcher一起合作.Matcher类提供了对正则表达式的分组支持,以及对正则表达式的多次匹配支持.</p>
-<p>Matcher类和Pattern类一样它的构造方法同样是私有的，因此不能直接构造对象，但是上面我们说过Pattern类中有一个方法可以返回一个Matcher对象(<code>matcher(CharSequence input)</code>)</p>
-</blockquote>
-<h3 id="常用的方法"><a href="#常用的方法" class="headerlink" title="常用的方法"></a>常用的方法</h3><blockquote>
-<ul>
-<li><code>boolean mathces()</code> 尝试将整个区域与模式匹配(针对的是整个字符串，如果整个字符串未完全匹配，那么返回false,如果完全匹配那么返回true)</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern=Pattern.compile(&quot;\\d+&quot;);  //创建Pattern对象</div><div class="line">String str=&quot;I am hreo 1234&quot;;  //需要匹配的字符串</div><div class="line">Matcher matcher=pattern.matcher(str);</div><div class="line">//并没有完全匹配，因此返回false，如果str=&quot;123445&quot;，那么就会返回true</div><div class="line">System.out.println(matcher.matches());</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>boolean lookingAt()</code> 尝试从给定字符串的开头开始匹配，如果有子字符串匹配成功，那么返回true(针对的不是整个字符串，而是从开头开始，如果开头有一段字符串匹配成功，那么返回true)</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Pattern pattern=Pattern.compile(&quot;\\d+&quot;);  //创建Pattern对象</div><div class="line">String str=&quot;1234 I am a hero&quot;;  //需要匹配的字符串</div><div class="line">Matcher matcher=pattern.matcher(str);</div><div class="line">//开头的1234匹配到了，因此返回true，如果str=&quot;I am a hero 1234&quot;将返回false</div><div class="line">System.out.println(matcher.lookingAt());</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>int start()</code> 匹配到的字符串的第一个元素的索引,如果没有匹配到调用此方法将会报错</li>
-<li><code>int end()</code> 匹配到的字符串的最后一个元素的索引,如果没有匹配到调用此方法将会报错</li>
-<li><code>String group()</code> 返回的是匹配到的字符串,如果没有匹配到调用此方法将会报错</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Pattern pattern=Pattern.compile(&quot;\\d+&quot;);  //创建Pattern对象</div><div class="line">String str=&quot;1234 I am a hero 33455&quot;;  //需要匹配的字符串</div><div class="line">Matcher matcher=pattern.matcher(str);</div><div class="line">if(matcher.lookingAt())</div><div class="line">&#123;</div><div class="line">    System.out.println(&quot;开始匹配到下标为&quot;+matcher.start());  //0</div><div class="line">    System.out.println(&quot;匹配结束的下标为&quot;+matcher.end());    //4</div><div class="line">    System.out.println(&quot;匹配的字符串为&quot;+matcher.group());  //1234</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>boolean find()</code> 查找整个字符串，如果在任意位置有一段字符串能够匹配成功，那么返回true(任意位置),然后如果再次调用这个查找的话，那么就从上次查找到的末尾开始匹配，也就是说查找的是下一个子序列了</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">    Pattern pattern=Pattern.compile(<span class="string">"\\d+"</span>);  <span class="comment">//创建Pattern对象</span></div><div class="line">    String str=<span class="string">"1234 I am a hero 6666 chenjiabing8888"</span>;  <span class="comment">//需要匹配的字符串</span></div><div class="line">    Matcher matcher=pattern.matcher(str);</div><div class="line">    <span class="keyword">while</span>(matcher.find())  <span class="comment">//如果还有匹配的字符序列</span></div><div class="line">    &#123;</div><div class="line">        System.out.println(<span class="string">"开始匹配到下标为"</span>+matcher.start()); </div><div class="line">        System.out.println(<span class="string">"匹配结束的下标为"</span>+matcher.end());   </div><div class="line">        System.out.println(<span class="string">"匹配的字符串为"</span>+matcher.group());  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line"><span class="comment">/*结果如下： * 开始匹配到下标为0 匹配结束的下标为4 匹配的字符串为1234 开始匹配到下标为17 匹配结束的下标为21 匹配的字符串为6666 开始匹配到下标为33 匹配结束的下标为37 匹配的字符串为8888 */</span></div><div class="line"></div><div class="line"><span class="comment">/* * 从上面返回的结果可以知道，find()可以匹配多次只要这个字符串还有可以匹配， * 并且每次的匹配字段的开始下标都是上一次匹配的结束字母的下一个下标 */</span></div></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><code>boolean find(int start)</code> 从指定的索引start位置开始匹配，这个用于重置find()匹配器，因为直接使用find()它的每次开始的索引都是不一样的</li>
-</ul>
-<ul>
-<li><code>String group(int num)</code> 返回指定分组匹配到的字符串,group(0)表示匹配到的整个字符串,group(1) 表示匹配到的第一个字符(即是第一个括号中匹配的模式)</li>
-</ul>
-<ul>
-<li><code>int groupCount()</code> 返回匹配到的分组个数</li>
-<li><code>String replaceAll(String str)</code> 将所有于模式相匹配的 字符串全部替换程指定的字符串str,返回的是替换后的文本</li>
-<li><code>String replaceFirst(String str)</code> 只将第一次匹配到的字符串替换成指定的字符串str，返回的时替换后的文本</li>
-</ul>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Pattern pattern=Pattern.compile(<span class="string">"\\d+"</span>);</div><div class="line">String str=<span class="string">"chenjiabing2344cal3445"</span>;</div><div class="line">Matcher matcher=pattern.matcher(str);</div><div class="line">str=matcher.replaceFirst(<span class="string">"陈加兵"</span>);   </div><div class="line">System.out.println(str);   <span class="comment">//输出:chenjiabing陈加兵cal3445</span></div><div class="line"></div><div class="line"><span class="comment">/* * str=matcher.replaceAll("陈加兵"); * System.out.println(str) //输出:chenjiabing陈加兵cal陈加兵 */</span></div></pre></td></tr></table></figure>
-<h2 id="捕获组"><a href="#捕获组" class="headerlink" title="捕获组"></a><strong>捕获组</strong></h2><blockquote>
-<p>捕获组可以通过从左到右计算其开括号来编号，编号是从<code>1</code> 开始的。例如，在表达式 <code>((A)(B(C)))</code>中，存在四个这样的组：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">((A)(B(C)))</div><div class="line">(A)</div><div class="line">(B(C))</div><div class="line">(C)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>总之在正则表达式中在括号中的就是一个分组,下面用一个实例来理解一下</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Pattern pattern=Pattern.compile(<span class="string">"(\\D*)(\\d+)\\s(\\D+)"</span>);</div><div class="line">Matcher matcher=pattern.matcher(<span class="string">"chenjiabingshizuibangde6666 chenjiabign"</span>);</div><div class="line"><span class="keyword">if</span>(matcher.find())</div><div class="line">&#123;</div><div class="line">    System.out.println(<span class="string">"总共匹配到了"</span>+matcher.groupCount()+<span class="string">"个分组"</span>);</div><div class="line">    System.out.println(<span class="string">"匹配到整个字符串为"</span>+matcher.group(<span class="number">0</span>));</div><div class="line">    System.out.println(<span class="string">"匹配到的第一个字符串为"</span>+matcher.group(<span class="number">1</span>));</div><div class="line">    System.out.println(<span class="string">"匹配到的第二个字符串为"</span>+matcher.group(<span class="number">2</span>));</div><div class="line">    System.out.println(<span class="string">"匹配到的第三个字符串为"</span>+matcher.group(<span class="number">3</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="贪婪模式和非贪婪模式"><a href="#贪婪模式和非贪婪模式" class="headerlink" title="贪婪模式和非贪婪模式"></a>贪婪模式和非贪婪模式</h2><blockquote>
-<p>贪婪与非贪婪模式影响的是被量词修饰的子表达式的匹配行为，贪婪模式在整个表达式匹配成功的前提下，尽可能多的匹配，而非贪婪模式在整个表达式匹配成功的前提下，尽可能少的匹配</p>
-<p>一般写<code>python</code>爬虫的时候使用的都是非贪婪模式来匹配<br>使用了贪婪模式后会尽可能匹配更多的字符串，即是到了正则表达式定的末尾但是还是会继续向后匹配，看看是否还能匹配，非贪婪模式则是相反，到了正则表达式定义的结束字符就直接停止匹配了</p>
-<p>贪婪模式: <code>.*</code> , <code>.+</code></p>
-<p>非贪婪模式: <code>.*?</code> , <code>.+?</code></p>
-</blockquote>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a><strong>实例</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用了贪婪模式,因此当匹配到第一个的时候还要向后面匹配看看是否还能匹配到，由于后面还有结尾的，因此还是能够匹配的，因此匹配到的是:陈加兵郑元梅</span></div><div class="line">Pattern pattern=Pattern.compile(<span class="string">"(.*)"</span>);   </div><div class="line"></div><div class="line"><span class="comment">//使用了非贪婪模式，因此当匹配到第一个的时候就不向后面匹配了，直接返回了，因此匹配到的是:陈加兵</span></div><div class="line">Pattern pattern1=Pattern.compile(<span class="string">"(.*?)"</span>);   </div><div class="line">String str=<span class="string">"陈加兵郑元梅"</span>;</div><div class="line">Matcher matcher=pattern1.matcher(str);</div><div class="line"><span class="keyword">if</span>(matcher.find())</div><div class="line">&#123;</div><div class="line">    System.out.println(matcher.groupCount());  <span class="comment">//1</span></div><div class="line">    System.out.println(matcher.group(<span class="number">1</span>));  <span class="comment">//输出匹配到的字符串,此时输出的是:陈加兵,如果使用贪婪模式输出的是：陈加兵郑元梅</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/常用正则表达式大全/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1038,6 +668,197 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/02/常用正则表达式大全/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/Java正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/02/Java正则表达式/" itemprop="url">Java正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
+                2017-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习整理/" itemprop="url" rel="index">
+                    <span itemprop="name">学习整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/02/Java正则表达式/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/Java正则表达式/" class = "cy_cmt_count" data-xid="2017/07/02/Java正则表达式/" itemprop="commentsCount" ></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,702
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Java正则表达式"><a href="#Java正则表达式" class="headerlink" title="Java正则表达式"></a><center><strong>Java正则表达式</strong></center></h1><blockquote>
+<p><code>java.util.regex</code>是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：<code>Pattern</code>和<code>Matcher</code>。Pattern是一个正则表达式经编译后的表现模式。<br><img src="http://os94ofsac.bkt.clouddn.com/note/zhengze.png" alt="正则"><br>Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 首先一个Pattern实例订制了一个所用语法与PERL的类似的正则表达式经编译后的模式，然后一个Matcher实例在这个给定的Pattern实例的模式控制下进行字符串的匹配工作。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/Java正则表达式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
