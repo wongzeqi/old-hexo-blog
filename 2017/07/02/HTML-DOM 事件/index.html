@@ -1,0 +1,1835 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="s8Pe1TBqyy" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML,DOM," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王泽奇，个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="HTML DOM 事件 HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程序。 事件通常与函数结合使用，函数不会在事件发生前被执行！ (如用户点击按钮)。  提示：在 W3C 2 级 DOM 事件中规范了事件模型。">
+<meta name="keywords" content="HTML,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML-DOM 事件">
+<meta property="og:url" content="http://wangzeqi.website/2017/07/02/HTML-DOM 事件/index.html">
+<meta property="og:site_name" content="王泽奇，个人博客">
+<meta property="og:description" content="HTML DOM 事件 HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程序。 事件通常与函数结合使用，函数不会在事件发生前被执行！ (如用户点击按钮)。  提示：在 W3C 2 级 DOM 事件中规范了事件模型。">
+<meta property="og:updated_time" content="2017-07-02T08:49:34.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML-DOM 事件">
+<meta name="twitter:description" content="HTML DOM 事件 HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程序。 事件通常与函数结合使用，函数不会在事件发生前被执行！ (如用户点击按钮)。  提示：在 W3C 2 级 DOM 事件中规范了事件模型。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '20152154',
+      author: 'Wongzeqi'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangzeqi.website/2017/07/02/HTML-DOM 事件/"/>
+
+
+
+
+
+  <title>HTML-DOM 事件 | 王泽奇，个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <a href="https://github.com/wongzeqi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王泽奇，个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地，奋斗不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/HTML-DOM 事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML-DOM 事件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
+                2017-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习整理/" itemprop="url" rel="index">
+                    <span itemprop="name">学习整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/02/HTML-DOM 事件/#SOHUCS" itemprop="discussionUrl">
+					  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/02/HTML-DOM 事件/" itemprop="commentsCount"></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML-DOM-事件"><a href="#HTML-DOM-事件" class="headerlink" title="HTML DOM 事件"></a><strong><center><a href="http://wangzeqi.website">HTML DOM 事件</a></center></strong></h1><blockquote>
+<p>HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程序。</p>
+<p>事件通常与函数结合使用，函数不会在事件发生前被执行！ (如用户点击按钮)。</p>
+</blockquote>
+<p><strong>提示：</strong>在 W3C 2 级 DOM 事件中规范了事件模型。<br><a id="more"></a></p>
+<hr>
+<h2 id="HTML-DOM-事件-1"><a href="#HTML-DOM-事件-1" class="headerlink" title="HTML DOM 事件"></a>HTML DOM 事件</h2><p><strong>DOM：</strong>指明使用的 DOM 属性级别。</p>
+<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onclick.html" target="_blank" rel="external">onclick</a></td>
+<td style="text-align:center">当用户点击某个对象时调用的事件句柄。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oncontextmenu.html" target="_blank" rel="external">oncontextmenu</a></td>
+<td style="text-align:center">在用户点击鼠标右键打开上下文菜单时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondblclick.html" target="_blank" rel="external">ondblclick</a></td>
+<td style="text-align:center">当用户双击某个对象时调用的事件句柄。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmousedown.html" target="_blank" rel="external">onmousedown</a></td>
+<td style="text-align:center">鼠标按钮被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmouseenter.html" target="_blank" rel="external">onmouseenter</a></td>
+<td style="text-align:center">当鼠标指针移动到元素上时触发。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmouseleave.html" target="_blank" rel="external">onmouseleave</a></td>
+<td style="text-align:center">当鼠标指针移出元素时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmousemove.html" target="_blank" rel="external">onmousemove</a></td>
+<td style="text-align:center">鼠标被移动。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmouseover.html" target="_blank" rel="external">onmouseover</a></td>
+<td style="text-align:center">鼠标移到某元素之上。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmouseout.html" target="_blank" rel="external">onmouseout</a></td>
+<td style="text-align:center">鼠标从某元素移开。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onmouseup.html" target="_blank" rel="external">onmouseup</a></td>
+<td style="text-align:center">鼠标按键被松开。</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onkeydown.html" target="_blank" rel="external">onkeydown</a></td>
+<td style="text-align:center">某个键盘按键被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onkeypress.html" target="_blank" rel="external">onkeypress</a></td>
+<td style="text-align:center">某个键盘按键被按下并松开。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onkeyup.html" target="_blank" rel="external">onkeyup</a></td>
+<td style="text-align:center">某个键盘按键被松开。</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="框架-对象（Frame-Object）事件"><a href="#框架-对象（Frame-Object）事件" class="headerlink" title="框架/对象（Frame/Object）事件"></a>框架/对象（Frame/Object）事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onabort.html" target="_blank" rel="external">onabort</a></td>
+<td style="text-align:center">图像的加载被中断。 ( <object>)</object></td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onbeforeunload.html" target="_blank" rel="external">onbeforeunload</a></td>
+<td style="text-align:center">该事件在即将离开页面（刷新或关闭）时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onerror.html" target="_blank" rel="external">onerror</a></td>
+<td style="text-align:center">在加载文档或图像时发生错误。 ( <object>, <body>和 <frameset>)</frameset></body></object></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onhashchange.html" target="_blank" rel="external">onhashchange</a></td>
+<td style="text-align:center">该事件在当前 URL 的锚部分发生修改时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onload.html" target="_blank" rel="external">onload</a></td>
+<td style="text-align:center">一张页面或一幅图像完成加载。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onpageshow.html" target="_blank" rel="external">onpageshow</a></td>
+<td style="text-align:center">该事件在用户访问页面时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onpagehide.html" target="_blank" rel="external">onpagehide</a></td>
+<td style="text-align:center">该事件在用户离开当前网页跳转到另外一个页面时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onresize.html" target="_blank" rel="external">onresize</a></td>
+<td style="text-align:center">窗口或框架被重新调整大小。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onscroll.html" target="_blank" rel="external">onscroll</a></td>
+<td style="text-align:center">当文档被滚动时发生的事件。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onunload.html" target="_blank" rel="external">onunload</a></td>
+<td style="text-align:center">用户退出页面。 ( <body> 和 <frameset>)</frameset></body></td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onblur.html" target="_blank" rel="external">onblur</a></td>
+<td style="text-align:center">元素失去焦点时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onchange.html" target="_blank" rel="external">onchange</a></td>
+<td style="text-align:center">该事件在表单元素的内容改变时触发( <input>, <keygen>, <select>, 和 </select><textarea>)</textarea></td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onfocus.html" target="_blank" rel="external">onfocus</a></td>
+<td style="text-align:center">元素获取焦点时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onfocusin.html" target="_blank" rel="external">onfocusin</a></td>
+<td style="text-align:center">元素即将获取焦点时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onfocusout.html" target="_blank" rel="external">onfocusout</a></td>
+<td style="text-align:center">元素即将失去焦点时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oninput.html" target="_blank" rel="external">oninput</a></td>
+<td style="text-align:center">元素获取用户输入时触发</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onreset.html" target="_blank" rel="external">onreset</a></td>
+<td style="text-align:center">表单重置时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onsearch.html" target="_blank" rel="external">onsearch</a></td>
+<td style="text-align:center">用户向搜索域输入文本时触发 ( <input="search">)</input="search"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onselect.html" target="_blank" rel="external">onselect</a></td>
+<td style="text-align:center">用户选取文本时触发 ( <input> 和 <textarea>)</textarea></td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onsubmit.html" target="_blank" rel="external">onsubmit</a></td>
+<td style="text-align:center">表单提交时触发</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="剪贴板事件"><a href="#剪贴板事件" class="headerlink" title="剪贴板事件"></a>剪贴板事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oncopy.html" target="_blank" rel="external">oncopy</a></td>
+<td style="text-align:center">该事件在用户拷贝元素内容时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oncut.html" target="_blank" rel="external">oncut</a></td>
+<td style="text-align:center">该事件在用户剪切元素内容时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onpaste.html" target="_blank" rel="external">onpaste</a></td>
+<td style="text-align:center">该事件在用户粘贴元素内容时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="打印事件"><a href="#打印事件" class="headerlink" title="打印事件"></a>打印事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onafterprint.html" target="_blank" rel="external">onafterprint</a></td>
+<td style="text-align:center">该事件在页面已经开始打印，或者打印窗口已经关闭时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onbeforeprint.html" target="_blank" rel="external">onbeforeprint</a></td>
+<td style="text-align:center">该事件在页面即将开始打印时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="拖动事件"><a href="#拖动事件" class="headerlink" title="拖动事件"></a>拖动事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondrag.html" target="_blank" rel="external">ondrag</a></td>
+<td style="text-align:center">该事件在元素正在拖动时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondragend.html" target="_blank" rel="external">ondragend</a></td>
+<td style="text-align:center">该事件在用户完成元素的拖动时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondragenter.html" target="_blank" rel="external">ondragenter</a></td>
+<td style="text-align:center">该事件在拖动的元素进入放置目标时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondragleave.html" target="_blank" rel="external">ondragleave</a></td>
+<td style="text-align:center">该事件在拖动元素离开放置目标时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondragover.html" target="_blank" rel="external">ondragover</a></td>
+<td style="text-align:center">该事件在拖动元素在放置目标上时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondragstart.html" target="_blank" rel="external">ondragstart</a></td>
+<td style="text-align:center">该事件在用户开始拖动元素时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondrop.html" target="_blank" rel="external">ondrop</a></td>
+<td style="text-align:center">该事件在拖动元素放置在目标区域时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多媒体（Media）事件"><a href="#多媒体（Media）事件" class="headerlink" title="多媒体（Media）事件"></a>多媒体（Media）事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onabort-media.html" target="_blank" rel="external">onabort</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）终止加载时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oncanplay.html" target="_blank" rel="external">oncanplay</a></td>
+<td style="text-align:center">事件在用户可以开始播放视频/音频（audio/video）时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-oncanplaythrough.html" target="_blank" rel="external">oncanplaythrough</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）可以正常播放且无需停顿和缓冲时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ondurationchange.html" target="_blank" rel="external">ondurationchange</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）的时长发生变化时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">onemptied</td>
+<td style="text-align:center">当期播放列表为空时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onended.html" target="_blank" rel="external">onended</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）播放结束时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onerror-media.html" target="_blank" rel="external">onerror</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）数据加载期间发生错误时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onloadeddata.html" target="_blank" rel="external">onloadeddata</a></td>
+<td style="text-align:center">事件在浏览器加载视频/音频（audio/video）当前帧时触发触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onloadedmetadata.html" target="_blank" rel="external">onloadedmetadata</a></td>
+<td style="text-align:center">事件在指定视频/音频（audio/video）的元数据加载后触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onloadstart.html" target="_blank" rel="external">onloadstart</a></td>
+<td style="text-align:center">事件在浏览器开始寻找指定视频/音频（audio/video）触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onpause.html" target="_blank" rel="external">onpause</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）暂停时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onplay.html" target="_blank" rel="external">onplay</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）开始播放时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onplaying.html" target="_blank" rel="external">onplaying</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）暂停或者在缓冲后准备重新开始播放时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onprogress.html" target="_blank" rel="external">onprogress</a></td>
+<td style="text-align:center">事件在浏览器下载指定的视频/音频（audio/video）时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onratechange.html" target="_blank" rel="external">onratechange</a></td>
+<td style="text-align:center">事件在视频/音频（audio/video）的播放速度发送改变时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onseeked.html" target="_blank" rel="external">onseeked</a></td>
+<td style="text-align:center">事件在用户重新定位视频/音频（audio/video）的播放位置后触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onseeking.html" target="_blank" rel="external">onseeking</a></td>
+<td style="text-align:center">事件在用户开始重新定位视频/音频（audio/video）时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onstalled.html" target="_blank" rel="external">onstalled</a></td>
+<td style="text-align:center">事件在浏览器获取媒体数据，但媒体数据不可用时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onsuspend.html" target="_blank" rel="external">onsuspend</a></td>
+<td style="text-align:center">事件在浏览器读取媒体数据中止时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ontimeupdate.html" target="_blank" rel="external">ontimeupdate</a></td>
+<td style="text-align:center">事件在当前的播放位置发送改变时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onvolumechange.html" target="_blank" rel="external">onvolumechange</a></td>
+<td style="text-align:center">事件在音量发生改变时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onwaiting.html" target="_blank" rel="external">onwaiting</a></td>
+<td style="text-align:center">事件在视频由于要播放下一帧而需要缓冲时触发。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="动画事件"><a href="#动画事件" class="headerlink" title="动画事件"></a>动画事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-animationend.html" target="_blank" rel="external">animationend</a></td>
+<td style="text-align:center">该事件在 CSS 动画结束播放时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-animationiteration.html" target="_blank" rel="external">animationiteration</a></td>
+<td style="text-align:center">该事件在 CSS 动画重复播放时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-animationstart.html" target="_blank" rel="external">animationstart</a></td>
+<td style="text-align:center">该事件在 CSS 动画开始播放时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="过渡事件"><a href="#过渡事件" class="headerlink" title="过渡事件"></a>过渡事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-transitionend.html" target="_blank" rel="external">transitionend</a></td>
+<td style="text-align:center">该事件在 CSS 完成过渡后触发。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">事件</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">onmessage</td>
+<td style="text-align:center">该事件通过或者从对象(WebSocket, Web Worker, Event Source 或者子 frame 或父窗口)接收到消息时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">onmousewheel</td>
+<td style="text-align:center"><span class="deprecated" style="border:0px; margin:0px; padding:0px; color:rgb(232,0,0); background-color:transparent">已废弃。</span>使用<a href="http://www.runoob.com/jsref/event-onwheel.html" target="_blank" rel="external">onwheel</a>事件替代</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ononline.html" target="_blank" rel="external">ononline</a></td>
+<td style="text-align:center">该事件在浏览器开始在线工作时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onoffline.html" target="_blank" rel="external">onoffline</a></td>
+<td style="text-align:center">该事件在浏览器开始离线工作时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">onpopstate</td>
+<td style="text-align:center">该事件在窗口的浏览历史（history 对象）发生改变时触发。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onshow.html" target="_blank" rel="external">onshow</a></td>
+<td style="text-align:center">该事件当 <menu> 元素在上下文菜单显示时触发</menu></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">onstorage</td>
+<td style="text-align:center">该事件在 Web Storage(HTML 5 Web 存储)更新时触发</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ontoggle.html" target="_blank" rel="external">ontoggle</a></td>
+<td style="text-align:center">该事件在用户打开或关闭 <details> 元素时触发</details></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-onwheel.html" target="_blank" rel="external">onwheel</a></td>
+<td style="text-align:center">该事件在鼠标滚轮在元素上下滚动时触发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">静态变量</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">CAPTURING-PHASE</td>
+<td style="text-align:center">当前事件阶段为捕获阶段(1)</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">AT-TARGET</td>
+<td style="text-align:center">当前事件是目标阶段,在评估目标事件(1)</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">BUBBLING-PHASE</td>
+<td style="text-align:center">当前的事件为冒泡阶段 (3)</td>
+<td style="text-align:center">3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-bubbles.html" target="_blank" rel="external">bubbles</a></td>
+<td style="text-align:center">返回布尔值，指示事件是否是起泡事件类型。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-cancelable.html" target="_blank" rel="external">cancelable</a></td>
+<td style="text-align:center">返回布尔值，指示事件是否可拥可取消的默认动作。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-currenttarget.html" target="_blank" rel="external">currentTarget</a></td>
+<td style="text-align:center">返回其事件监听器触发该事件的元素。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">eventPhase</td>
+<td style="text-align:center">返回事件传播的当前阶段。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-target.html" target="_blank" rel="external">target</a></td>
+<td style="text-align:center">返回触发此事件的元素（事件的目标节点）。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-timestamp.html" target="_blank" rel="external">timeStamp</a></td>
+<td style="text-align:center">返回事件生成的日期和时间。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-type.html" target="_blank" rel="external">type</a></td>
+<td style="text-align:center">返回当前 Event 对象表示的事件的名称。</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">initEvent()</td>
+<td style="text-align:center">初始化新创建的 Event 对象的属性。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">preventDefault()</td>
+<td style="text-align:center">通知浏览器不要执行与事件关联的默认动作。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">stopPropagation()</td>
+<td style="text-align:center">不再派发事件。</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="目标事件对象"><a href="#目标事件对象" class="headerlink" title="目标事件对象"></a>目标事件对象</h2><h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">addEventListener()</td>
+<td style="text-align:center">允许在目标事件中注册监听事件(IE8 = attachEvent())</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">dispatchEvent()</td>
+<td style="text-align:center">允许发送事件到监听器上 (IE8 = fireEvent())</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">removeEventListener()</td>
+<td style="text-align:center">运行一次注册在事件目标上的监听事件(IE8 = detachEvent())</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="事件监听对象"><a href="#事件监听对象" class="headerlink" title="事件监听对象"></a>事件监听对象</h2><h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">handleEvent()</td>
+<td style="text-align:center">把任意对象注册为事件处理程序</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文档事件对象"><a href="#文档事件对象" class="headerlink" title="文档事件对象"></a>文档事件对象</h2><h3 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">createEvent()</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="鼠标-键盘事件对象"><a href="#鼠标-键盘事件对象" class="headerlink" title="鼠标/键盘事件对象"></a>鼠标/键盘事件对象</h2><h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-altkey.html" target="_blank" rel="external">altKey</a></td>
+<td style="text-align:center">返回当事件被触发时，”ALT” 是否被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-button.html" target="_blank" rel="external">button</a></td>
+<td style="text-align:center">返回当事件被触发时，哪个鼠标按钮被点击。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-clientx.html" target="_blank" rel="external">clientX</a></td>
+<td style="text-align:center">返回当事件被触发时，鼠标指针的水平坐标。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-clienty.html" target="_blank" rel="external">clientY</a></td>
+<td style="text-align:center">返回当事件被触发时，鼠标指针的垂直坐标。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-ctrlkey.html" target="_blank" rel="external">ctrlKey</a></td>
+<td style="text-align:center">返回当事件被触发时，”CTRL” 键是否被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-key-location.html" target="_blank" rel="external">Location</a></td>
+<td style="text-align:center">返回按键在设备上的位置</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-key-charcode.html" target="_blank" rel="external">charCode</a></td>
+<td style="text-align:center">返回onkeypress事件触发键值的字母代码。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-key-key.html" target="_blank" rel="external">key</a></td>
+<td style="text-align:center">在按下按键时返回按键的标识符。</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-key-keycode.html" target="_blank" rel="external">keyCode</a></td>
+<td style="text-align:center">返回onkeypress事件触发的键的值的字符代码，或者 onkeydown 或 onkeyup 事件的键的代码。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-key-which.html" target="_blank" rel="external">which</a></td>
+<td style="text-align:center">返回onkeypress事件触发的键的值的字符代码，或者 onkeydown 或 onkeyup 事件的键的代码。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-metakey.html" target="_blank" rel="external">metaKey</a></td>
+<td style="text-align:center">返回当事件被触发时，”meta” 键是否被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-relatedtarget.html" target="_blank" rel="external">relatedTarget</a></td>
+<td style="text-align:center">返回与事件的目标节点相关的节点。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-screenx.html" target="_blank" rel="external">screenX</a></td>
+<td style="text-align:center">返回当某个事件被触发时，鼠标指针的水平坐标。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-screeny.html" target="_blank" rel="external">screenY</a></td>
+<td style="text-align:center">返回当某个事件被触发时，鼠标指针的垂直坐标。</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="http://www.runoob.com/jsref/event-shiftkey.html" target="_blank" rel="external">shiftKey</a></td>
+<td style="text-align:center">返回当事件被触发时，”SHIFT” 键是否被按下。</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">W3C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">initMouseEvent()</td>
+<td style="text-align:center">初始化鼠标事件对象的值</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">initKeyboardEvent()</td>
+<td style="text-align:center">初始化键盘事件对象的值</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/07/02/HTML-DOM 事件/">HTML-DOM 事件</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王泽奇 的个人博客">王泽奇</a></p>
+  <p><span>发布时间:</span>2017年07月02日 - 00:07</p>
+  <p><span>最后更新:</span>2017年07月02日 - 16:07</p>
+  <p><span>原始链接:</span><a href="/2017/07/02/HTML-DOM 事件/" title="HTML-DOM 事件">http://wangzeqi.website/2017/07/02/HTML-DOM 事件/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/07/02/HTML-DOM 事件/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢给位朋友们支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/pay/wechat-qcode.jpg" alt="王泽奇 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/pay/ali.jpg" alt="王泽奇 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          
+            <a href="/tags/DOM/" rel="tag"><i class="fa fa-tag"></i> DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/02/Java正则表达式/" rel="next" title="Java正则表达式">
+                <i class="fa fa-chevron-left"></i> Java正则表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/02/CSS选择器总结/" rel="prev" title="CSS选择器总结">
+                CSS选择器总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS" ></div>
+    
+  </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/upload/head.png"
+               alt="王泽奇" />
+          <p class="site-author-name" itemprop="name">王泽奇</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个程序员的个人博客，不定期更新一些文章，以及分享生活中的快乐。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wongzeqi" rel="external nofollow" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/nonono" rel="external nofollow" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/18795207136" rel="external nofollow" target="_blank" title="Weibo">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qiniu.com/" title="七牛" target="_blank">七牛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://aileen.top" title="张琳学姐" target="_blank">张琳学姐</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zybuluo.com/mdeditor" title="作业部落" target="_blank">作业部落</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=120 src="//music.163.com/outchain/player?type=2&id=487190408&auto=0&height=66"></iframe>
+
+
+<div>我是一个大傻逼</div>
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-DOM-事件"><span class="nav-number">1.</span> <span class="nav-text">HTML DOM 事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-DOM-事件-1"><span class="nav-number">1.1.</span> <span class="nav-text">HTML DOM 事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标事件"><span class="nav-number">1.2.</span> <span class="nav-text">鼠标事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#键盘事件"><span class="nav-number">1.3.</span> <span class="nav-text">键盘事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架-对象（Frame-Object）事件"><span class="nav-number">1.4.</span> <span class="nav-text">框架/对象（Frame/Object）事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单事件"><span class="nav-number">1.5.</span> <span class="nav-text">表单事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪贴板事件"><span class="nav-number">1.6.</span> <span class="nav-text">剪贴板事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打印事件"><span class="nav-number">1.7.</span> <span class="nav-text">打印事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拖动事件"><span class="nav-number">1.8.</span> <span class="nav-text">拖动事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多媒体（Media）事件"><span class="nav-number">1.9.</span> <span class="nav-text">多媒体（Media）事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画事件"><span class="nav-number">1.10.</span> <span class="nav-text">动画事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过渡事件"><span class="nav-number">1.11.</span> <span class="nav-text">过渡事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他事件"><span class="nav-number">1.12.</span> <span class="nav-text">其他事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件对象"><span class="nav-number">1.13.</span> <span class="nav-text">事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">1.13.1.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">1.13.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">1.13.3.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标事件对象"><span class="nav-number">1.14.</span> <span class="nav-text">目标事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法-1"><span class="nav-number">1.14.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听对象"><span class="nav-number">1.15.</span> <span class="nav-text">事件监听对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法-2"><span class="nav-number">1.15.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档事件对象"><span class="nav-number">1.16.</span> <span class="nav-text">文档事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法-3"><span class="nav-number">1.16.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标-键盘事件对象"><span class="nav-number">1.17.</span> <span class="nav-text">鼠标/键盘事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性-1"><span class="nav-number">1.17.1.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法-4"><span class="nav-number">1.17.2.</span> <span class="nav-text">方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王泽奇</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a rel="external nofollow" class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+<div class="powered-by">
+|&nbsp;&nbsp;
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  <!--
+  
+  -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+
+</html>
