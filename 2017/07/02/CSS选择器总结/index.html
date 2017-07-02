@@ -148,7 +148,7 @@
 <meta property="og:url" content="http://wangzeqi.website/2017/07/02/CSS选择器总结/index.html">
 <meta property="og:site_name" content="王泽奇，个人博客">
 <meta property="og:description" content="1.基础的选择器   选择器 含义 示例     * 通用元素选择器，匹配任何元素 * { margin:0; padding:0; }   E 标签选择器，匹配所有使用E标签的元素 p { font-size:2em; }   .info和E.info class选择器，匹配所有class属性中包含info的元素 .info{background:#ff0;}p.info{background:">
-<meta property="og:updated_time" content="2017-07-02T09:55:14.269Z">
+<meta property="og:updated_time" content="2017-07-02T09:59:15.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS选择器总结">
 <meta name="twitter:description" content="1.基础的选择器   选择器 含义 示例     * 通用元素选择器，匹配任何元素 * { margin:0; padding:0; }   E 标签选择器，匹配所有使用E标签的元素 p { font-size:2em; }   .info和E.info class选择器，匹配所有class属性中包含info的元素 .info{background:#ff0;}p.info{background:">
@@ -555,8 +555,11 @@
 <tr>
 <td style="text-align:center">E[att]=val]</td>
 <td>匹配所有att属性具有多个连字号分隔（hyphen-separated）的值、其中一个值以“val”开头的E元素，主要用于lang属性，比如“en”、“en-us”、“en-gb”等等</td>
-<td style="text-align:center">p[lang</td>
-<td>=en] { color:#f00; }</td>
+</tr>
+<tr>
+<td style="text-align:center">p[lang=en]</td>
+<td>{ color:#f00; }</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -578,6 +581,8 @@
 <tr>
 <td style="text-align:center">E:link</td>
 <td>匹配所有未被点击的链接</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:visited</td>
@@ -586,18 +591,25 @@
 <tr>
 <td style="text-align:center">E:active</td>
 <td>匹配鼠标已经其上按下、还没有释放的E元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:hover</td>
 <td>匹配鼠标悬停其上的E元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:focus</td>
 <td>匹配获得当前焦点的E元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:lang(c)</td>
 <td>匹配lang属性等于c的E元素</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -617,7 +629,7 @@
 </tr>
 </tbody>
 </table>
-<p>| E:first-letter| 匹配E元素的第一个字母|<br>| E:before | 在E元素之前插入生成的内容 |<br>| E:after| 在E元素之后插入生成的内容|</p>
+<p>| E:first-letter| 匹配E元素的第一个字母|||<br>| E:before | 在E元素之前插入生成的内容 |||<br>| E:after| 在E元素之后插入生成的内容|||</p>
 <h3 id="6-CSS-3的同级元素通用选择器"><a href="#6-CSS-3的同级元素通用选择器" class="headerlink" title="6.CSS 3的同级元素通用选择器"></a>6.CSS 3的同级元素通用选择器</h3><table>
 <thead>
 <tr>
@@ -647,14 +659,19 @@
 <td style="text-align:center">E[att^=”val”]</td>
 <td>属性att的值以”val”开头的元素</td>
 <td style="text-align:center">div[id^=”nav”] { background:#ff0; }</td>
+<td></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
 <td style="text-align:center">E[att$=”val”]</td>
 <td>属性att的值以”val”结尾的元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E[att*=”val”]</td>
 <td>属性att的值包含”val”字符串的元素</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -675,14 +692,19 @@
 <tr>
 <td style="text-align:center">E:disabled</td>
 <td>匹配表单中禁用的元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:checked</td>
 <td>匹配表单中被选中的radio（单选框）或checkbox（复选框）元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E::selection</td>
 <td>匹配用户当前选中的元素</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -703,46 +725,64 @@
 <tr>
 <td style="text-align:center">E:nth-child(n)</td>
 <td>匹配其父元素的第n个子元素，第一个编号为1</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:nth-last-child(n)</td>
 <td>匹配其父元素的倒数第n个子元素，第一个编号为1</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:nth-of-type(n)</td>
 <td>与:nth-child()作用类似，但是仅匹配使用同种标签的元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:nth-last-of-type(n)</td>
 <td>与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:last-child</td>
 <td>匹配父元素的最后一个子元素，等同于:nth-last-child(1)</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:first-of-type</td>
 <td>匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:last-of-type</td>
 <td>匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:only-child</td>
 <td>匹配父元素下仅有的一个子元素，等同于:first-child:last-child或 :nth-child(1):nth-last-child(1)</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:only-of-type</td>
 <td>匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type或 :nth-of-type(1):nth-last-of-type(1)</td>
+<td style="text-align:center"></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">E:empty</td>
 <td>匹配一个不包含任何子元素的元素，注意，文本节点也被看作子元素</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
-<p> |</p>
 <h3 id="10-CSS-3的反选伪类"><a href="#10-CSS-3的反选伪类" class="headerlink" title="10.CSS 3的反选伪类"></a>10.CSS 3的反选伪类</h3><table>
 <thead>
 <tr>
@@ -771,6 +811,7 @@
 <tr>
 <td style="text-align:center">E:target</td>
 <td>匹配文档中特定”id”点击后的效果</td>
+<td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
@@ -886,8 +927,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/02/springMVC后台校验实现/" rel="next" title="springMVC后台校验实现">
-                <i class="fa fa-chevron-left"></i> springMVC后台校验实现
+              <a href="/2017/07/02/常用正则表达式大全/" rel="next" title="常用正则表达式大全">
+                <i class="fa fa-chevron-left"></i> 常用正则表达式大全
               </a>
             
           </div>
@@ -896,8 +937,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/02/SpringMVC学习笔记/" rel="prev" title="SpringMVC学习笔记">
-                SpringMVC学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/02/HTML-DOM 事件/" rel="prev" title="HTML-DOM 事件">
+                HTML-DOM 事件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
