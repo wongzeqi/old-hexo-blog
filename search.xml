@@ -3,87 +3,6 @@
   
     
     <entry>
-      <title><![CDATA[springMVC后台校验实现]]></title>
-      <url>/2017/07/02/springMVC%E5%90%8E%E5%8F%B0%E6%A0%A1%E9%AA%8C%E5%AE%9E%E7%8E%B0/</url>
-      <content type="html"><![CDATA[<h1 id="springMVC后台校验实现"><a href="#springMVC后台校验实现" class="headerlink" title="springMVC后台校验实现"></a><center><strong>springMVC后台校验实现</strong></center></h1><h3 id="第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上："><a href="#第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上：" class="headerlink" title="第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上："></a><strong>第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上：</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.1.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span>           </div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0.GA<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jboss.logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jboss-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0.CR2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="第二步-在配置文件中添加校验的bean配置"><a href="#第二步-在配置文件中添加校验的bean配置" class="headerlink" title="第二步:在配置文件中添加校验的bean配置"></a><strong>第二步:在配置文件中添加校验的bean配置</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"validator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 配置校验器的提供类，这里使用的是Hibernate的校验 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"providerClass"</span> <span class="attr">value</span>=<span class="string">"org.hibernate.validator.HibernateValidator"</span> /&gt;</span>  </div><div class="line">	   <span class="comment">&lt;!-- 指定校验使用的资源文件，如果不指定则默认使用classpath下的ValidationMessages.properties --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationMessageSource"</span> <span class="attr">ref</span>=<span class="string">"messageSource"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!-- 校验错误信息配置文件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ReloadableResourceBundleMessageSource"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 资源文件名,这里property的name为basenames所以错误信息的配置文件CustomValidationMessages省去后缀 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basenames"</span>&gt;</span>     </div><div class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span>      </div><div class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:CustomValidationMessages<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </div><div class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>     </div><div class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 资源文件编码格式 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"fileEncodings"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span> /&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 对资源文件内容缓存时间，单位秒 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cacheSeconds"</span> <span class="attr">value</span>=<span class="string">"120"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这里注意 <code>&lt;property name=&quot;defaultEncoding&quot; value=&quot;UTF-8&quot;/&gt;</code>这行代码，不然输出的错误信息可能乱码</p>
-<h3 id="第三步-新建错误信息配置文件，如我这里是CustomValidationMessages-properties，配置文件如下："><a href="#第三步-新建错误信息配置文件，如我这里是CustomValidationMessages-properties，配置文件如下：" class="headerlink" title="第三步:新建错误信息配置文件，如我这里是CustomValidationMessages.properties，配置文件如下："></a><strong>第三步:新建错误信息配置文件，如我这里是CustomValidationMessages.properties，配置文件如下：</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#校验错误信息的配置文件</span></div><div class="line">marketing.jgdm.error=机构代码不能为空</div><div class="line">marketing.yyrq.error=预约日期不能为空</div></pre></td></tr></table></figure>
-<h3 id="第四步-在Pojo类中配置校验规则，如下所示，更多校验如-NotNull、-Null、-Max等可自行网上查阅"><a href="#第四步-在Pojo类中配置校验规则，如下所示，更多校验如-NotNull、-Null、-Max等可自行网上查阅" class="headerlink" title="第四步:在Pojo类中配置校验规则，如下所示，更多校验如@NotNull、@Null、@Max等可自行网上查阅"></a><strong>第四步:在Pojo类中配置校验规则，如下所示，更多校验如@NotNull、@Null、@Max等可自行网上查阅</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Size(min=1,message=&quot;&#123;marketing.jgdm.error&#125;&quot;)</div><div class="line">    private String jgdm;            //机构代码</div></pre></td></tr></table></figure>
-<h3 id="第五步-Controller中使用该校验"><a href="#第五步-Controller中使用该校验" class="headerlink" title="第五步:Controller中使用该校验"></a><strong>第五步:Controller中使用该校验</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/insertDepositMarketing.action"</span>,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">insertDepositMarketing</span><span class="params">(@Validated DepositMarketing depositMarketing,BindingResult bindingResult</span></span></div><div class="line">            ,Model model) <span class="keyword">throws</span> Exception&#123;</div><div class="line"></div><div class="line">        List&lt;ObjectError&gt; allErrors = bindingResult.getAllErrors();</div><div class="line">        <span class="keyword">if</span>(bindingResult.hasErrors())&#123;</div><div class="line">            <span class="keyword">for</span>(ObjectError error : allErrors)&#123;</div><div class="line">                System.out.println(error.getDefaultMessage());</div><div class="line">            &#125;</div><div class="line">            model.addAttribute(<span class="string">"allErrors"</span>,allErrors);</div><div class="line">            <span class="keyword">return</span> <span class="string">"fail"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> yybh = depositMarketingService.insertDepositMarketing(depositMarketing);</div><div class="line">        <span class="keyword">if</span>(yybh &gt; <span class="number">0</span>)&#123;</div><div class="line">            <span class="comment">//插入成功</span></div><div class="line">            <span class="keyword">return</span> <span class="string">"forward:queryDepositMarketing.action"</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"fail"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>使用@Validated对Po类进行校验，并用BindingResult接收校验</p>
-<h3 id="第六步-页面输出错误信息"><a href="#第六步-页面输出错误信息" class="headerlink" title="第六步:页面输出错误信息"></a><strong>第六步:页面输出错误信息</strong></h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;</div><div class="line">&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;</div><div class="line">&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %&gt;</div><div class="line">&lt;% String path = request.getContextPath(); String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; %&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href="&lt;%=basePath%&gt;"&gt;</div><div class="line"></div><div class="line">    &lt;title&gt;My JSP 'MyJsp.jsp' starting page&lt;/title&gt;</div><div class="line"></div><div class="line">    &lt;meta http-equiv="pragma" content="no-cache"&gt;</div><div class="line">    &lt;meta http-equiv="cache-control" content="no-cache"&gt;</div><div class="line">    &lt;meta http-equiv="expires" content="0"&gt;    </div><div class="line">    &lt;meta http-equiv="keywords" content="keyword1,keyword2,keyword3"&gt;</div><div class="line">    &lt;meta http-equiv="description" content="This is my page"&gt;</div><div class="line">    &lt;!-- &lt;link rel="stylesheet" type="text/css" href="styles.css"&gt; --&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line"></div><div class="line">  &lt;body&gt;</div><div class="line">     &lt;c:if test="$&#123;allErrors!= null&#125;"&gt;</div><div class="line">        &lt;c:forEach items="$&#123;allErrors&#125;" var="item"&gt;</div><div class="line">            $&#123;item.defaultMessage&#125;</div><div class="line">        &lt;/c:forEach&gt;</div><div class="line">    &lt;/c:if&gt;</div><div class="line">    &lt;center&gt; 操作居然失败了，真遗憾！&lt;/center&gt;&lt;br&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h2 id="分组校验"><a href="#分组校验" class="headerlink" title="分组校验"></a><strong>分组校验</strong></h2><h3 id="第一步-新建一个校验分组接口，如下："><a href="#第一步-新建一个校验分组接口，如下：" class="headerlink" title="第一步:新建一个校验分组接口，如下："></a><strong>第一步:新建一个校验分组接口，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface MarketingValidationGroup &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个接口仅仅是标志校验分组</p>
-<h3 id="第二步-在Pojo类中给不同的校验规则划分分组，如下："><a href="#第二步-在Pojo类中给不同的校验规则划分分组，如下：" class="headerlink" title="第二步:在Pojo类中给不同的校验规则划分分组，如下："></a><strong>第二步:在Pojo类中给不同的校验规则划分分组，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//将次校验划到校验分组:MarketingValidationGroup中去</div><div class="line">    @Size(min=1,message=&quot;&#123;marketing.jgdm.error&#125;&quot;,groups=MarketingValidationGroup.class)</div></pre></td></tr></table></figure>
-<h3 id="第散步步-在Controller中使用校验分组，如下："><a href="#第散步步-在Controller中使用校验分组，如下：" class="headerlink" title="第散步步:在Controller中使用校验分组，如下："></a><strong>第散步步:在Controller中使用校验分组，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public String insertDepositMarketing(@Validated(value=&#123;MarketingValidationGroup.class&#125;) DepositMarketing depositMarketing,BindingResult bindingResult</div><div class="line">            ,Model model) throws Exception&#123;</div><div class="line">            //代码省略</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习积累 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> SpringMVC </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JVM内存结构简介]]></title>
-      <url>/2017/07/02/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</url>
-      <content type="html"><![CDATA[<h1 id="Jvm的内存结构"><a href="#Jvm的内存结构" class="headerlink" title="Jvm的内存结构"></a><center><a href="http:wangzeqi.website" target="_blank" rel="external"><strong>Jvm的内存结构</strong><a></a></a></center></h1><p>先看一张图，这张图能很清晰的说明JVM内存结构布局。<br><img src="http://img.blog.csdn.net/20170324105619218" alt=""></p>
-<a id="more"></a>
-<h2 id="Java的内存结构：-gt"><a href="#Java的内存结构：-gt" class="headerlink" title="Java的内存结构：&gt;"></a><strong>Java的内存结构：&gt;</strong></h2><p>所有的<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">Java</a>开发人员可能会遇到这样的困惑？我该为堆内存设置多大空间呢？OutOfMemoryError的异常到底涉及到运行时数据的哪块区域？该怎么解决呢？其实如果你经常解决服务器性能问题，那么这些问题就会变的非常常见，了解JVM内存也是为了服务器出现性能问题的时候可以快速的了解那块的内存区域出现问题，以便于快速的解决生产故障。</p>
-<p>JVM内存结构主要有三大块：<strong>堆内存、方法区和栈&gt;</strong>。堆内存是JVM中最大的一块由<strong>年轻代和老年代</strong>组成，而年轻代内存又被分成三部分，<strong>Eden空间、From Survivor空间、To Survivor空间,</strong>默认情况下年轻代按照8:1:1的比例来分配；<br>方法区存储类信息、常量、静态变量等数据，是线程共享的区域，为与Java堆区分，方法区还有一个别名Non-Heap(非堆)；栈又分为java虚拟机栈和本地方法栈主要用于方法的执行。</p>
-<p>在通过一张图来了解如何通过参数来控制各区域的内存大小</p>
-<p><img src="http://img.blog.csdn.net/20170324105726547" alt=""></p>
-<h2 id="控制参数-gt"><a href="#控制参数-gt" class="headerlink" title="控制参数&gt;"></a><strong>控制参数&gt;</strong></h2><p>-Xms设置堆的最小空间大小。<br>-Xmx设置堆的最大空间大小。<br>-XX:NewSize设置新生代最小空间大小。<br>-XX:MaxNewSize设置新生代最大空间大小。<br>-XX:PermSize设置永久代最小空间大小。<br>-XX:MaxPermSize设置永久代最大空间大小。<br>-Xss设置每个线程的堆栈大小。</p>
-<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。<br><strong>老年代空间大小=堆空间大小-年轻代大空间大小</strong></p>
-<p>从更高的一个维度再次来看JVM和系统调用之间的关系</p>
-<p><img src="http://img.blog.csdn.net/20170324110041483" alt=""></p>
-<p><span style="color:rgb(255,0,0)">方法区和对是所有线程共享的内存区域；而java栈、本地方法栈和程序员计数器是运行是线程私有的内存区域。&gt;</span></p>
-<p><strong>下面我们详细介绍每个区域的作用&gt;</strong></p>
-<h2 id="Java堆（Heap）-gt"><a href="#Java堆（Heap）-gt" class="headerlink" title="Java堆（Heap）&gt;"></a><strong>Java堆（Heap）&gt;</strong></h2><p>对于大多数应用来说，Java堆（<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">Java</a>Heap）是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</p>
-<p>ava堆是垃圾收集器管理的主要区域，因此很多时候也被称做“GC堆”。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="external">算法</a>，所以Java堆中还可以细分为：新生代和老年代；再细致一点的有Eden空间、From Survivor空间、To Survivor空间等。</p>
-<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
-<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
-<h2 id="方法区（Method-Area）-gt"><a href="#方法区（Method-Area）-gt" class="headerlink" title="方法区（Method Area）&gt;"></a><strong>方法区（Method Area）&gt;</strong></h2><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做Non-Heap（非堆），目的应该是与Java堆区分开来。</p>
-<p>对于习惯在HotSpot虚拟机上开发和部署程序的开发者来说，很多人愿意把方法区称为“永久代”（Permanent Generation），本质上两者并不等价，仅仅是因为HotSpot虚拟机的设计团队选择把GC分代收集扩展至方法区，或者说使用永久代来实现方法区而已。</p>
-<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。相对而言，垃圾收集行为在这个区域是比较少出现的，但并非数据进入了方法区就如永久代的名字一样“永久”存在了。这个区域的内存回收目标主要是针对常量池的回收和对类型的卸载，一般来说这个区域的回收“成绩”比较难以令人满意，尤其是类型的卸载，条件相当苛刻，但是这部分区域的回收确实是有必要的。</p>
-<p>根据Java虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常。</p>
-<h2 id="程序计数器（Program-Counter-Register）-gt"><a href="#程序计数器（Program-Counter-Register）-gt" class="headerlink" title="程序计数器（Program Counter Register）&gt;"></a><strong>程序计数器（Program Counter Register）&gt;</strong></h2><p>程序计数器（Program Counter Register）是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。在虚拟机的概念模型里（仅是概念模型，各种虚拟机可能会通过一些更高效的方式去实现），字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。<br>由于Java虚拟机的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多核处理器来说是一个内核）只会执行一条线程中的指令。因此，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之间的计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。</p>
-<p>如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Natvie方法，这个计数器值则为空（Undefined）。</p>
-<p><strong>此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。</strong></p>
-<h2 id="JVM栈（JVM-Stacks）-gt"><a href="#JVM栈（JVM-Stacks）-gt" class="headerlink" title="JVM栈（JVM Stacks）&gt;"></a><strong>JVM栈（JVM Stacks）&gt;</strong></h2><p>与程序计数器一样，Java虚拟机栈（<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">java</a>Virtual Machine Stacks）也是线程私有的，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表、操作栈、动态链接、方法出口等信息。每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
-<p>局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
-<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
-<p>在Java虚拟机规范中，对这个区域规定了两种异常状况：如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</p>
-<h2 id="本地方法栈（Native-Method-Stacks）"><a href="#本地方法栈（Native-Method-Stacks）" class="headerlink" title="本地方法栈（Native Method Stacks）"></a><strong>本地方法栈（Native Method Stacks）</strong></h2><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的Native方法服务。虚拟机规范中对本地方法栈中的方法使用的语言、使用方式与<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="external">数据结构</a>并没有强制规定，因此具体的虚拟机可以自由实现它。甚至有的虚拟机（譬如Sun HotSpot虚拟机）直接就把本地方法栈和虚拟机栈合二为一。与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习积累 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> JVM </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[SpringMVC学习笔记]]></title>
       <url>/2017/07/02/SpringMVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
       <content type="html"><![CDATA[<h1 id="SpringMVC学习笔记"><a href="#SpringMVC学习笔记" class="headerlink" title="SpringMVC学习笔记"></a><center><a href="http://wangzeqi.website"><strong>SpringMVC学习笔记</strong></a></center></h1><h2 id="一、SpringMVC基础入门，创建一个HelloWorld程序"><a href="#一、SpringMVC基础入门，创建一个HelloWorld程序" class="headerlink" title="一、SpringMVC基础入门，创建一个HelloWorld程序"></a><strong>一、SpringMVC基础入门，创建一个HelloWorld程序</strong></h2><h2 id="springmvc工作原理"><a href="#springmvc工作原理" class="headerlink" title="springmvc工作原理"></a><strong>springmvc工作原理</strong></h2><p><img src="http://os94ofsac.bkt.clouddn.com/note/springmvc%E6%B5%81%E7%A8%8B.jpg" alt="spring工作原理"></p>
@@ -223,6 +142,54 @@
             <tag> Java </tag>
             
             <tag> SpringMVC </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JVM内存结构简介]]></title>
+      <url>/2017/07/02/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84/</url>
+      <content type="html"><![CDATA[<h1 id="Jvm的内存结构"><a href="#Jvm的内存结构" class="headerlink" title="Jvm的内存结构"></a><center><a href="http:wangzeqi.website" target="_blank" rel="external"><strong>Jvm的内存结构</strong><a></a></a></center></h1><p>先看一张图，这张图能很清晰的说明JVM内存结构布局。<br><img src="http://img.blog.csdn.net/20170324105619218" alt=""></p>
+<a id="more"></a>
+<h2 id="Java的内存结构：-gt"><a href="#Java的内存结构：-gt" class="headerlink" title="Java的内存结构：&gt;"></a><strong>Java的内存结构：&gt;</strong></h2><p>所有的<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">Java</a>开发人员可能会遇到这样的困惑？我该为堆内存设置多大空间呢？OutOfMemoryError的异常到底涉及到运行时数据的哪块区域？该怎么解决呢？其实如果你经常解决服务器性能问题，那么这些问题就会变的非常常见，了解JVM内存也是为了服务器出现性能问题的时候可以快速的了解那块的内存区域出现问题，以便于快速的解决生产故障。</p>
+<p>JVM内存结构主要有三大块：<strong>堆内存、方法区和栈&gt;</strong>。堆内存是JVM中最大的一块由<strong>年轻代和老年代</strong>组成，而年轻代内存又被分成三部分，<strong>Eden空间、From Survivor空间、To Survivor空间,</strong>默认情况下年轻代按照8:1:1的比例来分配；<br>方法区存储类信息、常量、静态变量等数据，是线程共享的区域，为与Java堆区分，方法区还有一个别名Non-Heap(非堆)；栈又分为java虚拟机栈和本地方法栈主要用于方法的执行。</p>
+<p>在通过一张图来了解如何通过参数来控制各区域的内存大小</p>
+<p><img src="http://img.blog.csdn.net/20170324105726547" alt=""></p>
+<h2 id="控制参数-gt"><a href="#控制参数-gt" class="headerlink" title="控制参数&gt;"></a><strong>控制参数&gt;</strong></h2><p>-Xms设置堆的最小空间大小。<br>-Xmx设置堆的最大空间大小。<br>-XX:NewSize设置新生代最小空间大小。<br>-XX:MaxNewSize设置新生代最大空间大小。<br>-XX:PermSize设置永久代最小空间大小。<br>-XX:MaxPermSize设置永久代最大空间大小。<br>-Xss设置每个线程的堆栈大小。</p>
+<p>没有直接设置老年代的参数，但是可以设置堆空间大小和新生代空间大小两个参数来间接控制。<br><strong>老年代空间大小=堆空间大小-年轻代大空间大小</strong></p>
+<p>从更高的一个维度再次来看JVM和系统调用之间的关系</p>
+<p><img src="http://img.blog.csdn.net/20170324110041483" alt=""></p>
+<p><span style="color:rgb(255,0,0)">方法区和对是所有线程共享的内存区域；而java栈、本地方法栈和程序员计数器是运行是线程私有的内存区域。&gt;</span></p>
+<p><strong>下面我们详细介绍每个区域的作用&gt;</strong></p>
+<h2 id="Java堆（Heap）-gt"><a href="#Java堆（Heap）-gt" class="headerlink" title="Java堆（Heap）&gt;"></a><strong>Java堆（Heap）&gt;</strong></h2><p>对于大多数应用来说，Java堆（<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">Java</a>Heap）是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</p>
+<p>ava堆是垃圾收集器管理的主要区域，因此很多时候也被称做“GC堆”。如果从内存回收的角度看，由于现在收集器基本都是采用的分代收集<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="external">算法</a>，所以Java堆中还可以细分为：新生代和老年代；再细致一点的有Eden空间、From Survivor空间、To Survivor空间等。</p>
+<p>根据Java虚拟机规范的规定，Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可，就像我们的磁盘空间一样。在实现时，既可以实现成固定大小的，也可以是可扩展的，不过当前主流的虚拟机都是按照可扩展来实现的（通过-Xmx和-Xms控制）。</p>
+<p>如果在堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常。</p>
+<h2 id="方法区（Method-Area）-gt"><a href="#方法区（Method-Area）-gt" class="headerlink" title="方法区（Method Area）&gt;"></a><strong>方法区（Method Area）&gt;</strong></h2><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做Non-Heap（非堆），目的应该是与Java堆区分开来。</p>
+<p>对于习惯在HotSpot虚拟机上开发和部署程序的开发者来说，很多人愿意把方法区称为“永久代”（Permanent Generation），本质上两者并不等价，仅仅是因为HotSpot虚拟机的设计团队选择把GC分代收集扩展至方法区，或者说使用永久代来实现方法区而已。</p>
+<p>Java虚拟机规范对这个区域的限制非常宽松，除了和Java堆一样不需要连续的内存和可以选择固定大小或者可扩展外，还可以选择不实现垃圾收集。相对而言，垃圾收集行为在这个区域是比较少出现的，但并非数据进入了方法区就如永久代的名字一样“永久”存在了。这个区域的内存回收目标主要是针对常量池的回收和对类型的卸载，一般来说这个区域的回收“成绩”比较难以令人满意，尤其是类型的卸载，条件相当苛刻，但是这部分区域的回收确实是有必要的。</p>
+<p>根据Java虚拟机规范的规定，当方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常。</p>
+<h2 id="程序计数器（Program-Counter-Register）-gt"><a href="#程序计数器（Program-Counter-Register）-gt" class="headerlink" title="程序计数器（Program Counter Register）&gt;"></a><strong>程序计数器（Program Counter Register）&gt;</strong></h2><p>程序计数器（Program Counter Register）是一块较小的内存空间，它的作用可以看做是当前线程所执行的字节码的行号指示器。在虚拟机的概念模型里（仅是概念模型，各种虚拟机可能会通过一些更高效的方式去实现），字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。<br>由于Java虚拟机的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的，在任何一个确定的时刻，一个处理器（对于多核处理器来说是一个内核）只会执行一条线程中的指令。因此，为了线程切换后能恢复到正确的执行位置，每条线程都需要有一个独立的程序计数器，各条线程之间的计数器互不影响，独立存储，我们称这类内存区域为“线程私有”的内存。</p>
+<p>如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Natvie方法，这个计数器值则为空（Undefined）。</p>
+<p><strong>此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。</strong></p>
+<h2 id="JVM栈（JVM-Stacks）-gt"><a href="#JVM栈（JVM-Stacks）-gt" class="headerlink" title="JVM栈（JVM Stacks）&gt;"></a><strong>JVM栈（JVM Stacks）&gt;</strong></h2><p>与程序计数器一样，Java虚拟机栈（<a href="http://lib.csdn.net/base/java" title="Java 知识库" target="_blank" rel="external">java</a>Virtual Machine Stacks）也是线程私有的，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧（Stack Frame）用于存储局部变量表、操作栈、动态链接、方法出口等信息。每一个方法被调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中从入栈到出栈的过程。</p>
+<p>局部变量表存放了编译期可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型，它不等同于对象本身，根据不同的虚拟机实现，它可能是一个指向对象起始地址的引用指针，也可能指向一个代表对象的句柄或者其他与此对象相关的位置）和returnAddress类型（指向了一条字节码指令的地址）。</p>
+<p>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，当进入一个方法时，这个方法需要在帧中分配多大的局部变量空间是完全确定的，在方法运行期间不会改变局部变量表的大小。</p>
+<p>在Java虚拟机规范中，对这个区域规定了两种异常状况：如果线程请求的栈深度大于虚拟机所允许的深度，将抛出StackOverflowError异常；如果虚拟机栈可以动态扩展（当前大部分的Java虚拟机都可动态扩展，只不过Java虚拟机规范中也允许固定长度的虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError异常。</p>
+<h2 id="本地方法栈（Native-Method-Stacks）"><a href="#本地方法栈（Native-Method-Stacks）" class="headerlink" title="本地方法栈（Native Method Stacks）"></a><strong>本地方法栈（Native Method Stacks）</strong></h2><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的Native方法服务。虚拟机规范中对本地方法栈中的方法使用的语言、使用方式与<a href="http://lib.csdn.net/base/datastructure" title="算法与数据结构知识库" target="_blank" rel="external">数据结构</a>并没有强制规定，因此具体的虚拟机可以自由实现它。甚至有的虚拟机（譬如Sun HotSpot虚拟机）直接就把本地方法栈和虚拟机栈合二为一。与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习积累 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> JVM </tag>
             
         </tags>
         
@@ -438,6 +405,39 @@
     </entry>
     
     <entry>
+      <title><![CDATA[springMVC后台校验实现]]></title>
+      <url>/2017/07/02/springMVC%E5%90%8E%E5%8F%B0%E6%A0%A1%E9%AA%8C%E5%AE%9E%E7%8E%B0/</url>
+      <content type="html"><![CDATA[<h1 id="springMVC后台校验实现"><a href="#springMVC后台校验实现" class="headerlink" title="springMVC后台校验实现"></a><center><strong>springMVC后台校验实现</strong></center></h1><h3 id="第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上："><a href="#第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上：" class="headerlink" title="第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上："></a><strong>第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上：</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.1.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span>           </div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0.GA<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jboss.logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jboss-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0.CR2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="第二步-在配置文件中添加校验的bean配置"><a href="#第二步-在配置文件中添加校验的bean配置" class="headerlink" title="第二步:在配置文件中添加校验的bean配置"></a><strong>第二步:在配置文件中添加校验的bean配置</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"validator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 配置校验器的提供类，这里使用的是Hibernate的校验 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"providerClass"</span> <span class="attr">value</span>=<span class="string">"org.hibernate.validator.HibernateValidator"</span> /&gt;</span>  </div><div class="line">	   <span class="comment">&lt;!-- 指定校验使用的资源文件，如果不指定则默认使用classpath下的ValidationMessages.properties --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationMessageSource"</span> <span class="attr">ref</span>=<span class="string">"messageSource"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </div><div class="line">    <span class="comment">&lt;!-- 校验错误信息配置文件 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ReloadableResourceBundleMessageSource"</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 资源文件名,这里property的name为basenames所以错误信息的配置文件CustomValidationMessages省去后缀 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basenames"</span>&gt;</span>     </div><div class="line">            <span class="tag">&lt;<span class="name">list</span>&gt;</span>      </div><div class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:CustomValidationMessages<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </div><div class="line">            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>     </div><div class="line">        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </div><div class="line">        <span class="comment">&lt;!-- 资源文件编码格式 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"fileEncodings"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span> /&gt;</span>  </div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultEncoding"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 对资源文件内容缓存时间，单位秒 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cacheSeconds"</span> <span class="attr">value</span>=<span class="string">"120"</span> /&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这里注意 <code>&lt;property name=&quot;defaultEncoding&quot; value=&quot;UTF-8&quot;/&gt;</code>这行代码，不然输出的错误信息可能乱码</p>
+<h3 id="第三步-新建错误信息配置文件，如我这里是CustomValidationMessages-properties，配置文件如下："><a href="#第三步-新建错误信息配置文件，如我这里是CustomValidationMessages-properties，配置文件如下：" class="headerlink" title="第三步:新建错误信息配置文件，如我这里是CustomValidationMessages.properties，配置文件如下："></a><strong>第三步:新建错误信息配置文件，如我这里是CustomValidationMessages.properties，配置文件如下：</strong></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#校验错误信息的配置文件</span></div><div class="line">marketing.jgdm.error=机构代码不能为空</div><div class="line">marketing.yyrq.error=预约日期不能为空</div></pre></td></tr></table></figure>
+<h3 id="第四步-在Pojo类中配置校验规则，如下所示，更多校验如-NotNull、-Null、-Max等可自行网上查阅"><a href="#第四步-在Pojo类中配置校验规则，如下所示，更多校验如-NotNull、-Null、-Max等可自行网上查阅" class="headerlink" title="第四步:在Pojo类中配置校验规则，如下所示，更多校验如@NotNull、@Null、@Max等可自行网上查阅"></a><strong>第四步:在Pojo类中配置校验规则，如下所示，更多校验如@NotNull、@Null、@Max等可自行网上查阅</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@Size(min=1,message=&quot;&#123;marketing.jgdm.error&#125;&quot;)</div><div class="line">    private String jgdm;            //机构代码</div></pre></td></tr></table></figure>
+<h3 id="第五步-Controller中使用该校验"><a href="#第五步-Controller中使用该校验" class="headerlink" title="第五步:Controller中使用该校验"></a><strong>第五步:Controller中使用该校验</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(value=<span class="string">"/insertDepositMarketing.action"</span>,method=&#123;RequestMethod.POST,RequestMethod.GET&#125;)</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">insertDepositMarketing</span><span class="params">(@Validated DepositMarketing depositMarketing,BindingResult bindingResult</span></span></div><div class="line">            ,Model model) <span class="keyword">throws</span> Exception&#123;</div><div class="line"></div><div class="line">        List&lt;ObjectError&gt; allErrors = bindingResult.getAllErrors();</div><div class="line">        <span class="keyword">if</span>(bindingResult.hasErrors())&#123;</div><div class="line">            <span class="keyword">for</span>(ObjectError error : allErrors)&#123;</div><div class="line">                System.out.println(error.getDefaultMessage());</div><div class="line">            &#125;</div><div class="line">            model.addAttribute(<span class="string">"allErrors"</span>,allErrors);</div><div class="line">            <span class="keyword">return</span> <span class="string">"fail"</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> yybh = depositMarketingService.insertDepositMarketing(depositMarketing);</div><div class="line">        <span class="keyword">if</span>(yybh &gt; <span class="number">0</span>)&#123;</div><div class="line">            <span class="comment">//插入成功</span></div><div class="line">            <span class="keyword">return</span> <span class="string">"forward:queryDepositMarketing.action"</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"fail"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>使用@Validated对Po类进行校验，并用BindingResult接收校验</p>
+<h3 id="第六步-页面输出错误信息"><a href="#第六步-页面输出错误信息" class="headerlink" title="第六步:页面输出错误信息"></a><strong>第六步:页面输出错误信息</strong></h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;</div><div class="line">&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;</div><div class="line">&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %&gt;</div><div class="line">&lt;% String path = request.getContextPath(); String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/"; %&gt;</div><div class="line"></div><div class="line">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;base href="&lt;%=basePath%&gt;"&gt;</div><div class="line"></div><div class="line">    &lt;title&gt;My JSP 'MyJsp.jsp' starting page&lt;/title&gt;</div><div class="line"></div><div class="line">    &lt;meta http-equiv="pragma" content="no-cache"&gt;</div><div class="line">    &lt;meta http-equiv="cache-control" content="no-cache"&gt;</div><div class="line">    &lt;meta http-equiv="expires" content="0"&gt;    </div><div class="line">    &lt;meta http-equiv="keywords" content="keyword1,keyword2,keyword3"&gt;</div><div class="line">    &lt;meta http-equiv="description" content="This is my page"&gt;</div><div class="line">    &lt;!-- &lt;link rel="stylesheet" type="text/css" href="styles.css"&gt; --&gt;</div><div class="line"></div><div class="line">  &lt;/head&gt;</div><div class="line"></div><div class="line">  &lt;body&gt;</div><div class="line">     &lt;c:if test="$&#123;allErrors!= null&#125;"&gt;</div><div class="line">        &lt;c:forEach items="$&#123;allErrors&#125;" var="item"&gt;</div><div class="line">            $&#123;item.defaultMessage&#125;</div><div class="line">        &lt;/c:forEach&gt;</div><div class="line">    &lt;/c:if&gt;</div><div class="line">    &lt;center&gt; 操作居然失败了，真遗憾！&lt;/center&gt;&lt;br&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="分组校验"><a href="#分组校验" class="headerlink" title="分组校验"></a><strong>分组校验</strong></h2><h3 id="第一步-新建一个校验分组接口，如下："><a href="#第一步-新建一个校验分组接口，如下：" class="headerlink" title="第一步:新建一个校验分组接口，如下："></a><strong>第一步:新建一个校验分组接口，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface MarketingValidationGroup &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个接口仅仅是标志校验分组</p>
+<h3 id="第二步-在Pojo类中给不同的校验规则划分分组，如下："><a href="#第二步-在Pojo类中给不同的校验规则划分分组，如下：" class="headerlink" title="第二步:在Pojo类中给不同的校验规则划分分组，如下："></a><strong>第二步:在Pojo类中给不同的校验规则划分分组，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//将次校验划到校验分组:MarketingValidationGroup中去</div><div class="line">    @Size(min=1,message=&quot;&#123;marketing.jgdm.error&#125;&quot;,groups=MarketingValidationGroup.class)</div></pre></td></tr></table></figure>
+<h3 id="第散步步-在Controller中使用校验分组，如下："><a href="#第散步步-在Controller中使用校验分组，如下：" class="headerlink" title="第散步步:在Controller中使用校验分组，如下："></a><strong>第散步步:在Controller中使用校验分组，如下：</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public String insertDepositMarketing(@Validated(value=&#123;MarketingValidationGroup.class&#125;) DepositMarketing depositMarketing,BindingResult bindingResult</div><div class="line">            ,Model model) throws Exception&#123;</div><div class="line">            //代码省略</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习积累 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SpringMVC </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[canvas画布]]></title>
       <url>/2017/07/02/canvas%E7%94%BB%E5%B8%83/</url>
       <content type="html"><![CDATA[<h1 id="canvas画布"><a href="#canvas画布" class="headerlink" title="canvas画布"></a><center><a href="http://wangzeqi.website"><strong>canvas画布</strong></a></center></h1><h1 id="一、canvas简介"><a href="#一、canvas简介" class="headerlink" title="一、canvas简介"></a>一、canvas简介</h1><p>​ <code>&lt;canvas&gt;</code> 是 <code>HTML5</code> 新增的，一个可以使用脚本(通常为<code>JavaScript</code>)在其中绘制图像的 <code>HTML</code> 元素。它可以用来制作照片集或者制作简单(也不是那么简单)的动画，甚至可以进行实时视频处理和渲染。</p>
@@ -645,7 +645,7 @@
 <p>在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的.</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var ctx;</div><div class="line">function draw()&#123;</div><div class="line">    var canvas = document.getElementById(&apos;tutorial&apos;);</div><div class="line">    if (!canvas.getContext) return;</div><div class="line">    ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">    ctx.font = &quot;100px sans-serif&quot;</div><div class="line">    ctx.fillText(&quot;天若有情&quot;, 10, 100);</div><div class="line">    ctx.strokeText(&quot;天若有情&quot;, 10, 200)</div><div class="line">&#125;</div><div class="line">draw();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ctx;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial'</span>);</div><div class="line">    <span class="keyword">if</span> (!canvas.getContext) <span class="keyword">return</span>;</div><div class="line">    ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    ctx.font = <span class="string">"100px sans-serif"</span></div><div class="line">    ctx.fillText(<span class="string">"天若有情"</span>, <span class="number">10</span>, <span class="number">100</span>);</div><div class="line">    ctx.strokeText(<span class="string">"天若有情"</span>, <span class="number">10</span>, <span class="number">200</span>)</div><div class="line">&#125;</div><div class="line">draw();</div></pre></td></tr></table></figure>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-6/87968030.jpg" alt=""></p>
 <h2 id="给文本添加样式"><a href="#给文本添加样式" class="headerlink" title="给文本添加样式"></a>给文本添加样式</h2><ol>
 <li><p><code>font = value</code></p>
@@ -662,20 +662,20 @@
 </li>
 </ol>
 <h1 id="七、绘制图片"><a href="#七、绘制图片" class="headerlink" title="七、绘制图片"></a>七、绘制图片</h1><p>​ 我们也可以在<code>canvas</code>上直接绘制图片。</p>
-<h2 id="7-1-由零开始创建图片"><a href="#7-1-由零开始创建图片" class="headerlink" title="7.1 由零开始创建图片"></a>7.1 由零开始创建图片</h2><h3 id="创建-lt-img-gt-元素"><a href="#创建-lt-img-gt-元素" class="headerlink" title="创建&lt;img&gt;元素"></a>创建<code>&lt;img&gt;</code>元素</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var img = new Image();   // 创建一个&lt;img&gt;元素</div><div class="line">img.src = &apos;myImage.png&apos;; // 设置图片源地址</div></pre></td></tr></table></figure>
+<h2 id="7-1-由零开始创建图片"><a href="#7-1-由零开始创建图片" class="headerlink" title="7.1 由零开始创建图片"></a>7.1 由零开始创建图片</h2><h3 id="创建-lt-img-gt-元素"><a href="#创建-lt-img-gt-元素" class="headerlink" title="创建&lt;img&gt;元素"></a>创建<code>&lt;img&gt;</code>元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();   <span class="comment">// 创建一个&lt;img&gt;元素</span></div><div class="line">img.src = <span class="string">'myImage.png'</span>; <span class="comment">// 设置图片源地址</span></div></pre></td></tr></table></figure>
 <p>脚本执行后图片开始装载</p>
-<h3 id="绘制img"><a href="#绘制img" class="headerlink" title="绘制img"></a>绘制<code>img</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//参数1：要绘制的img 参数2、3：绘制的img在canvas中的坐标</div><div class="line">ctx.drawImage(img,0,0);</div></pre></td></tr></table></figure>
+<h3 id="绘制img"><a href="#绘制img" class="headerlink" title="绘制img"></a>绘制<code>img</code></h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//参数1：要绘制的img 参数2、3：绘制的img在canvas中的坐标</span></div><div class="line">ctx.drawImage(img,<span class="number">0</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
 <p>注意：</p>
 <p>​ 考虑到图片是从网络加载，如果 <code>drawImage</code> 的时候图片还没有完全加载完成，则什么都不做，个别浏览器会抛异常。所以我们应该保证在 <code>img</code> 绘制完成之后再 <code>drawImage</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var img = new Image();   // 创建img元素</div><div class="line">img.onload = function()&#123;</div><div class="line">  ctx.drawImage(img, 0, 0)</div><div class="line">&#125;</div><div class="line">img.src = &apos;myImage.png&apos;; // 设置图片源地址</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();   <span class="comment">// 创建img元素</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>)</div><div class="line">&#125;</div><div class="line">img.src = <span class="string">'myImage.png'</span>; <span class="comment">// 设置图片源地址</span></div></pre></td></tr></table></figure>
 <h2 id="7-2-绘制-img-标签元素中的图片"><a href="#7-2-绘制-img-标签元素中的图片" class="headerlink" title="7.2 绘制 img 标签元素中的图片"></a>7.2 绘制 <code>img</code> 标签元素中的图片</h2><p>​ <code>img</code> 可以 <code>new</code> 也可以来源于我们页面的 <code>&lt;img&gt;</code>标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;./美女.jpg&quot; alt=&quot;&quot; width=&quot;300&quot;&gt;&lt;br&gt; &lt;canvas id=&quot;tutorial&quot; width=&quot;600&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt; &lt;script type=&quot;text/javascript&quot;&gt; function draw()&#123; var canvas = document.getElementById(&apos;tutorial&apos;); if (!canvas.getContext) return; var ctx = canvas.getContext(&quot;2d&quot;); var img = document.querySelector(&quot;img&quot;); ctx.drawImage(img, 0, 0); &#125; document.querySelector(&quot;img&quot;).onclick = function ()&#123; draw(); &#125; &lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./美女.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span> <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"tutorial"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span> <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"> <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123; <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial'</span>); <span class="keyword">if</span> (!canvas.getContext) <span class="keyword">return</span>; <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>); <span class="keyword">var</span> img = <span class="built_in">document</span>.querySelector(<span class="string">"img"</span>); ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>); &#125; <span class="built_in">document</span>.querySelector(<span class="string">"img"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123; draw(); &#125; </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>第一张图片就是页面中的<code>&lt;img&gt;</code>标签</p>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-6/84133001.jpg" alt=""></p>
 <h2 id="7-3-缩放图片"><a href="#7-3-缩放图片" class="headerlink" title="7.3 缩放图片"></a>7.3 缩放图片</h2><p><code>drawImage()</code> 也可以再添加两个参数：</p>
 <p>​ <code>drawImage(image, x, y, width, height)</code></p>
 <p>​ 这个方法多了2个参数：<code>width</code> 和 <code>height，</code>这两个参数用来控制 当像canvas画入时应该缩放的大小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.drawImage(img, 0, 0, 400, 200)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, <span class="number">400</span>, <span class="number">200</span>)</div></pre></td></tr></table></figure>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-9/14522939.jpg" alt=""></p>
 <h2 id="7-4-切片-slice"><a href="#7-4-切片-slice" class="headerlink" title="7.4 切片(slice)"></a>7.4 切片(<code>slice</code>)</h2><p><code>drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</code></p>
 <p>​ 第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用。</p>
@@ -739,11 +739,11 @@
 <p>​ Horizontal moving.</p>
 <p><code>f (dy)</code></p>
 <p>​ Vertical moving.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var ctx;</div><div class="line">function draw()&#123;</div><div class="line">    var canvas = document.getElementById(&apos;tutorial1&apos;);</div><div class="line">    if (!canvas.getContext) return;</div><div class="line">    var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">    ctx.transform(1, 1, 0, 1, 0, 0);</div><div class="line">    ctx.fillRect(0, 0, 100, 100);</div><div class="line">&#125;</div><div class="line">draw();</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> ctx;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial1'</span>);</div><div class="line">    <span class="keyword">if</span> (!canvas.getContext) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">    ctx.transform(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">&#125;</div><div class="line">draw();</div></pre></td></tr></table></figure>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-10/15535750.jpg" alt=""></p>
 <h1 id="十、合成"><a href="#十、合成" class="headerlink" title="十、合成"></a>十、合成</h1><p>​ 在前面的所有例子中、，我们总是将一个图形画在另一个之上，对于其他更多的情况，仅仅这样是远远不够的。比如，对合成的图形来说，绘制顺序会有限制。不过，我们可以利用 <code>globalCompositeOperation</code> 属性来改变这种状况。</p>
 <p><code>globalCompositeOperation = type</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">    var ctx;</div><div class="line">    function draw()&#123;</div><div class="line">        var canvas = document.getElementById(&apos;tutorial1&apos;);</div><div class="line">        if (!canvas.getContext) return;</div><div class="line">        var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line"></div><div class="line">        ctx.fillStyle = &quot;blue&quot;;</div><div class="line">        ctx.fillRect(0, 0, 200, 200);</div><div class="line"></div><div class="line">        ctx.globalCompositeOperation = &quot;source-over&quot;; //全局合成操作</div><div class="line">        ctx.fillStyle = &quot;red&quot;;</div><div class="line">        ctx.fillRect(100, 100, 200, 200);</div><div class="line">    &#125;</div><div class="line">    draw();</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> ctx;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'tutorial1'</span>);</div><div class="line">        <span class="keyword">if</span> (!canvas.getContext) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line">        ctx.fillStyle = <span class="string">"blue"</span>;</div><div class="line">        ctx.fillRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line"></div><div class="line">        ctx.globalCompositeOperation = <span class="string">"source-over"</span>; <span class="comment">//全局合成操作</span></div><div class="line">        ctx.fillStyle = <span class="string">"red"</span>;</div><div class="line">        ctx.fillRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">    &#125;</div><div class="line">    draw();</div><div class="line"></div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p>注：下面的展示中，蓝色是原有的，红色是新的。</p>
 <p>type `是下面 13 种字符串值之一：</p>
 <h2 id="1-source-over-default"><a href="#1-source-over-default" class="headerlink" title="1. source-over(default)"></a>1. source-over(default)</h2><p>这是默认设置，新图像会覆盖在原有图像。</p>
@@ -809,7 +809,7 @@
 <blockquote>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-10/65211642.jpg" alt=""></p>
 </blockquote>
-<h2 id="案例2：模拟时钟"><a href="#案例2：模拟时钟" class="headerlink" title="案例2：模拟时钟"></a>案例2：模拟时钟</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style&gt; body &#123; padding: 0; margin: 0; background-color: rgba(0, 0, 0, 0.1) &#125; canvas &#123; display: block; margin: 200px auto; &#125; &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;canvas id=&quot;solar&quot; width=&quot;300&quot; height=&quot;300&quot;&gt;&lt;/canvas&gt;</div><div class="line">&lt;script&gt; </div><div class="line">	init(); </div><div class="line">	function init()&#123; </div><div class="line">		let canvas = document.querySelector(&quot;#solar&quot;)</div><div class="line">		; let ctx = canvas.getContext(&quot;2d&quot;); </div><div class="line">		draw(ctx); </div><div class="line">	&#125; </div><div class="line">	function draw(ctx)&#123; </div><div class="line">		requestAnimationFrame(function step()&#123; drawDial(ctx); //绘制表盘 </div><div class="line">		drawAllHands(ctx); //绘制时分秒针 </div><div class="line">		requestAnimationFrame(step); </div><div class="line">		&#125;); </div><div class="line">	&#125; </div><div class="line">	</div><div class="line">	/*绘制时分秒针*/ </div><div class="line">	function drawAllHands(ctx)&#123;</div><div class="line">		 let time = new Date(); let s = time.getSeconds(); </div><div class="line">		 let m = time.getMinutes(); </div><div class="line">		 let h = time.getHours(); </div><div class="line">		 let pi = Math.PI; </div><div class="line">		 let secondAngle = pi / 180 * 6 * s; //计算出来s针的弧度 </div><div class="line">		 let minuteAngle = pi / 180 * 6 * m + secondAngle / 60; //计算出来分针的弧度 </div><div class="line">		 let hourAngle = pi / 180 * 30 * h + minuteAngle / 12; //计算出来时针的弧度 </div><div class="line">		 drawHand(hourAngle, 60, 6, &quot;red&quot;, ctx); //绘制时针       </div><div class="line">		 drawHand(minuteAngle, 106, 4, &quot;green&quot;, ctx); //绘制分针 </div><div class="line">		 drawHand(secondAngle, 129, 2, &quot;blue&quot;, ctx); //绘制秒针 </div><div class="line">	 &#125; </div><div class="line">	 /*绘制时针、或分针、或秒针 * </div><div class="line">	 参数1：要绘制的针的角度 * </div><div class="line">	 参数2：要绘制的针的长度 * </div><div class="line">	 参数3：要绘制的针的宽度 * </div><div class="line">	 参数4：要绘制的针的颜色 * </div><div class="line">	 参数4：ctx * */ </div><div class="line">	</div><div class="line">	function drawHand(angle, len, width, color, ctx)&#123; </div><div class="line">		ctx.save(); ctx.translate(150, 150); //把坐标轴的远点平移到原来的中心 </div><div class="line">		ctx.rotate(-Math.PI / 2 + angle); //旋转坐标轴。 x轴就是针的角度 </div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.moveTo(-4, 0); </div><div class="line">		ctx.lineTo(len, 0); // 沿着x轴绘制针 </div><div class="line">		ctx.lineWidth = width; </div><div class="line">		ctx.strokeStyle = color; </div><div class="line">		ctx.lineCap = &quot;round&quot;; </div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		ctx.restore(); </div><div class="line">	&#125; /*绘制表盘*/ </div><div class="line">	</div><div class="line">	function drawDial(ctx)&#123; </div><div class="line">		let pi = Math.PI; </div><div class="line">		ctx.clearRect(0, 0, 300, 300); //清除所有内容 </div><div class="line">		ctx.save(); </div><div class="line">		ctx.translate(150, 150); //一定坐标原点到原来的中心 </div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周 </div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		for (let i = 0; i &lt; 60; i++)&#123;//绘制刻度。 ctx.save(); </div><div class="line">		ctx.rotate(-pi / 2 + i * pi / 30); //旋转坐标轴。坐标轴x的正方形从 向上开始算起 </div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.moveTo(110, 0);</div><div class="line">		ctx.lineTo(140, 0);</div><div class="line">		ctx.lineWidth = i % 5 ? 2 : 4; </div><div class="line">		ctx.strokeStyle = i % 5 ? &quot;blue&quot; : &quot;red&quot;; </div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		ctx.restore(); </div><div class="line">	&#125; </div><div class="line">	ctx.restore(); </div><div class="line">&#125; </div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="案例2：模拟时钟"><a href="#案例2：模拟时钟" class="headerlink" title="案例2：模拟时钟"></a>案例2：模拟时钟</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"> <span class="selector-tag">body</span> &#123; <span class="attribute">padding</span>: <span class="number">0</span>; <span class="attribute">margin</span>: <span class="number">0</span>; <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0.1) &#125; <span class="selector-tag">canvas</span> &#123; <span class="attribute">display</span>: block; <span class="attribute">margin</span>: <span class="number">200px</span> auto; &#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"solar"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"> </span></div><div class="line">	init(); </div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123; </div><div class="line">		<span class="keyword">let</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">"#solar"</span>)</div><div class="line">		; <span class="keyword">let</span> ctx = canvas.getContext(<span class="string">"2d"</span>); </div><div class="line">		draw(ctx); </div><div class="line">	&#125; </div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params">ctx</span>)</span>&#123; </div><div class="line">		requestAnimationFrame(<span class="function"><span class="keyword">function</span> <span class="title">step</span>(<span class="params"></span>)</span>&#123; drawDial(ctx); <span class="comment">//绘制表盘 </span></div><div class="line">		drawAllHands(ctx); <span class="comment">//绘制时分秒针 </span></div><div class="line">		requestAnimationFrame(step); </div><div class="line">		&#125;); </div><div class="line">	&#125; </div><div class="line">	</div><div class="line">	<span class="comment">/*绘制时分秒针*/</span> </div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">drawAllHands</span>(<span class="params">ctx</span>)</span>&#123;</div><div class="line">		 <span class="keyword">let</span> time = <span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="keyword">let</span> s = time.getSeconds(); </div><div class="line">		 <span class="keyword">let</span> m = time.getMinutes(); </div><div class="line">		 <span class="keyword">let</span> h = time.getHours(); </div><div class="line">		 <span class="keyword">let</span> pi = <span class="built_in">Math</span>.PI; </div><div class="line">		 <span class="keyword">let</span> secondAngle = pi / <span class="number">180</span> * <span class="number">6</span> * s; <span class="comment">//计算出来s针的弧度 </span></div><div class="line">		 <span class="keyword">let</span> minuteAngle = pi / <span class="number">180</span> * <span class="number">6</span> * m + secondAngle / <span class="number">60</span>; <span class="comment">//计算出来分针的弧度 </span></div><div class="line">		 <span class="keyword">let</span> hourAngle = pi / <span class="number">180</span> * <span class="number">30</span> * h + minuteAngle / <span class="number">12</span>; <span class="comment">//计算出来时针的弧度 </span></div><div class="line">		 drawHand(hourAngle, <span class="number">60</span>, <span class="number">6</span>, <span class="string">"red"</span>, ctx); <span class="comment">//绘制时针       </span></div><div class="line">		 drawHand(minuteAngle, <span class="number">106</span>, <span class="number">4</span>, <span class="string">"green"</span>, ctx); <span class="comment">//绘制分针 </span></div><div class="line">		 drawHand(secondAngle, <span class="number">129</span>, <span class="number">2</span>, <span class="string">"blue"</span>, ctx); <span class="comment">//绘制秒针 </span></div><div class="line">	 &#125; </div><div class="line">	 <span class="comment">/*绘制时针、或分针、或秒针 * </span></div><div class="line">	 参数1：要绘制的针的角度 * </div><div class="line">	 参数2：要绘制的针的长度 * </div><div class="line">	 参数3：要绘制的针的宽度 * </div><div class="line">	 参数4：要绘制的针的颜色 * </div><div class="line">	 参数4：ctx * */ </div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">drawHand</span>(<span class="params">angle, len, width, color, ctx</span>)</span>&#123; </div><div class="line">		ctx.save(); ctx.translate(<span class="number">150</span>, <span class="number">150</span>); <span class="comment">//把坐标轴的远点平移到原来的中心 </span></div><div class="line">		ctx.rotate(-<span class="built_in">Math</span>.PI / <span class="number">2</span> + angle); <span class="comment">//旋转坐标轴。 x轴就是针的角度 </span></div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.moveTo(<span class="number">-4</span>, <span class="number">0</span>); </div><div class="line">		ctx.lineTo(len, <span class="number">0</span>); <span class="comment">// 沿着x轴绘制针 </span></div><div class="line">		ctx.lineWidth = width; </div><div class="line">		ctx.strokeStyle = color; </div><div class="line">		ctx.lineCap = <span class="string">"round"</span>; </div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		ctx.restore(); </div><div class="line">	&#125; <span class="comment">/*绘制表盘*/</span> </div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">drawDial</span>(<span class="params">ctx</span>)</span>&#123; </div><div class="line">		<span class="keyword">let</span> pi = <span class="built_in">Math</span>.PI; </div><div class="line">		ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>, <span class="number">300</span>); <span class="comment">//清除所有内容 </span></div><div class="line">		ctx.save(); </div><div class="line">		ctx.translate(<span class="number">150</span>, <span class="number">150</span>); <span class="comment">//一定坐标原点到原来的中心 </span></div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.arc(<span class="number">0</span>, <span class="number">0</span>, <span class="number">148</span>, <span class="number">0</span>, <span class="number">2</span> * pi); <span class="comment">//绘制圆周 </span></div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span>; i++)&#123;<span class="comment">//绘制刻度。 ctx.save(); </span></div><div class="line">		ctx.rotate(-pi / <span class="number">2</span> + i * pi / <span class="number">30</span>); <span class="comment">//旋转坐标轴。坐标轴x的正方形从 向上开始算起 </span></div><div class="line">		ctx.beginPath(); </div><div class="line">		ctx.moveTo(<span class="number">110</span>, <span class="number">0</span>);</div><div class="line">		ctx.lineTo(<span class="number">140</span>, <span class="number">0</span>);</div><div class="line">		ctx.lineWidth = i % <span class="number">5</span> ? <span class="number">2</span> : <span class="number">4</span>; </div><div class="line">		ctx.strokeStyle = i % <span class="number">5</span> ? <span class="string">"blue"</span> : <span class="string">"red"</span>; </div><div class="line">		ctx.stroke(); </div><div class="line">		ctx.closePath(); </div><div class="line">		ctx.restore(); </div><div class="line">	&#125; </div><div class="line">	ctx.restore(); </div><div class="line">&#125; </div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p><img src="http://o7cqr8cfk.bkt.clouddn.com/17-6-10/61345876.jpg" alt=""></p>
 </blockquote>
@@ -1334,6 +1334,247 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Git常用命令]]></title>
+      <url>/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
+<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><a id="more"></a>
+<p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
+<p>查看远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote -v</div></pre></td></tr></table></figure></p>
+<p>添加远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add [name] [url]</div></pre></td></tr></table></figure></p>
+<p>删除远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm [name]</div></pre></td></tr></table></figure></p>
+<p>修改远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure>
+<p>拉取远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
+<p>推送远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
+<p><strong>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:master // 提交本地<span class="built_in">test</span>分支作为远程的master分支</div><div class="line"></div><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:<span class="built_in">test</span>  // 提交本地<span class="built_in">test</span>分支作为远程的<span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
+<h3 id="分支-branch-操作相关命令"><a href="#分支-branch-操作相关命令" class="headerlink" title="分支(branch)操作相关命令"></a><strong>分支(branch)操作相关命令</strong></h3><p>查看本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure></p>
+<p>查看远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure></p>
+<p>创建本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [name] //----注意新分支创建后不会自动切换为当前分支</div></pre></td></tr></table></figure></p>
+<p>切换分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [name]</div></pre></td></tr></table></figure></p>
+<p>创建新分支并立即切换到新分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b [name]</div></pre></td></tr></table></figure></p>
+<p>删除分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git branch -d [name] </div><div class="line"></div><div class="line">// -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</div><div class="line"> </div><div class="line">$ git merge [name] //----将名称为[name]的分支与当前分支合并</div></pre></td></tr></table></figure></p>
+<p>创建远程分支(本地分支push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
+<p>删除远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :heads/[name] 或 $ gitpush origin :[name]</div></pre></td></tr></table></figure></p>
+<p><strong>创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> symbolic-ref HEAD refs/heads/[name]</div><div class="line"><span class="variable">$rm</span> .git/index</div><div class="line"><span class="variable">$git</span> clean -fdx</div></pre></td></tr></table></figure>
+<h2 id="版本-tag-操作相关命令"><a href="#版本-tag-操作相关命令" class="headerlink" title="版本(tag)操作相关命令"></a><strong>版本(tag)操作相关命令</strong></h2><p>查看版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag</div></pre></td></tr></table></figure></p>
+<p>创建版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag [name]</div></pre></td></tr></table></figure></p>
+<p>删除版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -d [name]</div></pre></td></tr></table></figure></p>
+<p>查看远程版本：$ git tag -r<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -r</div></pre></td></tr></table></figure></p>
+<p>创建远程版本(本地版本push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
+<p>删除远程版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :refs/tags/[name]</div></pre></td></tr></table></figure></p>
+<p>合并远程仓库的tag到本地：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin --tags</div></pre></td></tr></table></figure></p>
+<p>上传本地tag到远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin --tags</div></pre></td></tr></table></figure></p>
+<p>创建带注释的tag：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -a [name] -m <span class="string">'yourMessage'</span></div></pre></td></tr></table></figure></p>
+<h2 id="子模块-submodule-相关操作命令"><a href="#子模块-submodule-相关操作命令" class="headerlink" title="子模块(submodule)相关操作命令"></a><strong>子模块(submodule)相关操作命令</strong></h2><p>添加子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule add [url] [path]</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs</div></pre></td></tr></table></figure></p>
+<p>初始化子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule init  //----只在首次检出仓库时运行一次就行</div></pre></td></tr></table></figure></p>
+<p>更新子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule update //----每次更新或切换分支后都需要运行一下</div></pre></td></tr></table></figure></p>
+<p>删除子模块：（分4步走哦）</p>
+<blockquote>
+<p>$ git rm –cached [path]<br>  编辑“.gitmodules”文件，将子模块的相关配置节点删除掉<br>  编辑“ .git/config”文件，将子模块的相关配置节点删除掉<br>  手动删除子模块残留的目录</p>
+</blockquote>
+<h2 id="忽略一些文件、文件夹不提交"><a href="#忽略一些文件、文件夹不提交" class="headerlink" title="忽略一些文件、文件夹不提交"></a><strong>忽略一些文件、文件夹不提交</strong></h2><p>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target<br>bin<br>*.db</p>
+<hr>
+<p><strong>Git 常用命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">git branch 查看本地所有分支</div><div class="line">git status 查看当前状态 </div><div class="line">git commit 提交 </div><div class="line">git branch -a 查看所有的分支</div><div class="line">git branch -r 查看本地所有分支</div><div class="line">git commit -am <span class="string">"init"</span> 提交并且加注释 </div><div class="line">git remote add origin git@192.168.1.119:ndshow</div><div class="line">git push origin master 将文件给推到服务器上 </div><div class="line">git remote show origin 显示远程库origin里的资源 </div><div class="line">git push origin master:develop</div><div class="line">git push origin master:hb-dev 将本地库与服务器上的库进行关联 </div><div class="line">git checkout --track origin/dev 切换到远程dev分支</div><div class="line">git branch -D master develop 删除本地库develop</div><div class="line">git checkout -b dev 建立一个新的本地分支dev</div><div class="line">git merge origin/dev 将分支dev与当前分支进行合并</div><div class="line">git checkout dev 切换到本地dev分支</div><div class="line">git remote show 查看远程库</div><div class="line">git add .</div><div class="line">git rm 文件名(包括路径) 从git中删除指定文件</div><div class="line">git <span class="built_in">clone</span> git://github.com/schacon/grit.git 从服务器上将代码给拉下来</div><div class="line">git config --list 看所有用户</div><div class="line">git ls-files 看已经被提交的</div><div class="line">git rm [file name] 删除一个文件</div><div class="line">git commit -a 提交当前repos的所有的改变</div><div class="line">git add [file name] 添加一个文件到git index</div><div class="line">git commit -v 当你用－v参数的时候可以看commit的差异</div><div class="line">git commit -m <span class="string">"This is the message describing the commit"</span> 添加commit信息</div><div class="line">git commit -a -a是代表add，把所有的change加到git index里然后再commit</div><div class="line">git commit -a -v 一般提交命令</div><div class="line">git <span class="built_in">log</span> 看你commit的日志</div><div class="line">git diff 查看尚未暂存的更新</div><div class="line">git rm a.a 移除文件(从暂存区和工作区中删除)</div><div class="line">git rm --cached a.a 移除文件(只从暂存区中删除)</div><div class="line">git commit -m <span class="string">"remove"</span> 移除文件(从Git中删除)</div><div class="line">git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)</div><div class="line">git diff --cached 或 $ git diff --staged 查看尚未提交的更新</div><div class="line">git stash push 将文件给push到一个临时空间中</div><div class="line">git stash pop 将文件从临时空间pop下来</div><div class="line"></div><div class="line">git remote add origin git@github.com:username/Hello-World.git</div><div class="line">git push origin master 将本地项目给提交到服务器中</div><div class="line"></div><div class="line">git pull 本地与服务器端同步</div><div class="line"></div><div class="line">git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。</div><div class="line">git push origin serverfix:awesomebranch</div><div class="line"></div><div class="line">git fetch 相当于是从远程获取最新版本到本地，不会自动merge</div><div class="line">git commit -a -m <span class="string">"log_message"</span> (-a是提交所有改动，-m是加入<span class="built_in">log</span>信息) 本地修改同步至服务器端 ：</div><div class="line">git branch branch_0.1 master 从主分支master创建branch_0.1分支</div><div class="line">git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0</div><div class="line">git checkout branch_1.0/master 切换到branch_1.0/master分支</div><div class="line">du -hs</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习整理 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Git常用命令]]></title>
+      <url>/2017/06/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a><center><a href="http://wangzeqi.website"><strong>Linux常用命令</strong></a></center></h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a><strong>列出目录内容</strong></h2><p>ls -a：显示所有文件（包括隐藏文件）；</p>
+<p>ls -l：显示详细信息；</p>
+<p>ls -R：递归显示子目录结构；</p>
+<p>ls -ld：显示目录和链接信息；</p>
+<p>ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）；</p>
+<p><a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">Linux</a>中以.开头的文件是隐藏文件；</p>
+<p>pwd:显示当前目录<br><a id="more"></a></p>
+<h2 id="查看文件的类型"><a href="#查看文件的类型" class="headerlink" title="查看文件的类型"></a><strong>查看文件的类型</strong></h2><p>file:查看文件的类型</p>
+<h2 id="复制文件目录"><a href="#复制文件目录" class="headerlink" title="复制文件目录"></a><strong>复制文件目录</strong></h2><h3 id="cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）"><a href="#cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）" class="headerlink" title="cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）"></a>cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）</h3><p>常用参数：-r:递归复制整个目录树；-v：显示详细信息；</p>
+<p>复制文件夹时要在cp命令后面加一个-r参数：</p>
+<p>如：cp -r 源文件夹 目标文件夹</p>
+<h3 id="touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"><a href="#touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。" class="headerlink" title="touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"></a>touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。</h3><p>功能：生成一个空文件或修改文件的存取/修改的时间记录值。</p>
+<p>touch * ：将当前下的文件时间修改为系统的当前时间</p>
+<p>touch -d 20040210 test：将test文件的日期改为20040210</p>
+<p>touch abc　：若abc文件存在，则修改为系统的当前时间；若不存在，则生成一个为当前时间的空文件</p>
+<h3 id="mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"><a href="#mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。" class="headerlink" title="mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"></a>mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。</h3><p>格式为：mv [参数]&lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
+<p>mva.txt ../：将a.txt文件移动上层目录</p>
+<p>mva.txtb.txt：将a.txt改名为b.txt</p>
+<p>mvdir2 ../：将dir2目录上移一层</p>
+<h3 id="rm：删除文件；"><a href="#rm：删除文件；" class="headerlink" title="rm：删除文件；"></a>rm：删除文件；</h3><p>常用参数：-i：交互式 -r：递归的删除包括目录中的所有内容</p>
+<h3 id="mkdir-文件夹名称：创建文件夹；"><a href="#mkdir-文件夹名称：创建文件夹；" class="headerlink" title="mkdir +文件夹名称：创建文件夹；"></a>mkdir +文件夹名称：创建文件夹；</h3><h3 id="rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"><a href="#rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）" class="headerlink" title="rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"></a>rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）</h3><p>rmdir 文件夹名称：删除文件夹（只能删除空文件夹）</p>
+<h3 id="mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）"><a href="#mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）" class="headerlink" title="mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）"></a>mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）</h3><h3 id="rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"><a href="#rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它" class="headerlink" title="rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"></a>rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它</h3><h3 id="rm-：删除当前目录下的所有文件"><a href="#rm-：删除当前目录下的所有文件" class="headerlink" title="rm * ：删除当前目录下的所有文件"></a>rm * ：删除当前目录下的所有文件</h3><h3 id="f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件"><a href="#f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件" class="headerlink" title="-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件"></a>-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件</h3><p>1### -i参数：删除文件时询问</p>
+<p>rm　-i * ：删除当前目录下的所有文件会有如下提示：</p>
+<p>rm:backup:is a directory　　　 遇到目录会略过</p>
+<p>rm: remove ‘myfiles.txt’ ? Y</p>
+<p>删除文件时会询问,可按Y或N键表示允许或拒绝删除文件　</p>
+<p>1### -r参数：递归删除（连子目录一同删除，这是一个相当常用的参数）</p>
+<p>rm -rtest ：删除test目录（含test目录下所有文件和子目录）</p>
+<p>rm -r *：删除所有文件（含当前目录所有文件、所有子目录和子目录下的文件） 一般在删除目录时r和f一起用，避免麻烦</p>
+<p>rm -rftest ：强行删除、不加询问</p>
+<p>1### grep：功能：在文件中搜索匹配的字符并进行输出</p>
+<p>格式：grep[参数] &lt;要找的字串&gt; &lt;要寻找字 串的源文件&gt;</p>
+<p>greplinux test.txt：搜索test.txt文件中字符串<a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">linux</a>并输出</p>
+<p>1### ln命令</p>
+<p>功能：在文件和目录之间建立链接</p>
+<p>格式：ln [参数] &lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
+<p>链接分“软链接”和“硬链接”</p>
+<h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接:"></a>软链接:</h4><p>ln-s /usr/share/do doc ：创建一个链接文件doc,并指向目录/usr/share/do</p>
+<h4 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接:"></a>硬链接:</h4><p>ln /usr/share/test hard：创建一个硬链接文件hard，这时对于test文件对应 的存储区域来说，又多了一个文件指向它</p>
+<h2 id="系统常用命令"><a href="#系统常用命令" class="headerlink" title="系统常用命令"></a><strong>系统常用命令</strong></h2><h3 id="显示命令"><a href="#显示命令" class="headerlink" title="显示命令"></a>显示命令</h3><p>date:查看或设置当前系统的时间：格式化显示时间：+%Y–%m–%d；</p>
+<p>date -s:设置当前系统的时间</p>
+<p>hwclock(clock)：显示硬件时钟时间(需要管理员权限)；</p>
+<p>cal：查看日历</p>
+<p>格式cal [参数] 月年</p>
+<p>cal：显示当月的日历 cal4 2004 ：显示2004年4月的日历</p>
+<p>cal- y 2003： 显示2003年的日历</p>
+<p>uptime：查看系统运行时间</p>
+<h3 id="输出查看命令"><a href="#输出查看命令" class="headerlink" title="输出查看命令"></a>输出查看命令</h3><p>echo：显示输入的内容 追加文件echo “liuyazhuang” &gt;&gt; liuyazhuang.txt</p>
+<p>cat：显示文件内容,也可以将数个文件合并成一个文件。</p>
+<p>格式：格式：cat[参数]&lt;文件名&gt;</p>
+<p>cat test.txt：显示test.txt文件内容</p>
+<p>cat test.txt| more ：逐页显示test.txt文件中的内容</p>
+<p>cat test.txt&gt;&gt; test####  txt ：将test.txt的内容附加到test####  txt文件之后</p>
+<p>cat test.txttest####  txt &gt;readme.txt　: 将test.txt和test####  txt文件合并成readme.txt 文件</p>
+<p>head:显示文件的头几行（默认10行） -n:指定显示的行数格式：head -n 文件名</p>
+<p>tail：显示文件的末尾几行（默认10行）-n：指定显示的行数 -f：追踪显示文件更新 （一般用于查看日志，命令不会退出，而是持续显示新加入的内容）</p>
+<p>格式：格式：tail[参数]&lt;文件名&gt;</p>
+<p>tail-10 /etc/passwd ：显示/etc/passwd/文件的倒数10行内容</p>
+<p>tail+10 /etc/passwd ：显示/etc/passwd/文件从第10行开始到末尾的内容</p>
+<p>more：用于翻页显示文件内容（只能向下翻页）</p>
+<p>more命令是一般用于要显示的内容会超过一个画面长度的情况。为了避免画 面显示时瞬间就闪过去，用户可以使用more命令，让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。</p>
+<p>ls -al |more：以长格形式显示etc目录下的文件列表，显示满一个画面便暂停，可 按空格键继续显示下一画面，或按Q键跳离</p>
+<p>less：翻页显示文件内容（带上下翻页）按下上键分页，按q退出、‘</p>
+<p>less命令的用法与more命令类似，也可以用来浏览超过一页的文件。所不同 的是less 命令除了可以按空格键向下显示文件外，还可以利用上下键来卷动文件。 当要结束浏览时，只要在less命令的提示符“：”下按Q键即可。</p>
+<p>ls -al | less：以长格形式列出/etc目录中所有的内容。用户可按上下键浏览或按Q键跳离</p>
+<h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><p>Ispci：查看PCI设备 -v：查看详细信息</p>
+<p>Isusb：查看USB设备 -v：查看详细信息</p>
+<p>Ismod：查看加载的模块(驱动)</p>
+<h3 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a>关机、重启</h3><p>shutdown关闭、重启计算机</p>
+<p>shutdown[关机、重启]时间 -h关闭计算机 -r：重启计算机</p>
+<p>如：立即关机： shutdown -h now</p>
+<p>10分钟后关机：shutdown -h +10</p>
+<p>23:30分关机：shutdown -h 23:30</p>
+<p>立即重启： shutdown -r now</p>
+<p>poweroff：立即关闭计算机</p>
+<p>reboot：立即重启计算机</p>
+<h3 id="归档、压缩"><a href="#归档、压缩" class="headerlink" title="归档、压缩"></a>归档、压缩</h3><p>zip:压缩文件 zip liuyazhuang.zip myfile 格式为：“zip 压缩后的zip文件文件名”</p>
+<p>unzip：解压文件 unzip liuyazhuang.zip</p>
+<p>gzip：压缩文件 gzip 文件名</p>
+<p>tar：归档文件</p>
+<p>tar -cvf out.tar liuyazhuang 打包一个归档（将文件”liuyazhuang”打包成一个归档）</p>
+<p>tar -xvf liuyazhuang.tar 释放一个归档（释放liuyazhuang.tar归档）</p>
+<p>tar -cvzf backup.tar.gz/etc</p>
+<p>-z参数将归档后的归档文件进行gzip压缩以减少大小。</p>
+<p>-c：创建一个新tar文件</p>
+<p>-v：显示运行过程的信息</p>
+<p>-f：指定文件名</p>
+<p>-z：调用gzip压缩命令进行压缩</p>
+<p>-t：查看压缩文件的内容</p>
+<p>-x：解开tar文件</p>
+<p>tar -cvftest.tar *：将所有文件打包成test.tar,扩展名.tar需自行加上</p>
+<p>tar -zcvftest.tar.gz *：将所有文件打包成test.tar,再用gzip命令压缩</p>
+<p>tar-tf test.tar ：查看test.tar文件中包括了哪些文件</p>
+<p>tar-xvf test.tar 将test.tar解开</p>
+<p>tar-zxvf foo.tar.gz 解压缩</p>
+<p>gzip各gunzip命令</p>
+<p>gziptest.txt ：压缩文件时，不需要任何参数</p>
+<p>gizp-l test.txt.gz：显示压缩率</p>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>locate：快速查找文件、文件夹： locate keyword</p>
+<p>此命令需要预先建立<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="external">数据库</a>，数据库默认每天更新一次，可用updatedb命令手工建立、更新数据库。</p>
+<p>find查找位置查找参数</p>
+<p>如：</p>
+<p>find . -name <em>liuyazhuang</em> 查找当前目录下名称中含有”liuyazhuang”的文件</p>
+<p>find / -name *.conf 查找根目录下（整个硬盘）下后缀为.conf的文件</p>
+<p>find / -perm 777 查找所有权限是777的文件</p>
+<p>find / -type d 返回根目录下所有的目录</p>
+<p>find . -name “a*”-exec ls -l {} \;</p>
+<p>find功能：用来寻找文件或目录。</p>
+<p>格式：find [&lt;路径&gt;] [匹配条件]</p>
+<p>find / -name httpd.conf 搜索系统根目录下名为httpd.conf的文件</p>
+<h3 id="ctrl-c-终止当前的命令"><a href="#ctrl-c-终止当前的命令" class="headerlink" title="ctrl+c :终止当前的命令"></a>ctrl+c :终止当前的命令</h3><h3 id="who或w命令"><a href="#who或w命令" class="headerlink" title="who或w命令"></a>who或w命令</h3><p>功能：查看当前系统中有哪些用户登录</p>
+<p>格式：who/w[参数]</p>
+<h3 id="dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"><a href="#dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息" class="headerlink" title="dmesg命令 功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"></a>dmesg命令 功能：显示系统诊断信息、<a href="http://lib.csdn.net/base/operatingsystem" title="操作系统知识库" target="_blank" rel="external">操作系统</a>版本号、物理内存的大小以及其它信息</h3><h3 id="df命令-功能：用于查看文件系统的各个分区的占用情况"><a href="#df命令-功能：用于查看文件系统的各个分区的占用情况" class="headerlink" title="df命令 功能：用于查看文件系统的各个分区的占用情况"></a>df命令 功能：用于查看文件系统的各个分区的占用情况</h3><p>1### du命令</p>
+<p>功能：查看某个目录中各级子目录所使用的硬盘空间数</p>
+<p>格式：du [参数] &lt;目录名&gt;</p>
+<p>1### free命令</p>
+<p>功能：用于查看系统内存，虚拟内存（交换空间）的大小占用情况</p>
+<h2 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a><strong>VIM</strong></h2><p>VIM是一款功能强大的命令行文本编辑器，在Linux中通过vim命令可以启动vim编辑器。</p>
+<p>一般使用vim + 目标文件路径 的形式使用vim</p>
+<p>如果目标文件存在，则vim打开目标文件，如果目标文件不存在，则vim新建并打开该文件</p>
+<p>:q：退出vim编辑器</p>
+<p>VIM模式</p>
+<p>vim拥有三种模式</p>
+<p>（1）命令模式（常规模式）</p>
+<p>vim启动后，默认进入命令模式，任何模式都可以通过esc键回到命令模式（可以多按几次），命令模式下可以键入不同的命令完成选择、复制、粘贴、撤销等操作。</p>
+<p>命名模式常用命令如下：</p>
+<p>i : 在光标前插入文本；</p>
+<p>o:在当前行的下面插入新行；</p>
+<p>dd:删除整行；</p>
+<p>yy：将当前行的内容放入缓冲区（复制当前行）</p>
+<p>n+yy :将n行的内容放入缓冲区（复制n行）</p>
+<p>p:将缓冲区中的文本放入光标后（粘贴）</p>
+<p>u：撤销上一个操作</p>
+<p>r:替换当前字符</p>
+<p>/ 查找关键字</p>
+<p>（2）插入模式</p>
+<p>在命令模式下按 “ i “键，即可进入插入模式，在插入模式可以输入编辑文本内容，使用esc键可以返回命令模式。</p>
+<p>（3）ex模式</p>
+<p>在命令模式中按” : “键可以进入ex模式，光标会移动到底部，在这里可以保存修改或退出vim.</p>
+<p>ext模式常用命令如下：</p>
+<p>:w ：保存当前的修改</p>
+<p>:q ：退出</p>
+<p>:q! ：强制退出，保存修改</p>
+<p>:x :保存并退出，相当于:wq</p>
+<p>:set number 显示行号</p>
+<p>:! 系统命令 执行一个系统命令并显示结果</p>
+<p>:sh ：切换到命令行，使用ctrl+d切换回vim</p>
+<h2 id="软件包管理命令-RPM"><a href="#软件包管理命令-RPM" class="headerlink" title="软件包管理命令(RPM)"></a><strong>软件包管理命令(RPM)</strong></h2><h3 id="软件包的安装"><a href="#软件包的安装" class="headerlink" title="软件包的安装"></a>软件包的安装</h3><p>使用RPM命令的安装模式可以将软件包内所有的组件放到系统中的正确路径，安装软件包的命令是:rpm-ivhwu-ftpd-####  6.2-8.i386.rpm</p>
+<p>i：作用rpm的安装模式 v: 校验文件信息h: 以＃号显示安装进度</p>
+<h3 id="软件包的删除"><a href="#软件包的删除" class="headerlink" title="软件包的删除"></a>软件包的删除</h3><p>删除模式会将指定软件包的内容全部删除，但并不包括已更改过的配置文件，删除RPM软件包的命令如下：rpm -e wu-ftpd</p>
+<p>注意：这里必须使用软件名“wu-ftpd”或”wu-ftpd-####  6.2-8而不是使用当初安装时的软件包名.wu-ftpd-####  6.2-8.i386.rpm</p>
+<h3 id="软件包升级"><a href="#软件包升级" class="headerlink" title="软件包升级"></a>软件包升级</h3><p>升级模式会安装用户所指定的更新版本，并删除已安装在系统中的相同软件包，升级软件包命令如下：rpm-Uvhwu-ftpd-####  6.2-8.i386.rpm -Uvh：升级参数</p>
+<h3 id="软件包更新"><a href="#软件包更新" class="headerlink" title="软件包更新"></a>软件包更新</h3><p>更新模式下，rpm命令会检查在命令行中所指定的软件包是否比系统中原有的软件 包更新。如果情况属实，rpm命令会自动更新指定的软件包；反之，若系统中并没有指定软件包的较旧版本，rpm命令并不会安装此软件包。而在升级模式下，不管系统中是否有较旧的版本，rpm命令都会安装指定的软件包。</p>
+<p>rpm-Fvhwu-ftpd-####  6.2-8.i386.rpm -Fvh：更新参数</p>
+<h3 id="软件包查询"><a href="#软件包查询" class="headerlink" title="软件包查询"></a>软件包查询</h3><p>若要获取RPM软件包的相关信息，可以使用查询模式。使用-q参数可查询一个已 安装的软件包的内容</p>
+<p>rpm -qwu-ftpd</p>
+<p>查询软件包所安装的位置：rpm -ql package-name</p>
+<p>rpm -ql xv (l参数：显示文件列表)</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 学习积累 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[java23种设计模式]]></title>
       <url>/2017/06/29/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="java23种设计模式（Design-Patterns）"><a href="#java23种设计模式（Design-Patterns）" class="headerlink" title="java23种设计模式（Design Patterns）"></a><strong><center>java23种设计模式（Design Patterns）</center></strong></h1><blockquote>
@@ -1562,247 +1803,6 @@
             <tag> Java </tag>
             
             <tag> 设计模式 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Git常用命令]]></title>
-      <url>/2017/06/29/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a><center><a href="http://wangzeqi.website"><strong>Linux常用命令</strong></a></center></h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a><strong>列出目录内容</strong></h2><p>ls -a：显示所有文件（包括隐藏文件）；</p>
-<p>ls -l：显示详细信息；</p>
-<p>ls -R：递归显示子目录结构；</p>
-<p>ls -ld：显示目录和链接信息；</p>
-<p>ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）；</p>
-<p><a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">Linux</a>中以.开头的文件是隐藏文件；</p>
-<p>pwd:显示当前目录<br><a id="more"></a></p>
-<h2 id="查看文件的类型"><a href="#查看文件的类型" class="headerlink" title="查看文件的类型"></a><strong>查看文件的类型</strong></h2><p>file:查看文件的类型</p>
-<h2 id="复制文件目录"><a href="#复制文件目录" class="headerlink" title="复制文件目录"></a><strong>复制文件目录</strong></h2><h3 id="cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）"><a href="#cp：复制文件和目录-cp源文件（文件夹）目标文件（文件夹）" class="headerlink" title="cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）"></a>cp：复制文件和目录 cp源文件（文件夹）目标文件（文件夹）</h3><p>常用参数：-r:递归复制整个目录树；-v：显示详细信息；</p>
-<p>复制文件夹时要在cp命令后面加一个-r参数：</p>
-<p>如：cp -r 源文件夹 目标文件夹</p>
-<h3 id="touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"><a href="#touch-文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。" class="headerlink" title="touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。"></a>touch+文件名：当文件不存在的时候，创建相应的文件；当文件存在的时候，修改文件的创建时间。</h3><p>功能：生成一个空文件或修改文件的存取/修改的时间记录值。</p>
-<p>touch * ：将当前下的文件时间修改为系统的当前时间</p>
-<p>touch -d 20040210 test：将test文件的日期改为20040210</p>
-<p>touch abc　：若abc文件存在，则修改为系统的当前时间；若不存在，则生成一个为当前时间的空文件</p>
-<h3 id="mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"><a href="#mv-文件-目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。" class="headerlink" title="mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。"></a>mv 文件 目标目录：移动或重命名文件或目录（如果指定文件名，则可以重命名文件）。可以将文件及目录移到另一目录下，或更改文件及目录的名称。</h3><p>格式为：mv [参数]&lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
-<p>mva.txt ../：将a.txt文件移动上层目录</p>
-<p>mva.txtb.txt：将a.txt改名为b.txt</p>
-<p>mvdir2 ../：将dir2目录上移一层</p>
-<h3 id="rm：删除文件；"><a href="#rm：删除文件；" class="headerlink" title="rm：删除文件；"></a>rm：删除文件；</h3><p>常用参数：-i：交互式 -r：递归的删除包括目录中的所有内容</p>
-<h3 id="mkdir-文件夹名称：创建文件夹；"><a href="#mkdir-文件夹名称：创建文件夹；" class="headerlink" title="mkdir +文件夹名称：创建文件夹；"></a>mkdir +文件夹名称：创建文件夹；</h3><h3 id="rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"><a href="#rm-r-文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）" class="headerlink" title="rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）"></a>rm -r +文件夹名称：删除文件夹（空文件夹和非空文件夹都可删除）</h3><p>rmdir 文件夹名称：删除文件夹（只能删除空文件夹）</p>
-<h3 id="mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）"><a href="#mkdir-p-dir1-dir2-：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录，-也就是连续创建两个目录（dir1-和dir1-dir2）" class="headerlink" title="mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）"></a>mkdir -p dir1/dir2 ：在当前目录下创建dir1目录，并在dir1目录下创建dir2目录， 也就是连续创建两个目录（dir1/和dir1/dir2）</h3><h3 id="rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"><a href="#rmdir-p-dir1-dir2：删除dir1下的dir2目录，若dir1目录为空也删除它" class="headerlink" title="rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它"></a>rmdir -p dir1/dir2：删除dir1下的dir2目录，若dir1目录为空也删除它</h3><h3 id="rm-：删除当前目录下的所有文件"><a href="#rm-：删除当前目录下的所有文件" class="headerlink" title="rm * ：删除当前目录下的所有文件"></a>rm * ：删除当前目录下的所有文件</h3><h3 id="f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件"><a href="#f参数：强迫删除文件-rm-f-txt：强迫删除所有以后缀名为txt文件" class="headerlink" title="-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件"></a>-f参数：强迫删除文件 rm -f *.txt：强迫删除所有以后缀名为txt文件</h3><p>1### -i参数：删除文件时询问</p>
-<p>rm　-i * ：删除当前目录下的所有文件会有如下提示：</p>
-<p>rm:backup:is a directory　　　 遇到目录会略过</p>
-<p>rm: remove ‘myfiles.txt’ ? Y</p>
-<p>删除文件时会询问,可按Y或N键表示允许或拒绝删除文件　</p>
-<p>1### -r参数：递归删除（连子目录一同删除，这是一个相当常用的参数）</p>
-<p>rm -rtest ：删除test目录（含test目录下所有文件和子目录）</p>
-<p>rm -r *：删除所有文件（含当前目录所有文件、所有子目录和子目录下的文件） 一般在删除目录时r和f一起用，避免麻烦</p>
-<p>rm -rftest ：强行删除、不加询问</p>
-<p>1### grep：功能：在文件中搜索匹配的字符并进行输出</p>
-<p>格式：grep[参数] &lt;要找的字串&gt; &lt;要寻找字 串的源文件&gt;</p>
-<p>greplinux test.txt：搜索test.txt文件中字符串<a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">linux</a>并输出</p>
-<p>1### ln命令</p>
-<p>功能：在文件和目录之间建立链接</p>
-<p>格式：ln [参数] &lt;源文件或目录&gt; &lt;目标文件或目录&gt;</p>
-<p>链接分“软链接”和“硬链接”</p>
-<h4 id="软链接"><a href="#软链接" class="headerlink" title="软链接:"></a>软链接:</h4><p>ln-s /usr/share/do doc ：创建一个链接文件doc,并指向目录/usr/share/do</p>
-<h4 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接:"></a>硬链接:</h4><p>ln /usr/share/test hard：创建一个硬链接文件hard，这时对于test文件对应 的存储区域来说，又多了一个文件指向它</p>
-<h2 id="系统常用命令"><a href="#系统常用命令" class="headerlink" title="系统常用命令"></a><strong>系统常用命令</strong></h2><h3 id="显示命令"><a href="#显示命令" class="headerlink" title="显示命令"></a>显示命令</h3><p>date:查看或设置当前系统的时间：格式化显示时间：+%Y–%m–%d；</p>
-<p>date -s:设置当前系统的时间</p>
-<p>hwclock(clock)：显示硬件时钟时间(需要管理员权限)；</p>
-<p>cal：查看日历</p>
-<p>格式cal [参数] 月年</p>
-<p>cal：显示当月的日历 cal4 2004 ：显示2004年4月的日历</p>
-<p>cal- y 2003： 显示2003年的日历</p>
-<p>uptime：查看系统运行时间</p>
-<h3 id="输出查看命令"><a href="#输出查看命令" class="headerlink" title="输出查看命令"></a>输出查看命令</h3><p>echo：显示输入的内容 追加文件echo “liuyazhuang” &gt;&gt; liuyazhuang.txt</p>
-<p>cat：显示文件内容,也可以将数个文件合并成一个文件。</p>
-<p>格式：格式：cat[参数]&lt;文件名&gt;</p>
-<p>cat test.txt：显示test.txt文件内容</p>
-<p>cat test.txt| more ：逐页显示test.txt文件中的内容</p>
-<p>cat test.txt&gt;&gt; test####  txt ：将test.txt的内容附加到test####  txt文件之后</p>
-<p>cat test.txttest####  txt &gt;readme.txt　: 将test.txt和test####  txt文件合并成readme.txt 文件</p>
-<p>head:显示文件的头几行（默认10行） -n:指定显示的行数格式：head -n 文件名</p>
-<p>tail：显示文件的末尾几行（默认10行）-n：指定显示的行数 -f：追踪显示文件更新 （一般用于查看日志，命令不会退出，而是持续显示新加入的内容）</p>
-<p>格式：格式：tail[参数]&lt;文件名&gt;</p>
-<p>tail-10 /etc/passwd ：显示/etc/passwd/文件的倒数10行内容</p>
-<p>tail+10 /etc/passwd ：显示/etc/passwd/文件从第10行开始到末尾的内容</p>
-<p>more：用于翻页显示文件内容（只能向下翻页）</p>
-<p>more命令是一般用于要显示的内容会超过一个画面长度的情况。为了避免画 面显示时瞬间就闪过去，用户可以使用more命令，让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。</p>
-<p>ls -al |more：以长格形式显示etc目录下的文件列表，显示满一个画面便暂停，可 按空格键继续显示下一画面，或按Q键跳离</p>
-<p>less：翻页显示文件内容（带上下翻页）按下上键分页，按q退出、‘</p>
-<p>less命令的用法与more命令类似，也可以用来浏览超过一页的文件。所不同 的是less 命令除了可以按空格键向下显示文件外，还可以利用上下键来卷动文件。 当要结束浏览时，只要在less命令的提示符“：”下按Q键即可。</p>
-<p>ls -al | less：以长格形式列出/etc目录中所有的内容。用户可按上下键浏览或按Q键跳离</p>
-<h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><p>Ispci：查看PCI设备 -v：查看详细信息</p>
-<p>Isusb：查看USB设备 -v：查看详细信息</p>
-<p>Ismod：查看加载的模块(驱动)</p>
-<h3 id="关机、重启"><a href="#关机、重启" class="headerlink" title="关机、重启"></a>关机、重启</h3><p>shutdown关闭、重启计算机</p>
-<p>shutdown[关机、重启]时间 -h关闭计算机 -r：重启计算机</p>
-<p>如：立即关机： shutdown -h now</p>
-<p>10分钟后关机：shutdown -h +10</p>
-<p>23:30分关机：shutdown -h 23:30</p>
-<p>立即重启： shutdown -r now</p>
-<p>poweroff：立即关闭计算机</p>
-<p>reboot：立即重启计算机</p>
-<h3 id="归档、压缩"><a href="#归档、压缩" class="headerlink" title="归档、压缩"></a>归档、压缩</h3><p>zip:压缩文件 zip liuyazhuang.zip myfile 格式为：“zip 压缩后的zip文件文件名”</p>
-<p>unzip：解压文件 unzip liuyazhuang.zip</p>
-<p>gzip：压缩文件 gzip 文件名</p>
-<p>tar：归档文件</p>
-<p>tar -cvf out.tar liuyazhuang 打包一个归档（将文件”liuyazhuang”打包成一个归档）</p>
-<p>tar -xvf liuyazhuang.tar 释放一个归档（释放liuyazhuang.tar归档）</p>
-<p>tar -cvzf backup.tar.gz/etc</p>
-<p>-z参数将归档后的归档文件进行gzip压缩以减少大小。</p>
-<p>-c：创建一个新tar文件</p>
-<p>-v：显示运行过程的信息</p>
-<p>-f：指定文件名</p>
-<p>-z：调用gzip压缩命令进行压缩</p>
-<p>-t：查看压缩文件的内容</p>
-<p>-x：解开tar文件</p>
-<p>tar -cvftest.tar *：将所有文件打包成test.tar,扩展名.tar需自行加上</p>
-<p>tar -zcvftest.tar.gz *：将所有文件打包成test.tar,再用gzip命令压缩</p>
-<p>tar-tf test.tar ：查看test.tar文件中包括了哪些文件</p>
-<p>tar-xvf test.tar 将test.tar解开</p>
-<p>tar-zxvf foo.tar.gz 解压缩</p>
-<p>gzip各gunzip命令</p>
-<p>gziptest.txt ：压缩文件时，不需要任何参数</p>
-<p>gizp-l test.txt.gz：显示压缩率</p>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>locate：快速查找文件、文件夹： locate keyword</p>
-<p>此命令需要预先建立<a href="http://lib.csdn.net/base/mysql" title="MySQL知识库" target="_blank" rel="external">数据库</a>，数据库默认每天更新一次，可用updatedb命令手工建立、更新数据库。</p>
-<p>find查找位置查找参数</p>
-<p>如：</p>
-<p>find . -name <em>liuyazhuang</em> 查找当前目录下名称中含有”liuyazhuang”的文件</p>
-<p>find / -name *.conf 查找根目录下（整个硬盘）下后缀为.conf的文件</p>
-<p>find / -perm 777 查找所有权限是777的文件</p>
-<p>find / -type d 返回根目录下所有的目录</p>
-<p>find . -name “a*”-exec ls -l {} \;</p>
-<p>find功能：用来寻找文件或目录。</p>
-<p>格式：find [&lt;路径&gt;] [匹配条件]</p>
-<p>find / -name httpd.conf 搜索系统根目录下名为httpd.conf的文件</p>
-<h3 id="ctrl-c-终止当前的命令"><a href="#ctrl-c-终止当前的命令" class="headerlink" title="ctrl+c :终止当前的命令"></a>ctrl+c :终止当前的命令</h3><h3 id="who或w命令"><a href="#who或w命令" class="headerlink" title="who或w命令"></a>who或w命令</h3><p>功能：查看当前系统中有哪些用户登录</p>
-<p>格式：who/w[参数]</p>
-<h3 id="dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"><a href="#dmesg命令-功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息" class="headerlink" title="dmesg命令 功能：显示系统诊断信息、操作系统版本号、物理内存的大小以及其它信息"></a>dmesg命令 功能：显示系统诊断信息、<a href="http://lib.csdn.net/base/operatingsystem" title="操作系统知识库" target="_blank" rel="external">操作系统</a>版本号、物理内存的大小以及其它信息</h3><h3 id="df命令-功能：用于查看文件系统的各个分区的占用情况"><a href="#df命令-功能：用于查看文件系统的各个分区的占用情况" class="headerlink" title="df命令 功能：用于查看文件系统的各个分区的占用情况"></a>df命令 功能：用于查看文件系统的各个分区的占用情况</h3><p>1### du命令</p>
-<p>功能：查看某个目录中各级子目录所使用的硬盘空间数</p>
-<p>格式：du [参数] &lt;目录名&gt;</p>
-<p>1### free命令</p>
-<p>功能：用于查看系统内存，虚拟内存（交换空间）的大小占用情况</p>
-<h2 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a><strong>VIM</strong></h2><p>VIM是一款功能强大的命令行文本编辑器，在Linux中通过vim命令可以启动vim编辑器。</p>
-<p>一般使用vim + 目标文件路径 的形式使用vim</p>
-<p>如果目标文件存在，则vim打开目标文件，如果目标文件不存在，则vim新建并打开该文件</p>
-<p>:q：退出vim编辑器</p>
-<p>VIM模式</p>
-<p>vim拥有三种模式</p>
-<p>（1）命令模式（常规模式）</p>
-<p>vim启动后，默认进入命令模式，任何模式都可以通过esc键回到命令模式（可以多按几次），命令模式下可以键入不同的命令完成选择、复制、粘贴、撤销等操作。</p>
-<p>命名模式常用命令如下：</p>
-<p>i : 在光标前插入文本；</p>
-<p>o:在当前行的下面插入新行；</p>
-<p>dd:删除整行；</p>
-<p>yy：将当前行的内容放入缓冲区（复制当前行）</p>
-<p>n+yy :将n行的内容放入缓冲区（复制n行）</p>
-<p>p:将缓冲区中的文本放入光标后（粘贴）</p>
-<p>u：撤销上一个操作</p>
-<p>r:替换当前字符</p>
-<p>/ 查找关键字</p>
-<p>（2）插入模式</p>
-<p>在命令模式下按 “ i “键，即可进入插入模式，在插入模式可以输入编辑文本内容，使用esc键可以返回命令模式。</p>
-<p>（3）ex模式</p>
-<p>在命令模式中按” : “键可以进入ex模式，光标会移动到底部，在这里可以保存修改或退出vim.</p>
-<p>ext模式常用命令如下：</p>
-<p>:w ：保存当前的修改</p>
-<p>:q ：退出</p>
-<p>:q! ：强制退出，保存修改</p>
-<p>:x :保存并退出，相当于:wq</p>
-<p>:set number 显示行号</p>
-<p>:! 系统命令 执行一个系统命令并显示结果</p>
-<p>:sh ：切换到命令行，使用ctrl+d切换回vim</p>
-<h2 id="软件包管理命令-RPM"><a href="#软件包管理命令-RPM" class="headerlink" title="软件包管理命令(RPM)"></a><strong>软件包管理命令(RPM)</strong></h2><h3 id="软件包的安装"><a href="#软件包的安装" class="headerlink" title="软件包的安装"></a>软件包的安装</h3><p>使用RPM命令的安装模式可以将软件包内所有的组件放到系统中的正确路径，安装软件包的命令是:rpm-ivhwu-ftpd-####  6.2-8.i386.rpm</p>
-<p>i：作用rpm的安装模式 v: 校验文件信息h: 以＃号显示安装进度</p>
-<h3 id="软件包的删除"><a href="#软件包的删除" class="headerlink" title="软件包的删除"></a>软件包的删除</h3><p>删除模式会将指定软件包的内容全部删除，但并不包括已更改过的配置文件，删除RPM软件包的命令如下：rpm -e wu-ftpd</p>
-<p>注意：这里必须使用软件名“wu-ftpd”或”wu-ftpd-####  6.2-8而不是使用当初安装时的软件包名.wu-ftpd-####  6.2-8.i386.rpm</p>
-<h3 id="软件包升级"><a href="#软件包升级" class="headerlink" title="软件包升级"></a>软件包升级</h3><p>升级模式会安装用户所指定的更新版本，并删除已安装在系统中的相同软件包，升级软件包命令如下：rpm-Uvhwu-ftpd-####  6.2-8.i386.rpm -Uvh：升级参数</p>
-<h3 id="软件包更新"><a href="#软件包更新" class="headerlink" title="软件包更新"></a>软件包更新</h3><p>更新模式下，rpm命令会检查在命令行中所指定的软件包是否比系统中原有的软件 包更新。如果情况属实，rpm命令会自动更新指定的软件包；反之，若系统中并没有指定软件包的较旧版本，rpm命令并不会安装此软件包。而在升级模式下，不管系统中是否有较旧的版本，rpm命令都会安装指定的软件包。</p>
-<p>rpm-Fvhwu-ftpd-####  6.2-8.i386.rpm -Fvh：更新参数</p>
-<h3 id="软件包查询"><a href="#软件包查询" class="headerlink" title="软件包查询"></a>软件包查询</h3><p>若要获取RPM软件包的相关信息，可以使用查询模式。使用-q参数可查询一个已 安装的软件包的内容</p>
-<p>rpm -qwu-ftpd</p>
-<p>查询软件包所安装的位置：rpm -ql package-name</p>
-<p>rpm -ql xv (l参数：显示文件列表)</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习积累 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Linux </tag>
-            
-            <tag> 命令 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Git常用命令]]></title>
-      <url>/2017/06/29/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-      <content type="html"><![CDATA[<h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
-<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3><a id="more"></a>
-<p>检出仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/jquery/jquery.git</div></pre></td></tr></table></figure></p>
-<p>查看远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote -v</div></pre></td></tr></table></figure></p>
-<p>添加远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add [name] [url]</div></pre></td></tr></table></figure></p>
-<p>删除远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote rm [name]</div></pre></td></tr></table></figure></p>
-<p>修改远程仓库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote <span class="built_in">set</span>-url --push [name] [newUrl]</div></pre></td></tr></table></figure>
-<p>拉取远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
-<p>推送远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push [remoteName] [localBranchName]</div></pre></td></tr></table></figure></p>
-<p><strong>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:master // 提交本地<span class="built_in">test</span>分支作为远程的master分支</div><div class="line"></div><div class="line"><span class="variable">$git</span> push origin <span class="built_in">test</span>:<span class="built_in">test</span>  // 提交本地<span class="built_in">test</span>分支作为远程的<span class="built_in">test</span>分支</div></pre></td></tr></table></figure></p>
-<h3 id="分支-branch-操作相关命令"><a href="#分支-branch-操作相关命令" class="headerlink" title="分支(branch)操作相关命令"></a><strong>分支(branch)操作相关命令</strong></h3><p>查看本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure></p>
-<p>查看远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure></p>
-<p>创建本地分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [name] //----注意新分支创建后不会自动切换为当前分支</div></pre></td></tr></table></figure></p>
-<p>切换分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout [name]</div></pre></td></tr></table></figure></p>
-<p>创建新分支并立即切换到新分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git checkout -b [name]</div></pre></td></tr></table></figure></p>
-<p>删除分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git branch -d [name] </div><div class="line"></div><div class="line">// -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</div><div class="line"> </div><div class="line">$ git merge [name] //----将名称为[name]的分支与当前分支合并</div></pre></td></tr></table></figure></p>
-<p>创建远程分支(本地分支push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
-<p>删除远程分支：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :heads/[name] 或 $ gitpush origin :[name]</div></pre></td></tr></table></figure></p>
-<p><strong>创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> symbolic-ref HEAD refs/heads/[name]</div><div class="line"><span class="variable">$rm</span> .git/index</div><div class="line"><span class="variable">$git</span> clean -fdx</div></pre></td></tr></table></figure>
-<h2 id="版本-tag-操作相关命令"><a href="#版本-tag-操作相关命令" class="headerlink" title="版本(tag)操作相关命令"></a><strong>版本(tag)操作相关命令</strong></h2><p>查看版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag</div></pre></td></tr></table></figure></p>
-<p>创建版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag [name]</div></pre></td></tr></table></figure></p>
-<p>删除版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -d [name]</div></pre></td></tr></table></figure></p>
-<p>查看远程版本：$ git tag -r<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -r</div></pre></td></tr></table></figure></p>
-<p>创建远程版本(本地版本push到远程)：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin [name]</div></pre></td></tr></table></figure></p>
-<p>删除远程版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin :refs/tags/[name]</div></pre></td></tr></table></figure></p>
-<p>合并远程仓库的tag到本地：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin --tags</div></pre></td></tr></table></figure></p>
-<p>上传本地tag到远程仓库：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push origin --tags</div></pre></td></tr></table></figure></p>
-<p>创建带注释的tag：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git tag -a [name] -m <span class="string">'yourMessage'</span></div></pre></td></tr></table></figure></p>
-<h2 id="子模块-submodule-相关操作命令"><a href="#子模块-submodule-相关操作命令" class="headerlink" title="子模块(submodule)相关操作命令"></a><strong>子模块(submodule)相关操作命令</strong></h2><p>添加子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule add [url] [path]</div></pre></td></tr></table></figure></p>
-<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$git</span> submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs</div></pre></td></tr></table></figure></p>
-<p>初始化子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule init  //----只在首次检出仓库时运行一次就行</div></pre></td></tr></table></figure></p>
-<p>更新子模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git submodule update //----每次更新或切换分支后都需要运行一下</div></pre></td></tr></table></figure></p>
-<p>删除子模块：（分4步走哦）</p>
-<blockquote>
-<p>$ git rm –cached [path]<br>  编辑“.gitmodules”文件，将子模块的相关配置节点删除掉<br>  编辑“ .git/config”文件，将子模块的相关配置节点删除掉<br>  手动删除子模块残留的目录</p>
-</blockquote>
-<h2 id="忽略一些文件、文件夹不提交"><a href="#忽略一些文件、文件夹不提交" class="headerlink" title="忽略一些文件、文件夹不提交"></a><strong>忽略一些文件、文件夹不提交</strong></h2><p>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target<br>bin<br>*.db</p>
-<hr>
-<p><strong>Git 常用命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">git branch 查看本地所有分支</div><div class="line">git status 查看当前状态 </div><div class="line">git commit 提交 </div><div class="line">git branch -a 查看所有的分支</div><div class="line">git branch -r 查看本地所有分支</div><div class="line">git commit -am <span class="string">"init"</span> 提交并且加注释 </div><div class="line">git remote add origin git@192.168.1.119:ndshow</div><div class="line">git push origin master 将文件给推到服务器上 </div><div class="line">git remote show origin 显示远程库origin里的资源 </div><div class="line">git push origin master:develop</div><div class="line">git push origin master:hb-dev 将本地库与服务器上的库进行关联 </div><div class="line">git checkout --track origin/dev 切换到远程dev分支</div><div class="line">git branch -D master develop 删除本地库develop</div><div class="line">git checkout -b dev 建立一个新的本地分支dev</div><div class="line">git merge origin/dev 将分支dev与当前分支进行合并</div><div class="line">git checkout dev 切换到本地dev分支</div><div class="line">git remote show 查看远程库</div><div class="line">git add .</div><div class="line">git rm 文件名(包括路径) 从git中删除指定文件</div><div class="line">git <span class="built_in">clone</span> git://github.com/schacon/grit.git 从服务器上将代码给拉下来</div><div class="line">git config --list 看所有用户</div><div class="line">git ls-files 看已经被提交的</div><div class="line">git rm [file name] 删除一个文件</div><div class="line">git commit -a 提交当前repos的所有的改变</div><div class="line">git add [file name] 添加一个文件到git index</div><div class="line">git commit -v 当你用－v参数的时候可以看commit的差异</div><div class="line">git commit -m <span class="string">"This is the message describing the commit"</span> 添加commit信息</div><div class="line">git commit -a -a是代表add，把所有的change加到git index里然后再commit</div><div class="line">git commit -a -v 一般提交命令</div><div class="line">git <span class="built_in">log</span> 看你commit的日志</div><div class="line">git diff 查看尚未暂存的更新</div><div class="line">git rm a.a 移除文件(从暂存区和工作区中删除)</div><div class="line">git rm --cached a.a 移除文件(只从暂存区中删除)</div><div class="line">git commit -m <span class="string">"remove"</span> 移除文件(从Git中删除)</div><div class="line">git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)</div><div class="line">git diff --cached 或 $ git diff --staged 查看尚未提交的更新</div><div class="line">git stash push 将文件给push到一个临时空间中</div><div class="line">git stash pop 将文件从临时空间pop下来</div><div class="line"></div><div class="line">git remote add origin git@github.com:username/Hello-World.git</div><div class="line">git push origin master 将本地项目给提交到服务器中</div><div class="line"></div><div class="line">git pull 本地与服务器端同步</div><div class="line"></div><div class="line">git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。</div><div class="line">git push origin serverfix:awesomebranch</div><div class="line"></div><div class="line">git fetch 相当于是从远程获取最新版本到本地，不会自动merge</div><div class="line">git commit -a -m <span class="string">"log_message"</span> (-a是提交所有改动，-m是加入<span class="built_in">log</span>信息) 本地修改同步至服务器端 ：</div><div class="line">git branch branch_0.1 master 从主分支master创建branch_0.1分支</div><div class="line">git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0</div><div class="line">git checkout branch_1.0/master 切换到branch_1.0/master分支</div><div class="line">du -hs</div></pre></td></tr></table></figure></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 学习整理 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Git </tag>
             
         </tags>
         
