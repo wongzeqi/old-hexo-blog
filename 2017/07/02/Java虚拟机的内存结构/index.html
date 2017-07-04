@@ -173,10 +173,10 @@
     },
     algolia: {
       applicationID: '',
-      apiKey: '',
-      indexName: '',
+      apiKey: '17dd22c525db1292bc2f7092bd7b632a',
+      indexName: 'indexName',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"寻找什么宝贝呢？","hits_empty":"木有找到你想要的[ ${query} ]的相关内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
     }
   };
 </script>
@@ -247,7 +247,7 @@
 
 <nav class="site-nav">
   
-
+  
   
     <ul id="menu" class="menu">
       
@@ -313,9 +313,52 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+
+            <!--增加的代码 收索 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
+
+
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -606,8 +649,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/02/POI导出Excel工具/" rel="next" title="POI导出Excel工具">
-                <i class="fa fa-chevron-left"></i> POI导出Excel工具
+              <a href="/2017/07/02/SpringMVC学习笔记/" rel="next" title="SpringMVC学习笔记">
+                <i class="fa fa-chevron-left"></i> SpringMVC学习笔记
               </a>
             
           </div>
@@ -616,8 +659,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/02/常用正则表达式大全/" rel="prev" title="常用正则表达式大全">
-                常用正则表达式大全 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/02/Java正则表达式/" rel="prev" title="Java正则表达式">
+                Java正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -717,7 +760,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -739,7 +782,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -854,6 +897,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
 <div class="copyright" >
   
   &copy; 
@@ -1037,6 +1082,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 

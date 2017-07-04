@@ -167,10 +167,10 @@
     },
     algolia: {
       applicationID: '',
-      apiKey: '',
-      indexName: '',
+      apiKey: '17dd22c525db1292bc2f7092bd7b632a',
+      indexName: 'indexName',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"寻找什么宝贝呢？","hits_empty":"木有找到你想要的[ ${query} ]的相关内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
     }
   };
 </script>
@@ -243,7 +243,7 @@
 
 <nav class="site-nav">
   
-
+  
   
     <ul id="menu" class="menu">
       
@@ -309,9 +309,52 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+
+            <!--增加的代码 收索 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
+
+
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -475,6 +518,389 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/28/hexo-nexT配置详情/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/04/HTML5小游戏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/04/HTML5小游戏/" itemprop="url">HTML5小游戏</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T00:00:00+08:00">
+                2017-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/04/HTML5小游戏/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/04/HTML5小游戏/" class = "cy_cmt_count" data-xid="2017/07/04/HTML5小游戏/" itemprop="commentsCount" ></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,090
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>还记得贪吃蛇这个经典游戏吗？在诺基亚时代，在黑白像素点游戏机时代，就是这样一个简单的游戏也能让我们玩上几个小时。</p>
+<p>在这篇文章，我们将使用HTML5来重现这个游戏，基于著名的开源HTML5游戏框架——Phaser。你将了解到游戏精灵、游戏状态，以及如何使用预加载（preload）、创建（create）与刷新（update）方法。最终效果呈现如下：</p>
+<p><img src="http://wx2.sinaimg.cn/large/005NrfBdly1fgm1y447elg30p50iv41v.gif" alt="H5贪吃蛇"></p>
+<h2 id="一、开发准备"><a href="#一、开发准备" class="headerlink" title="一、开发准备"></a>一、开发准备</h2><p>首先访问Phaser官网，下载JavaScript版本的Phaser：<a href="http://www.phaser.io/download/stable" target="_blank" rel="external">http://www.phaser.io/download/stable</a>，选择用于生产环境的压缩版phaser.min.js。</p>
+<p>项目文件结构如下：</p>
+<p><img src="http://wx3.sinaimg.cn/large/005NrfBdly1fgm51ik4utj30gq0ctaaf.jpg" alt="贪吃蛇项目文件结构"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/04/HTML5小游戏/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/springMVC后台校验实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/02/springMVC后台校验实现/" itemprop="url">springMVC后台校验实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
+                2017-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/02/springMVC后台校验实现/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/springMVC后台校验实现/" class = "cy_cmt_count" data-xid="2017/07/02/springMVC后台校验实现/" itemprop="commentsCount" ></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  766
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="springMVC后台校验实现"><a href="#springMVC后台校验实现" class="headerlink" title="springMVC后台校验实现"></a><center><strong>springMVC后台校验实现</strong></center></h1><h3 id="第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上："><a href="#第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上：" class="headerlink" title="第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上："></a><strong>第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上：</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.1.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span>           </div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0.GA<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jboss.logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jboss-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0.CR2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/springMVC后台校验实现/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -721,7 +1147,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/常用正则表达式大全/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/Java正则表达式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -740,7 +1166,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/02/常用正则表达式大全/" itemprop="url">常用正则表达式大全</a></h1>
+                <a class="post-title-link" href="/2017/07/02/Java正则表达式/" itemprop="url">Java正则表达式</a></h1>
         
 
         <div class="post-meta">
@@ -795,8 +1221,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/07/02/常用正则表达式大全/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/常用正则表达式大全/" class = "cy_cmt_count" data-xid="2017/07/02/常用正则表达式大全/" itemprop="commentsCount" ></span>
+					<a href="/2017/07/02/Java正则表达式/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/Java正则表达式/" class = "cy_cmt_count" data-xid="2017/07/02/Java正则表达式/" itemprop="commentsCount" ></span>
 					</a>
 				
             
@@ -818,7 +1244,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,700
+                  2,702
                 </span>
               
 
@@ -834,7 +1260,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  8
+                  11
                 </span>
               
             </div>
@@ -853,392 +1279,12 @@
 
       
         
-          <h1 id="全面的常用正则表达式大全"><a href="#全面的常用正则表达式大全" class="headerlink" title="全面的常用正则表达式大全"></a><center><strong>全面的常用正则表达式大全</strong></center></h1><blockquote>
-<p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，在这里分享一下。给自己留个底，也给朋友们做个参考。</p>
+          <h1 id="Java正则表达式"><a href="#Java正则表达式" class="headerlink" title="Java正则表达式"></a><center><strong>Java正则表达式</strong></center></h1><blockquote>
+<p><code>java.util.regex</code>是一个用正则表达式所订制的模式来对字符串进行匹配工作的类库包。它包括两个类：<code>Pattern</code>和<code>Matcher</code>。Pattern是一个正则表达式经编译后的表现模式。<br><img src="http://os94ofsac.bkt.clouddn.com/note/zhengze.png" alt="正则"><br>Matcher对象是一个状态机器，它依据Pattern对象做为匹配模式对字符串展开匹配检查。 首先一个Pattern实例订制了一个所用语法与PERL的类似的正则表达式经编译后的模式，然后一个Matcher实例在这个给定的Pattern实例的模式控制下进行字符串的匹配工作。</p>
 </blockquote>
-<p><img src="http://p1.pstatp.com/large/10944/6821280613" alt="最全面的常用正则表达式大全"></p>
-<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a><strong>一、校验数字的表达式</strong></h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/常用正则表达式大全/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/Java虚拟机的内存结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王泽奇">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王泽奇，个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/Java虚拟机的内存结构/" itemprop="url">JVM内存结构简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
-                2017-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习积累/" itemprop="url" rel="index">
-                    <span itemprop="name">学习积累</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-				<!--noindex-->
-				<span class="post-comments-count">
-				<span class="post-meta-divider">|</span>
-				<span class="post-meta-item-icon">
-				  <i class="fa fa-comment-o"></i>
-				</span>
-				
-					<a href="/2017/07/02/Java虚拟机的内存结构/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/Java虚拟机的内存结构/" class = "cy_cmt_count" data-xid="2017/07/02/Java虚拟机的内存结构/" itemprop="commentsCount" ></span>
-					</a>
-				
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  2,404
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Jvm的内存结构"><a href="#Jvm的内存结构" class="headerlink" title="Jvm的内存结构"></a><center><a href="http:wangzeqi.website" target="_blank" rel="external"><strong>Jvm的内存结构</strong><a></a></a></center></h1><p>先看一张图，这张图能很清晰的说明JVM内存结构布局。<br><img src="http://img.blog.csdn.net/20170324105619218" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/Java虚拟机的内存结构/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/POI导出Excel工具/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王泽奇">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王泽奇，个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/POI导出Excel工具/" itemprop="url">POI导出Excel工具</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
-                2017-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习整理/" itemprop="url" rel="index">
-                    <span itemprop="name">学习整理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-				<!--noindex-->
-				<span class="post-comments-count">
-				<span class="post-meta-divider">|</span>
-				<span class="post-meta-item-icon">
-				  <i class="fa fa-comment-o"></i>
-				</span>
-				
-					<a href="/2017/07/02/POI导出Excel工具/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/POI导出Excel工具/" class = "cy_cmt_count" data-xid="2017/07/02/POI导出Excel工具/" itemprop="commentsCount" ></span>
-					</a>
-				
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  1,356
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="POI导出Excel工具"><a href="#POI导出Excel工具" class="headerlink" title="POI导出Excel工具"></a><center><strong>POI导出Excel工具</strong></center></h1><h2 id="Maven依赖（此处为本人所用的）"><a href="#Maven依赖（此处为本人所用的）" class="headerlink" title="Maven依赖（此处为本人所用的）"></a><strong>Maven依赖（此处为本人所用的）</strong></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/POI导出Excel工具/#more" rel="contents">
+            <a class="btn" href="/2017/07/02/Java正则表达式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1287,7 +1333,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1333,7 +1379,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1355,7 +1401,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1454,6 +1500,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
 <div class="copyright" >
   
   &copy; 
@@ -1623,6 +1671,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 

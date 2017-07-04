@@ -1,0 +1,1316 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="baidu-site-verification" content="s8Pe1TBqyy" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML5," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王泽奇，个人博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="还记得贪吃蛇这个经典游戏吗？在诺基亚时代，在黑白像素点游戏机时代，就是这样一个简单的游戏也能让我们玩上几个小时。 在这篇文章，我们将使用HTML5来重现这个游戏，基于著名的开源HTML5游戏框架——Phaser。你将了解到游戏精灵、游戏状态，以及如何使用预加载（preload）、创建（create）与刷新（update）方法。最终效果呈现如下：  一、开发准备首先访问Phaser官网，下载Java">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5小游戏">
+<meta property="og:url" content="http://wangzeqi.website/2017/07/04/HTML5小游戏/index.html">
+<meta property="og:site_name" content="王泽奇，个人博客">
+<meta property="og:description" content="还记得贪吃蛇这个经典游戏吗？在诺基亚时代，在黑白像素点游戏机时代，就是这样一个简单的游戏也能让我们玩上几个小时。 在这篇文章，我们将使用HTML5来重现这个游戏，基于著名的开源HTML5游戏框架——Phaser。你将了解到游戏精灵、游戏状态，以及如何使用预加载（preload）、创建（create）与刷新（update）方法。最终效果呈现如下：  一、开发准备首先访问Phaser官网，下载Java">
+<meta property="og:image" content="http://wx2.sinaimg.cn/large/005NrfBdly1fgm1y447elg30p50iv41v.gif">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/005NrfBdly1fgm51ik4utj30gq0ctaaf.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/005NrfBdly1fgm76octowj30go0ciq2v.jpg">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/005NrfBdly1fgm7nyzmx3j30ox0iqmxc.jpg">
+<meta property="og:updated_time" content="2017-07-04T11:48:23.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5小游戏">
+<meta name="twitter:description" content="还记得贪吃蛇这个经典游戏吗？在诺基亚时代，在黑白像素点游戏机时代，就是这样一个简单的游戏也能让我们玩上几个小时。 在这篇文章，我们将使用HTML5来重现这个游戏，基于著名的开源HTML5游戏框架——Phaser。你将了解到游戏精灵、游戏状态，以及如何使用预加载（preload）、创建（create）与刷新（update）方法。最终效果呈现如下：  一、开发准备首先访问Phaser官网，下载Java">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/large/005NrfBdly1fgm1y447elg30p50iv41v.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '20152154',
+      author: 'Wongzeqi'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '17dd22c525db1292bc2f7092bd7b632a',
+      indexName: 'indexName',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"寻找什么宝贝呢？","hits_empty":"木有找到你想要的[ ${query} ]的相关内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangzeqi.website/2017/07/04/HTML5小游戏/"/>
+
+
+
+
+
+  <title>HTML5小游戏 | 王泽奇，个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <a href="https://github.com/wongzeqi"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王泽奇，个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">脚踏实地，奋斗不息</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+  
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+
+            <!--增加的代码 收索 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/04/HTML5小游戏/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5小游戏</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T00:00:00+08:00">
+                2017-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/04/HTML5小游戏/#SOHUCS" itemprop="discussionUrl">
+					  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/04/HTML5小游戏/" itemprop="commentsCount"></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,090
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  13
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>还记得贪吃蛇这个经典游戏吗？在诺基亚时代，在黑白像素点游戏机时代，就是这样一个简单的游戏也能让我们玩上几个小时。</p>
+<p>在这篇文章，我们将使用HTML5来重现这个游戏，基于著名的开源HTML5游戏框架——Phaser。你将了解到游戏精灵、游戏状态，以及如何使用预加载（preload）、创建（create）与刷新（update）方法。最终效果呈现如下：</p>
+<p><img src="http://wx2.sinaimg.cn/large/005NrfBdly1fgm1y447elg30p50iv41v.gif" alt="H5贪吃蛇"></p>
+<h2 id="一、开发准备"><a href="#一、开发准备" class="headerlink" title="一、开发准备"></a>一、开发准备</h2><p>首先访问Phaser官网，下载JavaScript版本的Phaser：<a href="http://www.phaser.io/download/stable" target="_blank" rel="external">http://www.phaser.io/download/stable</a>，选择用于生产环境的压缩版phaser.min.js。</p>
+<p>项目文件结构如下：</p>
+<p><img src="http://wx3.sinaimg.cn/large/005NrfBdly1fgm51ik4utj30gq0ctaaf.jpg" alt="贪吃蛇项目文件结构"></p>
+<a id="more"></a>
+<p>打开index.html，链接五个js文件，并添加页面标题，启动游戏时打开此文件即可：</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;贪吃蛇&lt;/title&gt;
+    &lt;script src=&quot;assets/js/phaser.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;assets/js/menu.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;assets/js/game.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;assets/js/gameover.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;assets/js/main.js&quot;&gt;&lt;/script&gt;
+    &lt;style&gt; body{ padding: 0; margin: 0; } canvas{ margin: 0 auto; } &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="二、游戏是如何组织的"><a href="#二、游戏是如何组织的" class="headerlink" title="二、游戏是如何组织的"></a>二、游戏是如何组织的</h2><p>基于Phaser的游戏是围绕“状态（state）”进行组织的，此处的“状态”可以看作是游戏的不同阶段，贪吃蛇游戏的状态较少，可简易的分为三个状态：</p>
+<ul>
+<li>菜单状态，由menu.js处理，仅用于显示开始界面，点击转换到游戏状态。</li>
+<li>游戏状态，由game.js处理，用于显示游戏界面、控制贪吃蛇运动，死亡后进入游戏结束状态。</li>
+<li>游戏结束状态，由gameover.js处理，用于显示结束界面、最终得分，点击再次回到游戏状态。</li>
+</ul>
+<p>main.js为主JavaScript文件，在其中创建游戏实例，注册各个游戏状态。</p>
+<h3 id="1、加载图像"><a href="#1、加载图像" class="headerlink" title="1、加载图像"></a>1、加载图像</h3><p>到现在为止，我们仅仅预构了游戏框架，接下来我们来创建菜单状态，让它来显示游戏开始界面。</p>
+<p>在HTML文件中我们已经引入了Phaser库，这使我们拥有了一个名为<code>Phaser</code>的全局对象，通过这个对象，我们可以访问Phaser库中哪些用于构建游戏的方法和函数。</p>
+<p>现在我们使用<code>Phaser</code>对象来创建一个游戏实例，这个对象用来代表整个游戏，我们会为他添加不同的状态。</p>
+<p><strong>main.js</strong></p>
+<pre><code>// JavaScript Document
+var game;
+
+//新建一600px宽、450px高的游戏实例
+//Game对象用于管理启动、创建子系统、运行逻辑、渲染
+//第三个参数表示要使用的渲染器
+//第四个参数表示父级DOM元素
+game = new Phaser.Game(600, 450, Phaser.AUTO, &apos;&apos;);
+
+//添加菜单状态
+//第一个参数表示如何调用状态
+//第二个参数是一个包含状态功能所需方法的对象
+game.state.add(&apos;Menu&apos;, Menu);
+
+game.state.start(&apos;Menu&apos;);
+</code></pre><p>接下来初始化菜单状态对象（<code>Menu</code>），在menu.js中定义一个新对象<code>Menu</code>并为它添加函数。状态启动时，首先会调用<code>preload</code>函数，加载游戏所需资源；加载完成后，调用<code>create</code>函数，初始化游戏区域以及其他需要初始化的内容。</p>
+<p><strong>menu.js</strong></p>
+<pre><code>// JavaScript Document
+var Menu = {
+
+    preload: function () {
+        //加载图像以便于在其上添加游戏精灵
+        //第一个参数表示图像名称
+        //第二个参数表示文件路径
+        game.load.image(&apos;menu&apos;, &apos;./assets/images/menu.png&apos;);
+    },
+
+    create: function () {
+        //添加一个游戏精灵，此处添加的精灵为游戏logo
+        //参数以此为：X,Y,图像名称（见上）
+        this.add.sprite(0,0,&apos;menu&apos;);
+    }
+};
+</code></pre><p>到此，在浏览器中打开index.html，即可看到游戏开始界面，但还无法点击。（由于浏览器的安全限制，可能无法启动游戏，那么则需要一个本地web服务器，具体参看：<a href="http://phaser.io/tutorials/getting-started/part2" target="_blank" rel="external">http://phaser.io/tutorials/getting-started/part2</a>）</p>
+<p><img src="http://wx3.sinaimg.cn/large/005NrfBdly1fgm76octowj30go0ciq2v.jpg" alt="开始界面"></p>
+<h3 id="2、绘制贪吃蛇"><a href="#2、绘制贪吃蛇" class="headerlink" title="2、绘制贪吃蛇"></a>2、绘制贪吃蛇</h3><p>如之前所提，Game状态才是真正的游戏状态，也是绘制贪吃蛇的位置。与Menu状态一样，我们也需要在main.js中注册Game状态：</p>
+<pre><code>var game;
+
+game = new Phaser.Game(600, 450, Phaser.AUTO, &apos;&apos;);
+
+game.state.add(&apos;Menu&apos;, Menu);
+
+//添加游戏状态
+game.state.add(&apos;Game&apos;, Game);
+
+game.state.start(&apos;Menu&apos;);
+</code></pre><p>此外，还需要在menu.js中添加额外代码以便能够启动游戏状态。为此，我们将精灵替换为按钮，添加按钮的方法与精灵基本类似，只需提供一个点击时调用函数给它即可。以下是最终的menu.js：</p>
+<pre><code>// JavaScript Document
+var Menu = {
+
+    preload: function () {
+        //加载图像以便于在其上添加游戏精灵
+        //第一个参数表示图像名称
+        //第二个参数表示文件路径
+        game.load.image(&apos;menu&apos;, &apos;./assets/images/menu.png&apos;);
+    },
+
+    create: function () {
+        //添加一个游戏精灵，此处添加的精灵为游戏logo
+        //参数以此为：X,Y,图像名称（见上）
+        //this.add.sprite(0,0,&apos;menu&apos;);
+
+        //开始屏幕
+        //menu图像作为按钮用来启动游戏
+        this.add.button(0, 0, &apos;menu&apos;, this.startGame, this);
+    },
+
+    startGame: function () {
+        //转换状态为游戏状态
+        this.state.start(&apos;Game&apos;);
+    }
+
+};
+</code></pre><p>接下来处理Game状态，绘制贪吃蛇，结构与Menu类似：</p>
+<pre><code>// JavaScript Document
+//设置为全局变量，以便更新功能能够随时更新这些变量
+var snake, apple, squareSize, score, speed,
+    updateDelay, direction, new_direction,
+    addNew, cursors, scoreTextValue, speedTextValue,
+    textStyle_Key, textStyle_Value;
+
+var Game = {
+
+    preload: function () {
+        //加载游戏所需资源
+        //贪吃蛇与食物
+        game.load.image(&apos;snake&apos;, &apos;./assets/images/snake.png&apos;);
+        game.load.image(&apos;apple&apos;, &apos;./assets/images/apple.png&apos;);
+    },
+
+    create: function () {
+        //游戏开始时初始化这些变量
+        snake = []; //数组作为队列使用，保存贪吃蛇的身体部分
+        apple = {}; //食物对象
+        squareSize = 15; //方块的边长，使用的图像的15*15像素
+        score = 0; //当前得分
+        speed = 0; //游戏速度
+        updateDelay = 0; //控制刷新速度的变量
+        direction = &apos;right&apos;; //当前运动方向
+        new_direction = null; //存储新下一步方向的缓存变量
+        addNew = false; //食物是否被吃掉
+
+        //设置一个控制键盘输入的Phaser控制器
+        cursors = game.input.keyboard.createCursorKeys();
+
+        //设置游戏背景色
+        game.stage.backgroundColor = &quot;#061f27&quot;;
+
+        //生成初始贪吃蛇，10个方块长
+        //从X=150，Y=150的位置开始添加，每次迭代增加横坐标
+        for (var i = 0; i &lt; 10; i++) {
+            snake[i] = game.add.sprite(150 + i * squareSize, 150, &apos;snake&apos;);
+        }
+
+        //生成第一个食物
+        this.generateApple();
+
+        //在界面顶部添加文字
+        //“得分”、“速度”、“操作说明”文字样式
+        textStyle_Key = {
+            font: &quot;bold 14px sans-serif&quot;,
+            fill: &quot;#46c0f9&quot;,
+            align: &quot;center&quot;
+        };
+        //对应数值的文字样式
+        textStyle_Value = {
+            font: &quot;bold 18px sans-serif&quot;,
+            fill: &quot;#fff&quot;,
+            align: &quot;center&quot;
+        };
+        game.add.text(30, 20, &quot;得分&quot;, textStyle_Key);
+        scoreTextValue = game.add.text(90, 18, score.toString(), textStyle_Value);
+
+        game.add.text(160, 20, &quot;操作：上下左右控制方向&quot;, textStyle_Key);
+
+        game.add.text(500, 20, &quot;速度&quot;, textStyle_Key);
+        speedTextValue = game.add.text(558, 18, speed.toString(), textStyle_Value);
+    },
+
+    update: function () {
+        //update()函数将会被高频率（60fps左右）调用来刷新界面
+    },
+
+    generateApple: function () {
+        //在界面中随机位置绘制食物
+        //X在0-585之间（39*15）
+        //Y在0-435之间（29*15）
+        //floor()方法返回小于等于x的最大整数
+        var randomX = Math.floor(Math.random() * 40) * squareSize,
+            randomY = Math.floor(Math.random() * 30) * squareSize;
+        apple = game.add.sprite(randomX, randomY, &apos;apple&apos;);
+    }
+};
+</code></pre><p>绘制结果如下（食物在游戏区域随机出现）：</p>
+<p><img src="http://wx3.sinaimg.cn/large/005NrfBdly1fgm7nyzmx3j30ox0iqmxc.jpg" alt="贪吃蛇"></p>
+<h3 id="3、运动控制"><a href="#3、运动控制" class="headerlink" title="3、运动控制"></a>3、运动控制</h3><p>为了能够控制蛇的运动我们需要在<code>update</code>函数中添加一些代码。</p>
+<p>首先，我们来创建一个事件监听器，监听由方向键控制的运动方向。</p>
+<p>实际的运动要更复杂一些，由于刷新会以极快的速率被触发，所以如果每次<code>update</code>被调用的时候都移动蛇的位置，那么蛇将会变得非常难以控制。为了使其能够控制，我们设置一个if条件，通过一个updateDelay计数器变量来检查是否是连续第十次调用<code>update()</code>。</p>
+<p>如果是第十次调用，我们就移除蛇身的最后一个方块（队列的第一个元素），根据运动方向给其新的坐标，并将其放置到当前蛇头的前面作为新的蛇头（队列的最后一个元素），代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">update: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="comment">//update()函数将会被高频率（60fps左右）调用来刷新界面</span></div><div class="line">	<span class="comment">//处理方向键，并且不允许违规操作</span></div><div class="line">	<span class="keyword">if</span> (cursors.right.isDown &amp;&amp; direction != <span class="string">'left'</span>) &#123;</div><div class="line">		new_direction = <span class="string">'right'</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (cursors.left.isDown &amp;&amp; direction != <span class="string">'right'</span>) &#123;</div><div class="line">		new_direction = <span class="string">'left'</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (cursors.up.isDown &amp;&amp; direction != <span class="string">'down'</span>) &#123;</div><div class="line">		new_direction = <span class="string">'up'</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (cursors.down.isDown &amp;&amp; direction != <span class="string">'up'</span>) &#123;</div><div class="line">		new_direction = <span class="string">'down'</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//计算当前游戏速度的公式</span></div><div class="line">	<span class="comment">//得分越高，速度越快，最高为10</span></div><div class="line">	speed = <span class="built_in">Math</span>.min(<span class="number">10</span>, <span class="built_in">Math</span>.floor(score / <span class="number">5</span>));</div><div class="line"></div><div class="line">	<span class="comment">//更新屏幕上的数值</span></div><div class="line">	speedTextValue.text = <span class="string">''</span> + speed;</div><div class="line"></div><div class="line">	<span class="comment">//初始的刷新速率为60fps左右</span></div><div class="line">	<span class="comment">//需要降速以使物体可控</span></div><div class="line">	updateDelay++;</div><div class="line"></div><div class="line">	<span class="comment">//只有当计数器的值等于（10-speed）时，才会触发游戏事件</span></div><div class="line">	<span class="comment">//速度越快，计数值越快达到指定值</span></div><div class="line">	<span class="comment">//贪吃蛇也就移动的越快</span></div><div class="line">	<span class="keyword">if</span> (updateDelay % (<span class="number">10</span> - speed) == <span class="number">0</span>) &#123;</div><div class="line">		<span class="comment">//移动</span></div><div class="line">		<span class="keyword">var</span> firstCell = snake[snake.length - <span class="number">1</span>],</div><div class="line">			<span class="comment">//删除数组第一项并返回该项</span></div><div class="line">			<span class="comment">//即删除蛇尾</span></div><div class="line">			lastCell = snake.shift(),</div><div class="line">			oldLastCellx = lastCell.x,</div><div class="line">			oldLastCelly = lastCell.y;</div><div class="line"></div><div class="line">		<span class="comment">//如果游戏者从键盘选择了新的方向</span></div><div class="line">		<span class="keyword">if</span> (new_direction) &#123;</div><div class="line">			direction = new_direction;</div><div class="line">			new_direction = <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">//根据方向更改最后一个单元格相对于蛇头的坐标</span></div><div class="line">		<span class="keyword">if</span> (direction == <span class="string">'right'</span>) &#123;</div><div class="line">			lastCell.x = firstCell.x + <span class="number">15</span>;</div><div class="line">			lastCell.y = firstCell.y;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (direction == <span class="string">'left'</span>) &#123;</div><div class="line">			lastCell.x = firstCell.x - <span class="number">15</span>;</div><div class="line">			lastCell.y = firstCell.y;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (direction == <span class="string">'up'</span>) &#123;</div><div class="line">			lastCell.x = firstCell.x;</div><div class="line">			lastCell.y = firstCell.y - <span class="number">15</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (direction == <span class="string">'down'</span>) &#123;</div><div class="line">			lastCell.x = firstCell.x;</div><div class="line">			lastCell.y = firstCell.y + <span class="number">15</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">//将最后一个单元格即蛇尾添加到队列末端即蛇头</span></div><div class="line">		<span class="comment">//并将其作为新的舌头</span></div><div class="line">		snake.push(lastCell);</div><div class="line">		firstCell = lastCell;</div><div class="line">		<span class="comment">//结束移动</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>至此已经能够控制蛇的运动。</p>
+<p>4、碰撞检测</p>
+<p>如何蛇能够随意运动那显然是不科学的，我们需要检测蛇什么时候与墙壁、食物、或者自身发生了碰撞，以能能够判断是否死亡，结束游戏。</p>
+<p>通常这样的工作是通过物理引擎来完成的，Phaser框架也支持一部分。在这对于一个如此简单的游戏来说过于复杂，此处我们仅需要通过对比坐标来进行碰撞检测即可。</p>
+<p>在update函数结束移动的位置，调用一系列方法，来比较坐标以判断是否发生了碰撞。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">update:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//update()函数将会被高频率（60fps左右）调用来刷新界面</span></div><div class="line">    ...</div><div class="line">    if (updateDelay % (<span class="number">10</span> - speed) == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//移动</span></div><div class="line">        ...</div><div class="line">        <span class="comment">//结束移动</span></div><div class="line">        ...</div><div class="line">        <span class="comment">//如果吃掉食物则增长蛇的长度</span></div><div class="line">        <span class="comment">//在原先蛇尾处添加一块即可，坐标已在上面给出</span></div><div class="line">        <span class="keyword">if</span> (addNew)</div><div class="line">        &#123;</div><div class="line">            snake.unshift(game.add.sprite(oldLastCellx, oldLastCelly, <span class="string">'snake'</span>));</div><div class="line">            addNew = <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//检测是否与食物碰撞</span></div><div class="line">        <span class="keyword">this</span>.appleCollision();</div><div class="line"></div><div class="line">        <span class="comment">//检测自身是否发生碰撞</span></div><div class="line">        <span class="keyword">this</span>.selfCollision(firstCell);</div><div class="line"></div><div class="line">        <span class="comment">//检测是否与墙壁发生碰撞</span></div><div class="line">        <span class="keyword">this</span>.wallCollision(firstCell);</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"><span class="attr">appleCollision</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//检测食物是否与蛇身有重叠</span></div><div class="line">    <span class="comment">//如果食物产生在蛇身上</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; snake.length; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (snake[i].x == apple.x &amp;&amp; snake[i].y == apple.y)</div><div class="line">        &#123;</div><div class="line"></div><div class="line">            <span class="comment">//下次蛇移动时，长度加一</span></div><div class="line">            addNew = <span class="literal">true</span>;</div><div class="line"></div><div class="line">            <span class="comment">//销毁食物</span></div><div class="line">            apple.destroy();</div><div class="line"></div><div class="line">            <span class="comment">//重新生成食物</span></div><div class="line">            <span class="keyword">this</span>.generateApple();</div><div class="line"></div><div class="line">            <span class="comment">//分数加一</span></div><div class="line">            score++;</div><div class="line"></div><div class="line">            <span class="comment">//刷新分数面板</span></div><div class="line">            scoreTextValue.text = score.toString();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">selfCollision</span>:<span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</div><div class="line">    <span class="comment">//检测蛇头是否与蛇身发生重叠</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; snake.length - <span class="number">1</span>; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (head.x == snake[i].x &amp;&amp; head.y == snake[i].y)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//游戏结束</span></div><div class="line">            game.state.start(<span class="string">'Game_Over'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;,</div><div class="line"></div><div class="line"><span class="attr">wallCollision</span>:<span class="function"><span class="keyword">function</span> (<span class="params">head</span>) </span>&#123;</div><div class="line">    <span class="comment">//检测蛇头是否与界面边界发生碰撞</span></div><div class="line">    <span class="keyword">if</span> (head.x &gt;= <span class="number">600</span> || head.x &lt; <span class="number">0</span> || head.y &gt;= <span class="number">450</span> || head.y &lt; <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//游戏结束</span></div><div class="line">        game.state.start(<span class="string">'Game_Over'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果吃到食物，则得分加一，贪吃蛇长度加一。如果发生碰撞，则游戏结束。同样，我们需要在main.js中注册游戏结束状态Game_Over。</p>
+<p><strong>main.js</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">game.state.add(<span class="string">'Game_Over'</span>, Game_Over);</div></pre></td></tr></table></figure></p>
+<p><strong>gameover.js</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// JavaScript Document</span></div><div class="line"><span class="keyword">var</span> Game_Over = &#123;</div><div class="line"></div><div class="line">	<span class="attr">preload</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//加载游戏结束图像</span></div><div class="line">		game.load.image(<span class="string">'gameover'</span>, <span class="string">'./assets/images/gameover.png'</span>);</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	<span class="attr">create</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//创建一个按钮以重启游戏</span></div><div class="line">		<span class="keyword">this</span>.add.button(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'gameover'</span>, <span class="keyword">this</span>.startGame, <span class="keyword">this</span>);</div><div class="line"></div><div class="line">		<span class="comment">//添加文字，显示最终游戏结果</span></div><div class="line">		game.add.text(<span class="number">235</span>, <span class="number">310</span>, <span class="string">"最终得分"</span>, &#123; <span class="attr">font</span>: <span class="string">"bold 16px sans-serif"</span>, <span class="attr">fill</span>: <span class="string">"#46c0f9"</span>, <span class="attr">align</span>: <span class="string">"center"</span> &#125;);</div><div class="line">		game.add.text(<span class="number">350</span>, <span class="number">308</span>, score.toString(), &#123; <span class="attr">font</span>: <span class="string">"bold 20px sans-serif"</span>, <span class="attr">fill</span>: <span class="string">"#fff"</span>, <span class="attr">align</span>: <span class="string">"center"</span> &#125;);</div><div class="line">		game.add.text(<span class="number">235</span>, <span class="number">350</span>, <span class="string">"单击以重新开始游戏"</span>, &#123; <span class="attr">font</span>: <span class="string">"bold 16px sans-serif"</span>, <span class="attr">fill</span>: <span class="string">"#46c0f9"</span>, <span class="attr">align</span>: <span class="string">"center"</span> &#125;);</div><div class="line">	&#125;,</div><div class="line"></div><div class="line">	<span class="attr">startGame</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//回到游戏状态</span></div><div class="line">		<span class="keyword">this</span>.state.start(<span class="string">'Game'</span>);</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>至此，我们即完成了完整的游戏。</p>
+<h2 id="资料推荐"><a href="#资料推荐" class="headerlink" title="资料推荐"></a>资料推荐</h2><p>虽然这个游戏非常简单，但通过这个项目，可以了解到Phaser的多个方面，以及队列结构在此类游戏中的运用。如果对此感兴趣，可以再深入接触以下资料：</p>
+<ul>
+<li>Phaser官方文档（<a href="http://phaser.io/tutorials/making-your-first-phaser-game" target="_blank" rel="external">http://phaser.io/tutorials/making-your-first-phaser-game</a>）</li>
+<li>Phaser在线编辑器（<a href="http://phaser.io/sandbox/edit/1" target="_blank" rel="external">http://phaser.io/sandbox/edit/1</a>）</li>
+<li>基于Phaser的游戏实例展示（<a href="http://phaser.io/examples" target="_blank" rel="external">http://phaser.io/examples</a>）</li>
+</ul>
+<p>完整项目地址：<a href="https://github.com/zhangrj/Snake_Game" target="_blank" rel="external">https://github.com/zhangrj/Snake_Game</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2017/07/04/HTML5小游戏/">HTML5小游戏</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 王泽奇 的个人博客">王泽奇</a></p>
+  <p><span>发布时间:</span>2017年07月04日 - 00:07</p>
+  <p><span>最后更新:</span>2017年07月04日 - 19:07</p>
+  <p><span>原始链接:</span><a href="/2017/07/04/HTML5小游戏/" title="HTML5小游戏">http://wangzeqi.website/2017/07/04/HTML5小游戏/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/07/04/HTML5小游戏/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>感谢给位朋友们支持！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/pay/wechat-qcode.jpg" alt="王泽奇 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/pay/ali.jpg" alt="王泽奇 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"><i class="fa fa-tag"></i> HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/02/CSS选择器总结/" rel="next" title="CSS选择器总结">
+                <i class="fa fa-chevron-left"></i> CSS选择器总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="SOHUCS" ></div>
+    
+  </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/upload/head.png"
+               alt="王泽奇" />
+          <p class="site-author-name" itemprop="name">王泽奇</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个程序员的个人博客，不定期更新一些文章，以及分享生活中的快乐。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wongzeqi" rel="external nofollow" target="_blank" title="GitHub">
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/nonono" rel="external nofollow" target="_blank" title="Twitter">
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/18795207136" rel="external nofollow" target="_blank" title="Weibo">
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.qiniu.com/" title="七牛" target="_blank">七牛</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://aileen.top" title="张琳学姐" target="_blank">张琳学姐</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.zybuluo.com/mdeditor" title="作业部落" target="_blank">作业部落</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、开发准备"><span class="nav-number">1.</span> <span class="nav-text">一、开发准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、游戏是如何组织的"><span class="nav-number">2.</span> <span class="nav-text">二、游戏是如何组织的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、加载图像"><span class="nav-number">2.1.</span> <span class="nav-text">1、加载图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、绘制贪吃蛇"><span class="nav-number">2.2.</span> <span class="nav-text">2、绘制贪吃蛇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、运动控制"><span class="nav-number">2.3.</span> <span class="nav-text">3、运动控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资料推荐"><span class="nav-number">3.</span> <span class="nav-text">资料推荐</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王泽奇</span>
+</div>
+
+
+<!--
+<div class="powered-by">
+  由 <a rel="external nofollow" class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+-->
+<div class="powered-by">
+|&nbsp;&nbsp;
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+  
+     <script type="text/javascript"> 
+    (function(){ 
+    var appid = 'cyt5gr922'; 
+    var conf = '0b7e09b5029f21ee0f054d0ab01246b4'; 
+    var width = window.innerWidth || document.documentElement.clientWidth; 
+    if (width < 960) { 
+    window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+  
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  <!--
+  
+  -->
+  
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+
+</html>

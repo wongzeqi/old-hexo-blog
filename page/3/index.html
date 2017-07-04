@@ -167,10 +167,10 @@
     },
     algolia: {
       applicationID: '',
-      apiKey: '',
-      indexName: '',
+      apiKey: '17dd22c525db1292bc2f7092bd7b632a',
+      indexName: 'indexName',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"寻找什么宝贝呢？","hits_empty":"木有找到你想要的[ ${query} ]的相关内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
     }
   };
 </script>
@@ -243,7 +243,7 @@
 
 <nav class="site-nav">
   
-
+  
   
     <ul id="menu" class="menu">
       
@@ -309,9 +309,52 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+
+            <!--增加的代码 收索 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
+
+
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -325,6 +368,198 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/canvas画布/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王泽奇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/upload/head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王泽奇，个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/02/canvas画布/" itemprop="url">canvas画布</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T00:00:00+08:00">
+                2017-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+				<!--noindex-->
+				<span class="post-comments-count">
+				<span class="post-meta-divider">|</span>
+				<span class="post-meta-item-icon">
+				  <i class="fa fa-comment-o"></i>
+				</span>
+				
+					<a href="/2017/07/02/canvas画布/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/canvas画布/" class = "cy_cmt_count" data-xid="2017/07/02/canvas画布/" itemprop="commentsCount" ></span>
+					</a>
+				
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  7,116
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="canvas画布"><a href="#canvas画布" class="headerlink" title="canvas画布"></a><center><a href="http://wangzeqi.website"><strong>canvas画布</strong></a></center></h1><h1 id="一、canvas简介"><a href="#一、canvas简介" class="headerlink" title="一、canvas简介"></a>一、canvas简介</h1><p>​ <code>&lt;canvas&gt;</code> 是 <code>HTML5</code> 新增的，一个可以使用脚本(通常为<code>JavaScript</code>)在其中绘制图像的 <code>HTML</code> 元素。它可以用来制作照片集或者制作简单(也不是那么简单)的动画，甚至可以进行实时视频处理和渲染。</p>
+<p>​ 它最初由苹果内部使用自己<code>MacOS X WebKit</code>推出，供应用程序使用像仪表盘的构件和 <code>Safari</code> 浏览器使用。 后来，有人通过<code>Gecko</code>内核的浏览器 (尤其是<code>Mozilla</code>和<code>Firefox</code>)，<code>Opera</code>和<code>Chrome</code>和超文本网络应用技术工作组建议为下一代的网络技术使用该元素。</p>
+<p>​ <code>Canvas</code>是由<code>HTML</code>代码配合高度和宽度属性而定义出的可绘制区域。<code>JavaScript</code>代码可以访问该区域，类似于其他通用的二维<code>API</code>，通过一套完整的绘图函数来动态生成图形。</p>
+<p>​ Mozilla 程序从 Gecko 1.8 (Firefox 1.5)开始支持 <code>&lt;canvas&gt;</code>, Internet Explorer 从IE9开始<code>&lt;canvas&gt;</code> 。Chrome和Opera 9+ 也支持 <code>&lt;canvas&gt;</code>。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/canvas画布/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -711,7 +946,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/Git常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/Linux常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -730,7 +965,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/29/Git常用命令/" itemprop="url">Git常用命令</a></h1>
+                <a class="post-title-link" href="/2017/06/29/Linux常用命令/" itemprop="url">Git常用命令</a></h1>
         
 
         <div class="post-meta">
@@ -765,8 +1000,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习整理/" itemprop="url" rel="index">
-                    <span itemprop="name">学习整理</span>
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
                   </a>
                 </span>
 
@@ -785,8 +1020,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/06/29/Git常用命令/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/06/29/Git常用命令/" class = "cy_cmt_count" data-xid="2017/06/29/Git常用命令/" itemprop="commentsCount" ></span>
+					<a href="/2017/06/29/Linux常用命令/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/06/29/Linux常用命令/" class = "cy_cmt_count" data-xid="2017/06/29/Linux常用命令/" itemprop="commentsCount" ></span>
 					</a>
 				
             
@@ -808,7 +1043,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,451
+                  3,249
                 </span>
               
 
@@ -824,7 +1059,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  6
+                  12
                 </span>
               
             </div>
@@ -843,11 +1078,16 @@
 
       
         
-          <h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
-<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3>
+          <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a><center><a href="http://wangzeqi.website"><strong>Linux常用命令</strong></a></center></h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a><strong>列出目录内容</strong></h2><p>ls -a：显示所有文件（包括隐藏文件）；</p>
+<p>ls -l：显示详细信息；</p>
+<p>ls -R：递归显示子目录结构；</p>
+<p>ls -ld：显示目录和链接信息；</p>
+<p>ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）；</p>
+<p><a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">Linux</a>中以.开头的文件是隐藏文件；</p>
+<p>pwd:显示当前目录<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/Git常用命令/#more" rel="contents">
+            <a class="btn" href="/2017/06/29/Linux常用命令/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1082,206 +1322,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/Linux常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王泽奇">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/upload/head.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王泽奇，个人博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/Linux常用命令/" itemprop="url">Git常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:00:00+08:00">
-                2017-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习积累/" itemprop="url" rel="index">
-                    <span itemprop="name">学习积累</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-				<!--noindex-->
-				<span class="post-comments-count">
-				<span class="post-meta-divider">|</span>
-				<span class="post-meta-item-icon">
-				  <i class="fa fa-comment-o"></i>
-				</span>
-				
-					<a href="/2017/06/29/Linux常用命令/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/06/29/Linux常用命令/" class = "cy_cmt_count" data-xid="2017/06/29/Linux常用命令/" itemprop="commentsCount" ></span>
-					</a>
-				
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计</span>
-                
-                <span title="字数统计">
-                  3,249
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a><center><a href="http://wangzeqi.website"><strong>Linux常用命令</strong></a></center></h1><h2 id="列出目录内容"><a href="#列出目录内容" class="headerlink" title="列出目录内容"></a><strong>列出目录内容</strong></h2><p>ls -a：显示所有文件（包括隐藏文件）；</p>
-<p>ls -l：显示详细信息；</p>
-<p>ls -R：递归显示子目录结构；</p>
-<p>ls -ld：显示目录和链接信息；</p>
-<p>ctrl+r：历史记录中所搜命令（输入命令中的任意一个字符）；</p>
-<p><a href="http://lib.csdn.net/base/linux" title="Linux知识库" target="_blank" rel="external">Linux</a>中以.开头的文件是隐藏文件；</p>
-<p>pwd:显示当前目录<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/Linux常用命令/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1327,7 +1372,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1349,7 +1394,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1448,6 +1493,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
 <div class="copyright" >
   
   &copy; 
@@ -1617,6 +1664,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 

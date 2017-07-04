@@ -167,10 +167,10 @@
     },
     algolia: {
       applicationID: '',
-      apiKey: '',
-      indexName: '',
+      apiKey: '17dd22c525db1292bc2f7092bd7b632a',
+      indexName: 'indexName',
       hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+      labels: {"input_placeholder":"寻找什么宝贝呢？","hits_empty":"木有找到你想要的[ ${query} ]的相关内容","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
     }
   };
 </script>
@@ -241,7 +241,7 @@
 
 <nav class="site-nav">
   
-
+  
   
     <ul id="menu" class="menu">
       
@@ -307,9 +307,52 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+
+            <!--增加的代码 收索 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
+
+
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -332,7 +375,7 @@
       
         
       
-      嗯..! 目前共计 15 篇日志。 继续努力。
+      嗯..! 目前共计 16 篇日志。 继续努力。
     </span>
 
     
@@ -346,6 +389,43 @@
         <div class="collection-title">
           <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
         </div>
+      
+      
+
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+            <a class="post-title-link" href="/2017/07/01/计算机网络知识/" itemprop="url">
+              
+                <span itemprop="name">计算机网络知识</span>
+              
+            </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-07-01T00:00:00+08:00"
+              content="2017-07-01" >
+          07-01
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+    
+
+      
+      
+      
+
       
       
 
@@ -393,7 +473,7 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/06/29/Git常用命令/" itemprop="url">
+            <a class="post-title-link" href="/2017/06/29/Linux常用命令/" itemprop="url">
               
                 <span itemprop="name">Git常用命令</span>
               
@@ -467,7 +547,7 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/06/29/Linux常用命令/" itemprop="url">
+            <a class="post-title-link" href="/2017/06/29/Git常用命令/" itemprop="url">
               
                 <span itemprop="name">Git常用命令</span>
               
@@ -490,48 +570,11 @@
 
     
 
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/06/28/hexo-nexT配置详情/" itemprop="url">
-              
-                <span itemprop="name">Hexo之NexT主题配置</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-28T00:00:00+08:00"
-              content="2017-06-28" >
-          06-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -578,7 +621,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -600,7 +643,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -699,6 +742,8 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
 <div class="copyright" >
   
   &copy; 
@@ -884,6 +929,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
