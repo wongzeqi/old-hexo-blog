@@ -123,7 +123,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="计算机网络," />
+  <meta name="keywords" content="javascript,IP,MAC," />
 
 
 
@@ -141,19 +141,17 @@
 
 
 
-<meta name="description" content="计算机网络知识 网络知识导图">
-<meta name="keywords" content="计算机网络">
+<meta name="description" content="这篇文章主要介绍了js获取客户端IP地址、MAC和主机名的7个方法汇总,JS本身是不支持获取IP地址等信息的,本文通过其它方法实现,需要的朋友可以参考下  今天在搞JS（JavaScript）获取客户端IP的小程序，上网搜了下，好多在现在的系统和浏览器中的都无效，很无奈，在Chrome、FireFox中很少搞到直接利用ActiveX获取IP等的JS脚本。下面的代码是我在所有windowsNT5.">
+<meta name="keywords" content="javascript,IP,MAC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络知识">
-<meta property="og:url" content="http://wangzeqi.website/2017/07/01/计算机网络知识/index.html">
+<meta property="og:title" content="获取IP地址和MAC地址的三种方法">
+<meta property="og:url" content="http://wangzeqi.website/2017/07/05/获取IP地址和MAC地址的三种方法/index.html">
 <meta property="og:site_name" content="王泽奇，个人博客">
-<meta property="og:description" content="计算机网络知识 网络知识导图">
-<meta property="og:image" content="http://os94ofsac.bkt.clouddn.com/note/jsjwl.png">
-<meta property="og:updated_time" content="2017-07-02T07:11:08.572Z">
+<meta property="og:description" content="这篇文章主要介绍了js获取客户端IP地址、MAC和主机名的7个方法汇总,JS本身是不支持获取IP地址等信息的,本文通过其它方法实现,需要的朋友可以参考下  今天在搞JS（JavaScript）获取客户端IP的小程序，上网搜了下，好多在现在的系统和浏览器中的都无效，很无奈，在Chrome、FireFox中很少搞到直接利用ActiveX获取IP等的JS脚本。下面的代码是我在所有windowsNT5.">
+<meta property="og:updated_time" content="2017-07-05T04:55:24.989Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算机网络知识">
-<meta name="twitter:description" content="计算机网络知识 网络知识导图">
-<meta name="twitter:image" content="http://os94ofsac.bkt.clouddn.com/note/jsjwl.png">
+<meta name="twitter:title" content="获取IP地址和MAC地址的三种方法">
+<meta name="twitter:description" content="这篇文章主要介绍了js获取客户端IP地址、MAC和主机名的7个方法汇总,JS本身是不支持获取IP地址等信息的,本文通过其它方法实现,需要的朋友可以参考下  今天在搞JS（JavaScript）获取客户端IP的小程序，上网搜了下，好多在现在的系统和浏览器中的都无效，很无奈，在Chrome、FireFox中很少搞到直接利用ActiveX获取IP等的JS脚本。下面的代码是我在所有windowsNT5.">
 
 
 
@@ -181,13 +179,13 @@
 
 
 
-  <link rel="canonical" href="http://wangzeqi.website/2017/07/01/计算机网络知识/"/>
+  <link rel="canonical" href="http://wangzeqi.website/2017/07/05/获取IP地址和MAC地址的三种方法/"/>
 
 
 
 
 
-  <title>计算机网络知识 | 王泽奇，个人博客</title>
+  <title>获取IP地址和MAC地址的三种方法 | 王泽奇，个人博客</title>
   
 
 
@@ -380,7 +378,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/01/计算机网络知识/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/05/获取IP地址和MAC地址的三种方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -397,7 +395,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计算机网络知识</h1>
+          <h1 class="post-title" itemprop="name headline">获取IP地址和MAC地址的三种方法</h1>
         
 
         <div class="post-meta">
@@ -409,8 +407,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T00:00:00+08:00">
-                2017-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-05T00:00:00+08:00">
+                2017-07-05
               </time>
             
 
@@ -432,8 +430,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">学习笔记</span>
+                  <a href="/categories/学习积累/" itemprop="url" rel="index">
+                    <span itemprop="name">学习积累</span>
                   </a>
                 </span>
 
@@ -452,8 +450,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/07/01/计算机网络知识/#SOHUCS" itemprop="discussionUrl">
-					  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/01/计算机网络知识/" itemprop="commentsCount"></span>
+					<a href="/2017/07/05/获取IP地址和MAC地址的三种方法/#SOHUCS" itemprop="discussionUrl">
+					  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2017/07/05/获取IP地址和MAC地址的三种方法/" itemprop="commentsCount"></span>
 					</a>
 				
             
@@ -475,7 +473,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  13
+                  1,141
                 </span>
               
 
@@ -491,7 +489,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -509,9 +507,16 @@
       
 
       
-        <h1 id="计算机网络知识"><a href="#计算机网络知识" class="headerlink" title="计算机网络知识"></a><center><strong>计算机网络知识</strong></center></h1><blockquote>
-<h2 id="网络知识导图"><a href="#网络知识导图" class="headerlink" title="网络知识导图"></a><strong>网络知识导图</strong></h2><p><img src="http://os94ofsac.bkt.clouddn.com/note/jsjwl.png" alt="思维导图"></p>
+        <blockquote>
+<p>这篇文章主要介绍了<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">js</a>获取客户端IP地址、MAC和主机名的7个方法汇总,JS本身是不支持获取IP地址等信息的,本文通过其它方法实现,需要的朋友可以参考下</p>
 </blockquote>
+<p>今天在搞JS（<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">JavaScript</a>）获取客户端IP的小程序，上网搜了下，好多在现在的系统和浏览器中的都无效，很无奈，在Chrome、FireFox中很少搞到直接利用ActiveX获取IP等的JS脚本。下面的代码是我在所有windowsNT5.0及以上的系统上都<a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="external">测试</a>通过的，给出代码：<br><a id="more"></a><br>一、使用JS获取客户端IP的几个方法</p>
+<p>方法一（只针对IE且客户端的IE允许AcitiveX运行，通过平台：XP，SERVER03，2000）。<br>获取客户端IP代码：</p>
+<p>复制代码 代码如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">HTML</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">TITLE</span>&gt;</span>GetLocalIP<span class="tag">&lt;/<span class="name">TITLE</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">BODY</span>&gt;</span></div><div class="line"> 获取IP:</div><div class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"JavaScript"</span>&gt;</span><span class="javascript"> <span class="function"><span class="keyword">function</span> <span class="title">GetLocalIPAddr</span>(<span class="params"></span>)</span>&#123; <span class="keyword">var</span> oSetting = <span class="literal">null</span>; <span class="keyword">var</span> ip = <span class="literal">null</span>; <span class="keyword">try</span>&#123; oSetting = <span class="keyword">new</span> ActiveXObject(<span class="string">"rcbdyctl.Setting"</span>); ip = oSetting.GetIPAddress; <span class="keyword">if</span> (ip.length == <span class="number">0</span>)&#123; <span class="keyword">return</span> <span class="string">"没有连接到Internet"</span>; &#125; oSetting = <span class="literal">null</span>; &#125;<span class="keyword">catch</span>(e)&#123; <span class="keyword">return</span> ip; &#125; <span class="keyword">return</span> ip; &#125; <span class="built_in">document</span>.write(GetLocalIPAddr()+<span class="string">"&lt;br/&gt;"</span>) </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>方法二（所有的平台及浏览器）：<br>获取客户端处在网络中的IP，前提是客户得联网。使用的是新浪接口。</p>
+<p>复制代码 代码如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=gb2312"</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">title</span>&gt;</span>JavaScript获取客户端IP[利用新浪接口]<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://counter.sina.com.cn/ip/"</span> <span class="attr">charset</span>=<span class="string">"gb2312"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>       <span class="comment">&lt;!--获取接口数据，注意charset --&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="xml"> document.writeln("IP地址："+ILData[0]+"<span class="tag">&lt;<span class="name">br</span> /&gt;</span>"); //输出接口数据中的IP地址 document.writeln("地址类型："+ILData[1]+"<span class="tag">&lt;<span class="name">br</span> /&gt;</span>"); //输出接口数据中的IP地址的类型 document.writeln("地址类型："+ILData[2]+"<span class="tag">&lt;<span class="name">br</span> /&gt;</span>"); //输出接口数据中的IP地址的省市 document.writeln("地址类型："+ILData[3]+"<span class="tag">&lt;<span class="name">br</span> /&gt;</span>"); //输出接口数据中的IP地址的 document.writeln("地址类型："+ILData[4]+"<span class="tag">&lt;<span class="name">br</span> /&gt;</span>"); //输出接口数据中的IP地址的运营商 </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>方法三（所有的平台及浏览器）：<br>使用的搜狐接口</p>
+<p>复制代码 代码如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://pv.sohu.com/cityjson?ie=utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"> <span class="built_in">document</span>.write(returnCitySN[<span class="string">"cip"</span>]+<span class="string">','</span>+returnCitySN[<span class="string">"cname"</span>]) </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">```   </div><div class="line">     </div><div class="line"></div><div class="line">方法四：太平洋电脑网IP查询接口：</div><div class="line"></div><div class="line">[http://whois.pconline.com.cn/?ip=0.0.0.0][http_whois.pconline.com.cn_ip_0.0.0.0]</div><div class="line"></div><div class="line">把0.0.0.0换成IP地址，页面上还有其他无关内容，这些内容是告诉我们哪些接口可以调用、接口调用参数和使用方法等</div><div class="line"></div><div class="line">通过上边的js接口调用就可以判断用于属于哪个城市，直接显示该城市的相关信息了，对于需要城市切换的网站，首次判断用户来源非常有帮助。</div><div class="line"></div><div class="line">二、使用JS获取计算机名、MAC地址、局域网IP</div><div class="line"></div><div class="line">方法一（只针对IE且客户端的IE允许AcitiveX运行）：  </div><div class="line">调用VBS脚本，获取计算机名（有些人不知道什么是计算机名，简单解释就是它是这台机器的物理名称而不是你在用的那个用户名）和登录的用户名。</div><div class="line"></div><div class="line">复制代码 代码如下:</div><div class="line">```html</div><div class="line">    <span class="tag">&lt;<span class="name">HTML</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">TITLE</span>&gt;</span>WMI Scripting HTML<span class="tag">&lt;/<span class="name">TITLE</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">BODY</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">javascript</span>&gt;</span><span class="javascript"> <span class="keyword">var</span> WshShell =<span class="keyword">new</span> ActiveXObject(<span class="string">"WScript.Shell"</span>); <span class="built_in">document</span>.write(<span class="string">"计算机名 = "</span>+ WshShell.ExpandEnvironmentStrings(<span class="string">"%COMPUTERNAME%"</span>)+<span class="string">"&lt;br/&gt;"</span>); <span class="built_in">document</span>.write(<span class="string">"登录用户名 = "</span>+ WshShell.ExpandEnvironmentStrings(<span class="string">"%USERNAME%"</span>)+<span class="string">"&lt;br/&gt;"</span>); </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></div><div class="line">```  </div><div class="line"></div><div class="line"></div><div class="line">方法二（只针对IE且客户端的IE允许AcitiveX运行）：  </div><div class="line">获取计算机名、登录的用户名和域名（如果你加入了域，显示你这台机器处在哪个域中）。</div><div class="line"></div><div class="line">复制代码 代码如下:</div><div class="line">```html</div><div class="line">    <span class="tag">&lt;<span class="name">HTML</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">HEAD</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">TITLE</span>&gt;</span>WMI Scripting HTML<span class="tag">&lt;/<span class="name">TITLE</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">HEAD</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">BODY</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">javascript</span>&gt;</span><span class="javascript"> <span class="keyword">var</span> wshNetwork = <span class="keyword">new</span> ActiveXObject(<span class="string">"WScript.Network"</span>); <span class="built_in">document</span>.write(<span class="string">"域名 = "</span>+ wshNetwork.UserDomain+<span class="string">"&lt;br/&gt;"</span>); <span class="built_in">document</span>.write(<span class="string">"计算机名 = "</span>+ wshNetwork.ComputerName+<span class="string">"&lt;br/&gt;"</span>); <span class="built_in">document</span>.write(<span class="string">"登录用户名 = "</span>+ wshNetwork.UserName+<span class="string">"&lt;br/&gt;"</span>); </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">BODY</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">HTML</span>&gt;</span></div><div class="line">```    </div><div class="line"></div><div class="line">方法三（只针对IE且客户端的IE允许AcitiveX运行）：  </div><div class="line">能够获取到局域网IP地址，本机的MAC，以及机器名（代码来源网络）。</div><div class="line"></div><div class="line">复制代码 代码如下:</div><div class="line">```html</div><div class="line">    <span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">object</span> <span class="attr">classid</span>=<span class="string">"CLSID:76A64158-CB41-11D1-8B02-00600806D9B6"</span> <span class="attr">id</span>=<span class="string">"locator"</span> <span class="attr">style</span>=<span class="string">"display:none;visibility:hidden"</span>&gt;</span><span class="tag">&lt;/<span class="name">object</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">object</span> <span class="attr">classid</span>=<span class="string">"CLSID:75718C9A-F029-11d1-A1AC-00C04FB6C223"</span> <span class="attr">id</span>=<span class="string">"foo"</span> <span class="attr">style</span>=<span class="string">"display:none;visibility:hidden"</span>&gt;</span><span class="tag">&lt;/<span class="name">object</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">"myForm"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">br</span>/&gt;</span>MAC地址：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"macAddress"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">br</span>/&gt;</span>IP地址：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"ipAddress"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">br</span>/&gt;</span>主机名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"hostName"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"javascript"</span>&gt;</span><span class="javascript"> <span class="keyword">var</span> sMacAddr=<span class="string">""</span>; <span class="keyword">var</span> sIPAddr=<span class="string">""</span>; <span class="keyword">var</span> sDNSName=<span class="string">""</span>; <span class="keyword">var</span> service = locator.ConnectServer(); service.Security_.ImpersonationLevel=<span class="number">3</span>; service.InstancesOfAsync(foo, <span class="string">'Win32_NetworkAdapterConfiguration'</span>); </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">script</span> <span class="attr">FOR</span>=<span class="string">"foo"</span> <span class="attr">EVENT</span>=<span class="string">"OnObjectReady(objObject,objAsyncContext)"</span> <span class="attr">LANGUAGE</span>=<span class="string">"JScript"</span>&gt;</span><span class="javascript"> <span class="keyword">if</span>(objObject.IPEnabled != <span class="literal">null</span> &amp;&amp; objObject.IPEnabled != <span class="string">"undefined"</span> &amp;&amp; objObject.IPEnabled == <span class="literal">true</span>)&#123; <span class="keyword">if</span>(objObject.IPEnabled &amp;&amp; objObject.IPAddress(<span class="number">0</span>) !=<span class="literal">null</span> &amp;&amp; objObject.IPAddress(<span class="number">0</span>) != <span class="string">"undefined"</span>) sIPAddr = objObject.IPAddress(<span class="number">0</span>); <span class="keyword">if</span>(objObject.MACAddress != <span class="literal">null</span> &amp;&amp;objObject.MACAddress != <span class="string">"undefined"</span>) sMacAddr = objObject.MACAddress; <span class="keyword">if</span>(objObject.DNSHostName != <span class="literal">null</span> &amp;&amp;objObject.DNSHostName != <span class="string">"undefined"</span>) sDNSName = objObject.DNSHostName; &#125; </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">FOR</span>=<span class="string">"foo"</span> <span class="attr">EVENT</span>=<span class="string">"OnCompleted(hResult,pErrorObject, pAsyncContext)"</span> <span class="attr">LANGUAGE</span>=<span class="string">"JScript"</span>&gt;</span><span class="undefined"> myForm.macAddress.value=sMacAddr; myForm.ipAddress.value=sIPAddr; myForm.hostName.value=sDNSName; </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -526,12 +531,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2017/07/01/计算机网络知识/">计算机网络知识</a></p>
+  <p><span>本文标题:</span><a href="/2017/07/05/获取IP地址和MAC地址的三种方法/">获取IP地址和MAC地址的三种方法</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 王泽奇 的个人博客">王泽奇</a></p>
-  <p><span>发布时间:</span>2017年07月01日 - 00:07</p>
-  <p><span>最后更新:</span>2017年07月02日 - 15:07</p>
-  <p><span>原始链接:</span><a href="/2017/07/01/计算机网络知识/" title="计算机网络知识">http://wangzeqi.website/2017/07/01/计算机网络知识/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/07/01/计算机网络知识/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2017年07月05日 - 00:07</p>
+  <p><span>最后更新:</span>2017年07月05日 - 12:07</p>
+  <p><span>原始链接:</span><a href="/2017/07/05/获取IP地址和MAC地址的三种方法/" title="获取IP地址和MAC地址的三种方法">http://wangzeqi.website/2017/07/05/获取IP地址和MAC地址的三种方法/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://wangzeqi.website/2017/07/05/获取IP地址和MAC地址的三种方法/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -609,7 +614,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机网络/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+          
+            <a href="/tags/IP/" rel="tag"><i class="fa fa-tag"></i> IP</a>
+          
+            <a href="/tags/MAC/" rel="tag"><i class="fa fa-tag"></i> MAC</a>
           
         </div>
       
@@ -622,8 +631,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/30/Git详细教程/" rel="next" title="Git常用命令(转)">
-                <i class="fa fa-chevron-left"></i> Git常用命令(转)
+              <a href="/2017/07/04/HTML5小游戏/" rel="next" title="HTML5小游戏">
+                <i class="fa fa-chevron-left"></i> HTML5小游戏
               </a>
             
           </div>
@@ -631,10 +640,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/02/SpringMVC学习笔记/" rel="prev" title="SpringMVC学习笔记">
-                SpringMVC学习笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -708,17 +713,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/upload/head.png"
@@ -839,22 +835,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机网络知识"><span class="nav-number">1.</span> <span class="nav-text">计算机网络知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络知识导图"><span class="nav-number">1.1.</span> <span class="nav-text">网络知识导图</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
