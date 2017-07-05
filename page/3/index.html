@@ -378,7 +378,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/springMVC后台校验实现/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/SpringMVC学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -397,7 +397,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/02/springMVC后台校验实现/" itemprop="url">springMVC后台校验实现</a></h1>
+                <a class="post-title-link" href="/2017/07/02/SpringMVC学习笔记/" itemprop="url">SpringMVC学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -452,8 +452,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/07/02/springMVC后台校验实现/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/springMVC后台校验实现/" class = "cy_cmt_count" data-xid="2017/07/02/springMVC后台校验实现/" itemprop="commentsCount" ></span>
+					<a href="/2017/07/02/SpringMVC学习笔记/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/SpringMVC学习笔记/" class = "cy_cmt_count" data-xid="2017/07/02/SpringMVC学习笔记/" itemprop="commentsCount" ></span>
 					</a>
 				
             
@@ -475,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  766
+                  3,043
                 </span>
               
 
@@ -491,7 +491,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  4
+                  15
                 </span>
               
             </div>
@@ -510,10 +510,10 @@
 
       
         
-          <h1 id="springMVC后台校验实现"><a href="#springMVC后台校验实现" class="headerlink" title="springMVC后台校验实现"></a><center><strong>springMVC后台校验实现</strong></center></h1><h3 id="第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上："><a href="#第一步-meven添加依赖包，也可自行下载，注意jboss-logging与hibernate-validator的版本要能对应上：" class="headerlink" title="第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上："></a><strong>第一步:meven添加依赖包，也可自行下载，注意jboss.logging与hibernate-validator的版本要能对应上：</strong></h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-validator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.3.1.Final<span class="tag">&lt;/<span class="name">version</span>&gt;</span>           </div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.validation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>validation-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0.GA<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">      <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jboss.logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jboss-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">          <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0.CR2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+          <h1 id="SpringMVC学习笔记"><a href="#SpringMVC学习笔记" class="headerlink" title="SpringMVC学习笔记"></a><center><a href="http://wangzeqi.website"><strong>SpringMVC学习笔记</strong></a></center></h1><h2 id="一、SpringMVC基础入门，创建一个HelloWorld程序"><a href="#一、SpringMVC基础入门，创建一个HelloWorld程序" class="headerlink" title="一、SpringMVC基础入门，创建一个HelloWorld程序"></a><strong>一、SpringMVC基础入门，创建一个HelloWorld程序</strong></h2><h2 id="springmvc工作原理"><a href="#springmvc工作原理" class="headerlink" title="springmvc工作原理"></a><strong>springmvc工作原理</strong></h2><p><img src="http://os94ofsac.bkt.clouddn.com/note/springmvc%E6%B5%81%E7%A8%8B.jpg" alt="spring工作原理"></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/springMVC后台校验实现/#more" rel="contents">
+            <a class="btn" href="/2017/07/02/SpringMVC学习笔记/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -567,7 +567,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/常用正则表达式大全/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/07/02/HTML-DOM 事件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -586,7 +586,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/02/常用正则表达式大全/" itemprop="url">常用正则表达式大全</a></h1>
+                <a class="post-title-link" href="/2017/07/02/HTML-DOM 事件/" itemprop="url">HTML-DOM 事件</a></h1>
         
 
         <div class="post-meta">
@@ -641,8 +641,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/07/02/常用正则表达式大全/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/07/02/常用正则表达式大全/" class = "cy_cmt_count" data-xid="2017/07/02/常用正则表达式大全/" itemprop="commentsCount" ></span>
+					<a href="/2017/07/02/HTML-DOM 事件/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/07/02/HTML-DOM 事件/" class = "cy_cmt_count" data-xid="2017/07/02/HTML-DOM 事件/" itemprop="commentsCount" ></span>
 					</a>
 				
             
@@ -664,7 +664,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,700
+                  1
                 </span>
               
 
@@ -680,7 +680,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  8
+                  1
                 </span>
               
             </div>
@@ -699,14 +699,14 @@
 
       
         
-          <h1 id="全面的常用正则表达式大全"><a href="#全面的常用正则表达式大全" class="headerlink" title="全面的常用正则表达式大全"></a><center><strong>全面的常用正则表达式大全</strong></center></h1><blockquote>
-<p>很多不太懂正则的朋友，在遇到需要用正则校验数据时，往往是在网上去找很久，结果找来的还是不很符合要求。所以我最近把开发中常用的一些正则表达式整理了一下，在这里分享一下。给自己留个底，也给朋友们做个参考。</p>
+          <h1 id="HTML-DOM-事件"><a href="#HTML-DOM-事件" class="headerlink" title="HTML DOM 事件"></a><strong><center><a href="http://wangzeqi.website">HTML DOM 事件</a></center></strong></h1><blockquote>
+<p>HTML DOM 事件允许Javascript在HTML文档元素中注册不同事件处理程序。</p>
+<p>事件通常与函数结合使用，函数不会在事件发生前被执行！ (如用户点击按钮)。</p>
 </blockquote>
-<p><img src="http://p1.pstatp.com/large/10944/6821280613" alt="最全面的常用正则表达式大全"></p>
-<h2 id="一、校验数字的表达式"><a href="#一、校验数字的表达式" class="headerlink" title="一、校验数字的表达式"></a><strong>一、校验数字的表达式</strong></h2>
+<p><strong>提示：</strong>在 W3C 2 级 DOM 事件中规范了事件模型。<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/常用正则表达式大全/#more" rel="contents">
+            <a class="btn" href="/2017/07/02/HTML-DOM 事件/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1136,7 +1136,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/Git常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://wangzeqi.website/2017/06/29/java设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王泽奇">
@@ -1155,7 +1155,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/29/Git常用命令/" itemprop="url">Git常用命令</a></h1>
+                <a class="post-title-link" href="/2017/06/29/java设计模式/" itemprop="url">java23种设计模式</a></h1>
         
 
         <div class="post-meta">
@@ -1190,8 +1190,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习整理/" itemprop="url" rel="index">
-                    <span itemprop="name">学习整理</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -1210,8 +1210,8 @@
 				  <i class="fa fa-comment-o"></i>
 				</span>
 				
-					<a href="/2017/06/29/Git常用命令/#SOHUCS" itemprop="discussionUrl">
-					<span id = "url::http://wangzeqi.website/2017/06/29/Git常用命令/" class = "cy_cmt_count" data-xid="2017/06/29/Git常用命令/" itemprop="commentsCount" ></span>
+					<a href="/2017/06/29/java设计模式/#SOHUCS" itemprop="discussionUrl">
+					<span id = "url::http://wangzeqi.website/2017/06/29/java设计模式/" class = "cy_cmt_count" data-xid="2017/06/29/java设计模式/" itemprop="commentsCount" ></span>
 					</a>
 				
             
@@ -1233,7 +1233,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,451
+                  9,505
                 </span>
               
 
@@ -1249,7 +1249,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  6
+                  38
                 </span>
               
             </div>
@@ -1268,11 +1268,11 @@
 
       
         
-          <h2 id="Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git-是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a><strong>Git 是一个很强大的分布式版本控制系统。它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</strong></h2><p>Git常用操作命令：</p>
-<h3 id="远程仓库相关命令"><a href="#远程仓库相关命令" class="headerlink" title="远程仓库相关命令"></a><strong>远程仓库相关命令</strong></h3>
+          <h1 id="java23种设计模式（Design-Patterns）"><a href="#java23种设计模式（Design-Patterns）" class="headerlink" title="java23种设计模式（Design Patterns）"></a><strong><center>java23种设计模式（Design Patterns）</center></strong></h1><blockquote>
+<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问，设计模式于己于他人于系统都是多赢的，设计模式使代码编制真正工程化，设计模式是软件工程的基石，如同大厦的一块块砖石一样。项目中合理的运用设计模式可以完美的解决很多问题，每种模式在现在中都有相应的原理来与之对应，每一个模式描述了一个在我们周围不断重复发生的问题，以及该问题的核心解决方案，这也是它能被广泛应用的原因。本章系Java之美[从菜鸟到高手演变]系列之设计模式，我们会以理论与实践相结合的方式来进行本章的学习，希望广大程序爱好者，学好设计模式，做一个优秀的软件工程师！<br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/Git常用命令/#more" rel="contents">
+            <a class="btn" href="/2017/06/29/java设计模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
